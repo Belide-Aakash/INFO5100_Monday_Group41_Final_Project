@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.CustomerSupportRole;
+package ui.ProductManagerRole;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
@@ -14,18 +14,19 @@ import javax.swing.JPanel;
  *
  * @author aakashbelide
  */
-public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
+public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CustomerSupportWorkAreaJPanel
+     * Creates new form ProductManagerWorkAreaJPanel
      */
+    
     JPanel userProcessContainer;
     Ecosystem ecosystemBusiness;
     Enterprise enterprise;
     Organization org;
     UserAccount userAccount;
     
-    public CustomerSupportWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
+    public ProductManagerWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
