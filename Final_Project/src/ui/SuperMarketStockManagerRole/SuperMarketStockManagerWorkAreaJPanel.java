@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.SystemAdminWorkArea;
+package ui.SuperMarketStockManagerRole;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
@@ -12,20 +12,20 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author aakashbelide
+ * @author Aishwarya
  */
-public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
 
-   JPanel userProcessContainer;
+    JPanel userProcessContainer;
     Ecosystem ecosystemBusiness;
     Enterprise enterprise;
     Organization org;
     UserAccount userAccount;
 
     /**
-     * Creates new form SystemAdminWorkAreaJPanel
+     * Creates new form SuperMarketStockManagerWorkAreaJPanel
      */
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
+    public SuperMarketStockManagerWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -48,11 +48,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
