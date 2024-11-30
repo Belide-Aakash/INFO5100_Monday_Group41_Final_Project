@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ProductOrganization extends Organization {
     
     public ProductOrganization() {
-        super(Organization.Type.Support.getOrgVal());
+        super(Organization.Type.Product.getOrgVal());
     }
     
     // Overriding the getSupportedRole abstract method from Organization parent class

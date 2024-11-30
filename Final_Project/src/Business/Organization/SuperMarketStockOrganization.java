@@ -4,10 +4,25 @@
  */
 package Business.Organization;
 
+import Business.Role.ProductManagerRole;
+import Business.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author aakashbelide
  */
 public class SuperMarketStockOrganization extends Organization {
     // TO-DO
+    public SuperMarketStockOrganization() {
+        super(Organization.Type.SuperMarketStock.getOrgVal());
+    }
+    
+    // Overriding the getSupportedRole abstract method from Organization parent class
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> allRoles = new ArrayList();
+        allRoles.add(new ProductManagerRole());
+        return allRoles;
+    }
 }
