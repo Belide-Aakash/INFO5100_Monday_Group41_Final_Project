@@ -4,10 +4,21 @@
  */
 package Business.Enterprise;
 
+import Business.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author aakashbelide
  */
 public class AdvertisementEnterprise extends Enterprise{
-    // TO-DO
+    //TO DO
+    public AdvertisementEnterprise(String enterpriseName){
+        super(enterpriseName, EnterpriseType.Advertisement);
+    }
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        return null;
+    }
 }
