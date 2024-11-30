@@ -16,7 +16,7 @@ import ui.AdvertisementAnalystRole.AdvertisementAnalystWorkAreaJPanel;
  * @author aakashbelide
  */
 public class AdvertisementAnalystRole extends Role {
-    // TO-DO
+    
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new AdvertisementAnalystWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);

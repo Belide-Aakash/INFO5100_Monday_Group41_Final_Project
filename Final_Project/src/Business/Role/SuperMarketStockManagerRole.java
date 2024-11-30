@@ -17,7 +17,7 @@ import ui.SuperMarketStockManagerRole.SuperMarketStockManagerWorkAreaJPanel;
  * @author aakashbelide
  */
 public class SuperMarketStockManagerRole extends Role {
-    // TO-DO
+    
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new SuperMarketStockManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);

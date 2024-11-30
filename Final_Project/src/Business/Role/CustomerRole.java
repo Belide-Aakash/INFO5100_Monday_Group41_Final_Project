@@ -9,16 +9,16 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.SupplierStockManagerRole.SupplierStockManagerWorkAreaJPanel;
-
+import ui.CustomerRole.CustomerWorkAreaJPanel;
 
 /**
  *
  * @author aakashbelide
  */
-public class SupplierStockManagerRole extends Role {
+public class CustomerRole extends Role{
+    
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new SupplierStockManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
+        return new CustomerWorkAreaJPanel(userProcessContainer, enterprise, org, userAccount);
     }
 }

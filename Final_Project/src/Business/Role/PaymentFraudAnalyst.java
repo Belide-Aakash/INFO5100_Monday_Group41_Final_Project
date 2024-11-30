@@ -17,7 +17,7 @@ import ui.PaymentFraudAnalyst.PaymentFraudAnalystWorkAreaJPanel;
  * @author aakashbelide
  */
 public class PaymentFraudAnalyst extends Role {
-    // TO-DO
+    
      @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new PaymentFraudAnalystWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
