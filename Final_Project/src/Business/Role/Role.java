@@ -25,12 +25,13 @@ public abstract class Role {
         SuperMarketStockManager("Super Market Stock Manager"),
         AdvertisementManager("Advertisement Manager"),
         AdvertisementAnalyst("Advertisement Analyst"),
-        PaymentFraudManager("Payment Fraud Analyst"),
+        PaymentFraudAnalyst("Payment Fraud Analyst"),
         Customer("Customer"),
         SupplierAdmin("Supplier Admin"),
         SuperMarketAdmin("Super Market Admin"),
         AdvertisementAdmin("Advertisement Admin"),
-        PaymentAdmin("Payment Admin");
+        PaymentAdmin("Payment Admin"),
+        SystemAdmin("SystemAdmin");
         
         private String roleVal;
         

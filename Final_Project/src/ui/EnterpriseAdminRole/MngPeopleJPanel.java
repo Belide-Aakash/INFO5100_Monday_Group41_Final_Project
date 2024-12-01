@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.SystemAdminRole;
+package ui.EnterpriseAdminRole;
 
-import Business.Ecosystem;
-import Business.Network.Network;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.Organization.Organization.Type;
+import Business.Person.Person;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -22,22 +24,21 @@ import javax.swing.table.JTableHeader;
  *
  * @author aakashbelide
  */
-public class MngNetworksJPanel extends javax.swing.JPanel {
+public class MngPeopleJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
-    Ecosystem ecosystemBusiness;
-
+    Enterprise enterprise;
     /**
-     * Creates new form ManageNetworksJPanel
+     * Creates new form MngPeopleJPanel
      */
-    public MngNetworksJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness) {
+    public MngPeopleJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.ecosystemBusiness = ecosystemBusiness;
+        this.enterprise = enterprise;
         
         // Get the table header
-        JTableHeader header = networkTable.getTableHeader();
+        JTableHeader header = orgPeopleTable.getTableHeader();
         
         // Customize the header background and text color
         header.setDefaultRenderer(new DefaultTableCellRenderer() {
@@ -59,7 +60,7 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
             }
         });
         
-        populateTable();
+        populateCombobox();
     }
 
     /**
@@ -75,17 +76,19 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
         pageTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        networkTable = new javax.swing.JTable();
+        orgPeopleTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        lblNetworkName = new javax.swing.JLabel();
-        txtNetworkName = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
+        lblOrgName = new javax.swing.JLabel();
+        cBoxOrgName = new javax.swing.JComboBox();
+        lblPersonName = new javax.swing.JLabel();
+        txtPersonName = new javax.swing.JTextField();
+        btnAddPerson = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         pageTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         pageTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pageTitle.setText("Manage Networks");
+        pageTitle.setText("Manage People");
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -121,37 +124,49 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
                     .addGap(35, 35, 35)))
         );
 
-        networkTable.setModel(new javax.swing.table.DefaultTableModel(
+        orgPeopleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Network Name"
+                "Person ID", "Person Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(networkTable);
+        jScrollPane1.setViewportView(orgPeopleTable);
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Organization Person", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        lblNetworkName.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        lblNetworkName.setForeground(new java.awt.Color(255, 255, 255));
-        lblNetworkName.setText("Network Name:");
+        lblOrgName.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblOrgName.setForeground(new java.awt.Color(255, 255, 255));
+        lblOrgName.setText("Organization Name:");
 
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        cBoxOrgName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBoxOrgName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                cBoxOrgNameActionPerformed(evt);
+            }
+        });
+
+        lblPersonName.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblPersonName.setForeground(new java.awt.Color(255, 255, 255));
+        lblPersonName.setText("Person Name:");
+
+        btnAddPerson.setText("Add Person");
+        btnAddPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddPersonActionPerformed(evt);
             }
         });
 
@@ -163,24 +178,37 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
                 .addGap(268, 268, 268)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblNetworkName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(318, 318, 318))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblPersonName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(333, 333, 333))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtPersonName)
+                                .addGap(92, 92, 92)
+                                .addComponent(btnAddPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(305, 305, 305))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtNetworkName)
-                        .addGap(101, 101, 101)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(311, 311, 311))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblOrgName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(92, 92, 92))
+                            .addComponent(cBoxOrgName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(507, 507, 507))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(lblNetworkName)
+                .addGap(30, 30, 30)
+                .addComponent(lblOrgName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cBoxOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblPersonName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(btnAddPerson)
+                    .addComponent(txtPersonName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -199,27 +227,11 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        String newNetworkName = txtNetworkName.getText();
-        
-        if (newNetworkName.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Please type a valid network name.", "Network Creation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        Network newNetwork = this.ecosystemBusiness.createAndAddNetwork();
-        newNetwork.setNetworkName(newNetworkName);
-        
-        JOptionPane.showMessageDialog(this, "Network created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-        populateTable();
-    }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -228,26 +240,65 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
         layout.previous(this.userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    public void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) networkTable.getModel();
+    private void btnAddPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonActionPerformed
+        // TODO add your handling code here:
+        Organization selectedOrg = (Organization) cBoxOrgName.getSelectedItem();
+        
+        String newPersonName = txtPersonName.getText();
+
+        if (selectedOrg == null) {
+            JOptionPane.showMessageDialog(this, "Please select a valid Organization from drop down.", "Organization Selection Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (newPersonName.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Name cannot be empty. Please provide a valid person name.", "Person Name Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        selectedOrg.getPersonDir().createPerson(newPersonName);
+
+        JOptionPane.showMessageDialog(this, "Person added to the organization successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        populateTable(selectedOrg);
+    }//GEN-LAST:event_btnAddPersonActionPerformed
+
+    private void cBoxOrgNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxOrgNameActionPerformed
+        // TODO add your handling code here:
+        Organization selectedOrg = (Organization) cBoxOrgName.getSelectedItem();
+        if (selectedOrg != null){
+            populateTable(selectedOrg);
+        }
+    }//GEN-LAST:event_cBoxOrgNameActionPerformed
+
+    public void populateTable(Organization organization) {
+        DefaultTableModel model = (DefaultTableModel) orgPeopleTable.getModel();
         model.setRowCount(0);
         
-        for (Network network : this.ecosystemBusiness.getNetworkList()) {
-            Object[] row = new Object[1];
-            row[0] = network.getNetworkName();
+        for (Person person : organization.getPersonDir().getPersonList()){
+            Object[] row = new Object[2];
+            row[0] = person.getPersonID();
+            row[1] = person.getPersonName();
             model.addRow(row);
         }
-    }
+    };
+    public void populateCombobox() {
+        cBoxOrgName.removeAllItems();
+        for (Organization org: this.enterprise.getOrgDir().getOrgList()){
+            cBoxOrgName.addItem(org);
+        }
+    };
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAddPerson;
     private javax.swing.JButton btnBack;
+    private javax.swing.JComboBox cBoxOrgName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblNetworkName;
-    private javax.swing.JTable networkTable;
+    private javax.swing.JLabel lblOrgName;
+    private javax.swing.JLabel lblPersonName;
+    private javax.swing.JTable orgPeopleTable;
     private javax.swing.JLabel pageTitle;
-    private javax.swing.JTextField txtNetworkName;
+    private javax.swing.JTextField txtPersonName;
     // End of variables declaration//GEN-END:variables
 }

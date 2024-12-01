@@ -4,6 +4,7 @@
  */
 package Business.Enterprise;
 
+import Business.Organization.Organization;
 import Business.Role.SuperMarketAdminRole;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -23,5 +24,13 @@ public class SuperMarketEnterprise extends Enterprise{
         ArrayList<Role> allRoles = new ArrayList();
         allRoles.add(new SuperMarketAdminRole());
         return allRoles;
+    }
+    
+    
+    @Override
+    public ArrayList<Organization.Type> getSupportedOrganization() {
+        ArrayList<Organization.Type> allOrgs = new ArrayList();
+        allOrgs.add(Organization.Type.SuperMarketStock);
+        return allOrgs;
     }
 }

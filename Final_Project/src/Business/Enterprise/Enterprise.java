@@ -6,6 +6,7 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,6 +49,9 @@ public abstract class Enterprise extends Organization{
             return this.enterpriseVal;
         }
     }
+    
+    //Abstract method to get the supported organizations which has to be implemented the child classes
+    public abstract ArrayList<Organization.Type> getSupportedOrganization();
     
     // Getter to get the enterpriseType
     public EnterpriseType getEnterpriseType() {

@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.SystemAdminRole;
+package ui.EnterpriseAdminRole;
 
-import Business.Ecosystem;
-import Business.Network.Network;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.Organization.Organization.Type;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -22,22 +23,21 @@ import javax.swing.table.JTableHeader;
  *
  * @author aakashbelide
  */
-public class MngNetworksJPanel extends javax.swing.JPanel {
+public class MngOrganizationJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
-    Ecosystem ecosystemBusiness;
-
+    Enterprise enterprise;
     /**
-     * Creates new form ManageNetworksJPanel
+     * Creates new form MngOrganizationJPanel
      */
-    public MngNetworksJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness) {
+    public MngOrganizationJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.ecosystemBusiness = ecosystemBusiness;
+        this.enterprise = enterprise;
         
         // Get the table header
-        JTableHeader header = networkTable.getTableHeader();
+        JTableHeader header = orgTable.getTableHeader();
         
         // Customize the header background and text color
         header.setDefaultRenderer(new DefaultTableCellRenderer() {
@@ -60,6 +60,7 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
         });
         
         populateTable();
+        populateCombobox();
     }
 
     /**
@@ -75,17 +76,17 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
         pageTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        networkTable = new javax.swing.JTable();
+        orgTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        lblNetworkName = new javax.swing.JLabel();
-        txtNetworkName = new javax.swing.JTextField();
+        lblOrgType = new javax.swing.JLabel();
+        cBoxOrgType = new javax.swing.JComboBox();
         btnAdd = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         pageTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         pageTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pageTitle.setText("Manage Networks");
+        pageTitle.setText("Manage Organizations");
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -121,32 +122,35 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
                     .addGap(35, 35, 35)))
         );
 
-        networkTable.setModel(new javax.swing.table.DefaultTableModel(
+        orgTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Network Name"
+                "ID", "Organization"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(networkTable);
+        jScrollPane1.setViewportView(orgTable);
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Enterprise Organization", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        lblNetworkName.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        lblNetworkName.setForeground(new java.awt.Color(255, 255, 255));
-        lblNetworkName.setText("Network Name:");
+        lblOrgType.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblOrgType.setForeground(new java.awt.Color(255, 255, 255));
+        lblOrgType.setText("Organization Type:");
+
+        cBoxOrgType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -159,28 +163,25 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(268, 268, 268)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblNetworkName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(318, 318, 318))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtNetworkName)
-                        .addGap(101, 101, 101)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblOrgType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cBoxOrgType, 0, 215, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(311, 311, 311))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addComponent(lblNetworkName)
+                .addComponent(lblOrgType)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(btnAdd)
+                    .addComponent(cBoxOrgType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -199,27 +200,11 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        String newNetworkName = txtNetworkName.getText();
-        
-        if (newNetworkName.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Please type a valid network name.", "Network Creation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        Network newNetwork = this.ecosystemBusiness.createAndAddNetwork();
-        newNetwork.setNetworkName(newNetworkName);
-        
-        JOptionPane.showMessageDialog(this, "Network created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-        populateTable();
-    }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -228,26 +213,47 @@ public class MngNetworksJPanel extends javax.swing.JPanel {
         layout.previous(this.userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        Type newOrgType = (Type) cBoxOrgType.getSelectedItem();
+
+        if (newOrgType == null) {
+            JOptionPane.showMessageDialog(this, "Please select a valid Organization type from drop down.", "Organization Type Selection Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        this.enterprise.getOrgDir().createOrg(newOrgType);
+
+        JOptionPane.showMessageDialog(this, "Network created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        populateTable();
+    }//GEN-LAST:event_btnAddActionPerformed
+
     public void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) networkTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) orgTable.getModel();
         model.setRowCount(0);
         
-        for (Network network : this.ecosystemBusiness.getNetworkList()) {
-            Object[] row = new Object[1];
-            row[0] = network.getNetworkName();
+        for (Organization org : this.enterprise.getOrgDir().getOrgList()){
+            Object[] row = new Object[2];
+            row[0] = org.getOrgID();
+            row[1] = org.getOrgName();
             model.addRow(row);
         }
-    }
+    };
+    public void populateCombobox() {
+        cBoxOrgType.removeAllItems();
+        for (Type orgType : this.enterprise.getSupportedOrganization()){
+            cBoxOrgType.addItem(orgType);
+        }
+    };
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
+    private javax.swing.JComboBox cBoxOrgType;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblNetworkName;
-    private javax.swing.JTable networkTable;
+    private javax.swing.JLabel lblOrgType;
+    private javax.swing.JTable orgTable;
     private javax.swing.JLabel pageTitle;
-    private javax.swing.JTextField txtNetworkName;
     // End of variables declaration//GEN-END:variables
 }
