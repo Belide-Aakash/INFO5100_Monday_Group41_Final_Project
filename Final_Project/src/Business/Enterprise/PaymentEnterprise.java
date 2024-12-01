@@ -4,6 +4,7 @@
  */
 package Business.Enterprise;
 
+import Business.Organization.Organization;
 import Business.Role.PaymentAdminRole;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -23,5 +24,12 @@ public class PaymentEnterprise extends Enterprise {
         ArrayList<Role> allRoles = new ArrayList();
         allRoles.add(new PaymentAdminRole());
         return allRoles;
+    }
+    
+    @Override
+    public ArrayList<Organization.Type> getSupportedOrganization() {
+        ArrayList<Organization.Type> allOrgs = new ArrayList();
+        allOrgs.add(Organization.Type.Payment);
+        return allOrgs;
     }
 }

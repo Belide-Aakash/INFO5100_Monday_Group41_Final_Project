@@ -22,4 +22,9 @@ public class SuperMarketStockManagerRole extends Role {
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new SuperMarketStockManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
     }
+    
+    @Override
+    public String toString() {
+        return "Super Market Stock Manager Role";
+    }
 }

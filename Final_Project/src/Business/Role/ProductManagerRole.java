@@ -21,4 +21,9 @@ public class ProductManagerRole extends Role {
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new ProductManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
     }
+    
+    @Override
+    public String toString() {
+        return "Product Manager Role";
+    }
 }
