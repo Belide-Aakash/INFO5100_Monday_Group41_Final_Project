@@ -7,6 +7,7 @@ package Business.Role;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Person.Person;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -24,7 +25,12 @@ public abstract class Role {
         SuperMarketStockManager("Super Market Stock Manager"),
         AdvertisementManager("Advertisement Manager"),
         AdvertisementAnalyst("Advertisement Analyst"),
-        PaymentFraudManager("Payment Fraud Analyst");
+        PaymentFraudManager("Payment Fraud Analyst"),
+        Customer("Customer"),
+        SupplierAdmin("Supplier Admin"),
+        SuperMarketAdmin("Super Market Admin"),
+        AdvertisementAdmin("Advertisement Admin"),
+        PaymentAdmin("Payment Admin");
         
         private String roleVal;
         

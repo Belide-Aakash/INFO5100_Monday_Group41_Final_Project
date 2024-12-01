@@ -4,10 +4,24 @@
  */
 package Business.Enterprise;
 
+import Business.Role.PaymentAdminRole;
+import Business.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author aakashbelide
  */
 public class PaymentEnterprise extends Enterprise {
     // TO-DO
+    public PaymentEnterprise(String enterpriseName){
+        super(enterpriseName, EnterpriseType.Payment);
+    }
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> allRoles = new ArrayList();
+        allRoles.add(new PaymentAdminRole());
+        return allRoles;
+    }
 }

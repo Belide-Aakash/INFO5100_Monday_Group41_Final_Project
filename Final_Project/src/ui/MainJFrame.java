@@ -4,17 +4,28 @@
  */
 package ui;
 
+import Business.ConfigureABusiness;
+import Business.Ecosystem;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author aakashbelide
  */
 public class MainJFrame extends javax.swing.JFrame {
+    
+    private Ecosystem ecosystemBusiness;
 
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+        
+        this.ecosystemBusiness = ConfigureABusiness.configureBusiness();
+        this.setSize(1000, 700);
+        getLogin();
     }
 
     /**
@@ -26,17 +37,21 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        workAreaJPanel = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        workAreaJPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addComponent(workAreaJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addComponent(workAreaJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -76,7 +91,15 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void getLogin() {
+        JPanel loginPage = new LoginPageJPanel(this.workAreaJPanel, this.ecosystemBusiness);
+        this.workAreaJPanel.add("LoginPage", loginPage);
+        CardLayout layout = (CardLayout) this.workAreaJPanel.getLayout();
+        layout.next(this.workAreaJPanel);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel workAreaJPanel;
     // End of variables declaration//GEN-END:variables
 }
