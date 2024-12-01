@@ -4,6 +4,9 @@
  */
 package Business.Enterprise;
 
+import Business.Role.AdvertisementAdminRole;
+import Business.Role.AdvertisementAnalystRole;
+import Business.Role.AdvertisementManagerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -19,6 +22,8 @@ public class AdvertisementEnterprise extends Enterprise{
     
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> allRoles = new ArrayList();
+        allRoles.add(new AdvertisementAdminRole());
+        return allRoles;
     }
 }

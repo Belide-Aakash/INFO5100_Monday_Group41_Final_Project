@@ -21,4 +21,9 @@ public class PaymentAdminRole extends Role{
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new EnterpriseAdminWorkAreaJPanel(userProcessContainer, enterprise);
     }
+    
+    @Override
+    public String toString() {
+        return "Payment Admin Role";
+    }
 }
