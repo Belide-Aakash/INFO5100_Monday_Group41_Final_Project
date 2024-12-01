@@ -20,4 +20,9 @@ public class CustomerSupportManagerRole extends Role {
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new CustomerSupportWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
     }
+    
+    @Override
+    public String toString() {
+        return "Customer Support Manager Role";
+    }
 }

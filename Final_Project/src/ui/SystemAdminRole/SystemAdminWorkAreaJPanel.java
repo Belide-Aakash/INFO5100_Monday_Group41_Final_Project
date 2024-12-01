@@ -46,7 +46,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        companyMotto = new javax.swing.JLabel();
+        pageTitle = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnMngNetworks = new javax.swing.JButton();
         btnMngEnterprises = new javax.swing.JButton();
@@ -54,9 +54,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
-        companyMotto.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        companyMotto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        companyMotto.setText("System Admin Work Area");
+        pageTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        pageTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageTitle.setText("System Admin Work Area");
 
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +76,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(companyMotto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pageTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,7 +88,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(35, 35, 35)
-                    .addComponent(companyMotto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pageTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(35, 35, 35)))
         );
 
@@ -189,7 +189,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnMngEnterpriseAdmins;
     private javax.swing.JButton btnMngEnterprises;
     private javax.swing.JButton btnMngNetworks;
-    private javax.swing.JLabel companyMotto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel pageTitle;
     // End of variables declaration//GEN-END:variables
 }
