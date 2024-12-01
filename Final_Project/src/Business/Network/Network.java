@@ -24,9 +24,9 @@ public class Network {
         return this.networkName;
     }
     
-    // Setter to set the enterpriseDirectory
+    // Setter to set the networkName
     public void setNetworkName(String networkName) {
-        this.enterpriseDirectory = enterpriseDirectory;
+        this.networkName = networkName;
     }
     
     // Getter to get the enterpriseDirectory

@@ -9,18 +9,16 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.SystemAdminRole.SystemAdminWorkAreaJPanel;
-
+import ui.CustomerRole.CustomerWorkAreaJPanel;
 
 /**
  *
  * @author aakashbelide
  */
-public class SystemAdminRole extends Role {
+public class CustomerRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new SystemAdminWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
+        return new CustomerWorkAreaJPanel(userProcessContainer, enterprise, org, userAccount);
     }
-    
 }

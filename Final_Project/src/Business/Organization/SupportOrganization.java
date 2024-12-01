@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Organization;
+import Business.Role.CustomerRole;
 import Business.Role.CustomerSupportManagerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class SupportOrganization extends Organization {
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> allRoles = new ArrayList();
         allRoles.add(new CustomerSupportManagerRole());
+        allRoles.add(new CustomerRole());
         return allRoles;
     }
 }
