@@ -21,4 +21,9 @@ public class SupplierStockManagerRole extends Role {
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
         return new SupplierStockManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
     }
+    
+    @Override
+    public String toString() {
+        return "Supplier Stock Manager Role";
+    }
 }

@@ -22,4 +22,8 @@ public class AdvertisementManagerRole extends Role {
         return new AdvertisementManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
     }
     
+    @Override
+    public String toString() {
+        return "Advertisement Manager Role";
+    }
 }
