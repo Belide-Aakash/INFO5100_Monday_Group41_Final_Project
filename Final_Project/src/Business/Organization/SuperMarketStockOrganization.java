@@ -4,8 +4,8 @@
  */
 package Business.Organization;
 
-import Business.Role.ProductManagerRole;
 import Business.Role.Role;
+import Business.Role.SuperMarketStockManagerRole;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +22,7 @@ public class SuperMarketStockOrganization extends Organization {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> allRoles = new ArrayList();
-        allRoles.add(new ProductManagerRole());
+        allRoles.add(new SuperMarketStockManagerRole());
         return allRoles;
     }
 }

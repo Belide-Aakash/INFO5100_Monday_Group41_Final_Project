@@ -9,18 +9,21 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.SystemAdminRole.SystemAdminWorkAreaJPanel;
-
+import ui.EnterpriseAdminRole.EnterpriseAdminWorkAreaJPanel;
 
 /**
  *
  * @author aakashbelide
  */
-public class SystemAdminRole extends Role {
+public class AdvertisementAdminRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new SystemAdminWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
+        return new EnterpriseAdminWorkAreaJPanel(userProcessContainer, enterprise);
     }
     
+    @Override
+    public String toString() {
+        return "Advertisement Admin Role";
+    }
 }

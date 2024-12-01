@@ -4,6 +4,7 @@
  */
 package Business.Enterprise;
 import Business.Role.Role;
+import Business.Role.SupplierAdminRole;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,8 @@ public class SupplierEnterprise extends Enterprise {
     
     @Override
     public ArrayList<Role> getSupportedRole() {
-        return null;
+        ArrayList<Role> allRoles = new ArrayList();
+        allRoles.add(new SupplierAdminRole());
+        return allRoles;
     }
 }

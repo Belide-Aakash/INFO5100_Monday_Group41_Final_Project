@@ -78,10 +78,10 @@ public abstract class Organization {
         return this.userAccountDir;
     }
     
-//    // Getter to get the personDir
-//    public PersonDirectory getPersonDir() {
-//        return personDir;
-//    }
+    // Getter to get the personDir
+    public PersonDirectory getPersonDir() {
+        return personDir;
+    }
     
     // Getter to get the workQueue
     public WorkQueue getWorkQueue() {
