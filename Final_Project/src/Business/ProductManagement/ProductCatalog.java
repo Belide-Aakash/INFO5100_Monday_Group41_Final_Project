@@ -46,7 +46,7 @@ public class ProductCatalog {
     
     public Product checkProdInList(String name) {
         for (Product prod : this.products) {
-            if (prod.getProdName().equals(name)) {
+            if (prod.getProdName().equalsIgnoreCase(name)) {
                 return prod;
             }
         }

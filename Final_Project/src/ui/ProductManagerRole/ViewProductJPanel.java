@@ -163,8 +163,8 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
     private void btnUpdateProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProductActionPerformed
         // TODO add your handling code here:
-        txtProductName.setEditable(true);
-        txtProductPrice.setEditable(true);
+        txtProductName.setEnabled(true);
+        txtProductPrice.setEnabled(true);
         btnSave.setEnabled(true);
         btnUpdateProduct.setEnabled(false);
     }//GEN-LAST:event_btnUpdateProductActionPerformed
@@ -196,8 +196,8 @@ public class ViewProductJPanel extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(this, "Product updated successfully in stock catalog.", "Success", JOptionPane.INFORMATION_MESSAGE);
         
-        txtProductName.setEditable(false);
-        txtProductPrice.setEditable(false);
+        txtProductName.setEnabled(false);
+        txtProductPrice.setEnabled(false);
         btnSave.setEnabled(false);
         btnUpdateProduct.setEnabled(true);
     }//GEN-LAST:event_btnSaveActionPerformed

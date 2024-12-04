@@ -173,7 +173,7 @@ public class UpdateProductQuantityJPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        txtProductQuant.setEditable(true);
+        txtProductQuant.setEnabled(true);
         btnSave.setEnabled(true);
         btnUpdate.setEnabled(false);
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -203,7 +203,7 @@ public class UpdateProductQuantityJPanel extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(this, "Quantity updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
         
-        txtProductQuant.setEditable(false);
+        txtProductQuant.setEnabled(false);
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
     }//GEN-LAST:event_btnSaveActionPerformed

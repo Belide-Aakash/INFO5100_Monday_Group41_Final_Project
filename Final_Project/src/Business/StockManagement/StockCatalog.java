@@ -42,7 +42,7 @@ public class StockCatalog {
     
     public Stock checkStockInList(String name) {
         for (Stock stock : this.stocks) {
-            if (stock.getStockName().equals(name)) {
+            if (stock.getStockName().equalsIgnoreCase(name)) {
                 return stock;
             }
         }

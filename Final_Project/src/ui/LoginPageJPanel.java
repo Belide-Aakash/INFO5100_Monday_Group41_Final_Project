@@ -135,6 +135,7 @@ public class LoginPageJPanel extends javax.swing.JPanel {
         UserAccountDirectory userAccountDirectory = business.getUserAccountDir();
         UserAccount userAccount = userAccountDirectory.userAthentication(username, password);
         
+        Network userNetwork= null;
         Enterprise userEnterprise = null;
         Organization userOrg = null;
         
@@ -151,6 +152,7 @@ public class LoginPageJPanel extends javax.swing.JPanel {
                             userAccount = organization.getUserAccountDir().userAthentication(username, password);
                             if (userAccount != null) {
                                 // 4 - If the user is found, then we assign the respective values of enterprise and organization for the user
+                                userNetwork = network;
                                 userEnterprise = enterprise;
                                 userOrg = organization;
                                 
@@ -187,7 +189,7 @@ public class LoginPageJPanel extends javax.swing.JPanel {
             txtPassword.setText("");
             
             // Whenever the lopgin button is clicked and the user is authenticated, the user is redirected to the respective workArea
-            workAreaJPanel.add("WorkArea", userAccount.getUserRole().createWorkArea(workAreaJPanel, business, userEnterprise, userOrg, userAccount));
+            workAreaJPanel.add("WorkArea", userAccount.getUserRole().createWorkArea(workAreaJPanel, business, userNetwork, userEnterprise, userOrg, userAccount));
             CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
             layout.next(workAreaJPanel);
         }

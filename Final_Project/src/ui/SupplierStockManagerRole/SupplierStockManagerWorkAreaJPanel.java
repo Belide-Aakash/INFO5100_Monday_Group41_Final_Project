@@ -68,6 +68,11 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         lbltitle.setText("Manage Product Catalog Quantities");
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,6 +208,13 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         
         populateStockTable();
     }//GEN-LAST:event_btnAddQuantActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     public void populateStockTable() {
         DefaultTableModel model = (DefaultTableModel) tblStockDetails.getModel();

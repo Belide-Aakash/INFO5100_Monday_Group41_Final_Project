@@ -158,8 +158,8 @@ public class AddProductJPanel extends javax.swing.JPanel {
         
         try {
             stockFloatPrice = Float.parseFloat(stockPrice);
-            if (stockFloatPrice < 0) {
-                JOptionPane.showMessageDialog(this, "Price cannot be negative.", "Warning", JOptionPane.WARNING_MESSAGE);
+            if (!(stockFloatPrice > 0)) {
+                JOptionPane.showMessageDialog(this, "Price can only be positive.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
         } catch (Exception e) {

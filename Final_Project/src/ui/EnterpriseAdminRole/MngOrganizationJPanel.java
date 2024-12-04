@@ -223,7 +223,7 @@ public class MngOrganizationJPanel extends javax.swing.JPanel {
         }
         this.enterprise.getOrgDir().createOrg(newOrgType);
 
-        JOptionPane.showMessageDialog(this, "Network created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Organization added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
     }//GEN-LAST:event_btnAddActionPerformed
 

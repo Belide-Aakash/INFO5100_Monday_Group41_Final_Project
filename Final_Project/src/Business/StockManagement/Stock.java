@@ -4,6 +4,7 @@
  */
 package Business.StockManagement;
 
+import Business.ProductManagement.Product;
 import java.util.ArrayList;
 
 /**
@@ -15,6 +16,17 @@ public class Stock {
     private String stockName;
     private int stockQuant;
     private float stockPrice;
+    
+    private Stock stockProd;
+    private String stockSupplier;
+    
+    public Stock(Stock stockProd, String name, int quantity, float price, String supplierName) {
+        this.stockProd = stockProd;
+        this.stockName = name;
+        this.stockQuant = quantity;
+        this.stockPrice = price;
+        this.stockSupplier = supplierName;
+    }
     
     public Stock(int id, String name, float price) {
         this.stockID = id;
@@ -68,6 +80,22 @@ public class Stock {
 
     public void setStockPrice(float stockPrice) {
         this.stockPrice = stockPrice;
+    }
+    
+    public Stock getStockProd() {
+        return stockProd;
+    }
+
+    public void setStockProd(Stock stockProd) {
+        this.stockProd = stockProd;
+    }
+    
+    public String getStockSupplier() {
+        return stockSupplier;
+    }
+
+    public void setStockSupplier(String stockSupplier) {
+        this.stockSupplier = stockSupplier;
     }
     
     @Override
