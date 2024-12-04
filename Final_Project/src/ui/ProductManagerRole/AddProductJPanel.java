@@ -4,17 +4,28 @@
  */
 package ui.ProductManagerRole;
 
+import Business.StockManagement.StockCatalog;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author kotag
  */
 public class AddProductJPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    StockCatalog stockCatalog;
 
     /**
      * Creates new form AddProductJPanel
      */
-    public AddProductJPanel() {
+    public AddProductJPanel(JPanel userProcessContainer, StockCatalog stockCatalog) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.stockCatalog = stockCatalog;
     }
 
     /**
@@ -42,7 +53,12 @@ public class AddProductJPanel extends javax.swing.JPanel {
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title.setText("Add New Product");
 
-        btnBack.setText("<<Back");
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,6 +89,11 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
         btnAddProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAddProduct.setText("Add Product");
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,6 +133,52 @@ public class AddProductJPanel extends javax.swing.JPanel {
                 .addGap(0, 226, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        Component[] componentArray = this.userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ProductManagerWorkAreaJPanel productManagerWorkAreaJPanel = (ProductManagerWorkAreaJPanel) component;
+        productManagerWorkAreaJPanel.populateStockTable();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+        // TODO add your handling code here:
+        String stockName = txtProductName.getText();
+        String stockPrice = txtProductPrice.getText();
+        float stockFloatPrice = 0;
+        
+        if (stockName.isBlank() || stockPrice.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Name and Price cannot be blank.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            stockFloatPrice = Float.parseFloat(stockPrice);
+            if (stockFloatPrice < 0) {
+                JOptionPane.showMessageDialog(this, "Price cannot be negative.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Price can only be decimal or integer values.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (this.stockCatalog.checkStockInList(stockName)!=null) {
+            JOptionPane.showMessageDialog(this, "Product already present in stock catalog. Add a different product.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        this.stockCatalog.addStock(stockName, stockFloatPrice);
+        
+        JOptionPane.showMessageDialog(this, "Product added to stock catalog successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+        txtProductName.setText("");
+        txtProductPrice.setText("");
+    }//GEN-LAST:event_btnAddProductActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

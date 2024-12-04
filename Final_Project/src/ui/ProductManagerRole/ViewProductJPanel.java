@@ -4,17 +4,31 @@
  */
 package ui.ProductManagerRole;
 
+import Business.StockManagement.Stock;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author kotag
  */
 public class ViewProductJPanel extends javax.swing.JPanel {
-
+    JPanel userProcessContainer;
+    Stock stock;
+    
     /**
      * Creates new form ViewProductJPanel
      */
-    public ViewProductJPanel() {
+    public ViewProductJPanel(JPanel userProcessContainer, Stock stock) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.stock = stock;
+        
+        txtProductName.setText(this.stock.getStockName());
+        txtProductPrice.setText(String.valueOf(this.stock.getStockPrice()));
     }
 
     /**
@@ -42,6 +56,11 @@ public class ViewProductJPanel extends javax.swing.JPanel {
         Title.setText("View Product Details");
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,10 +95,20 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
         btnUpdateProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdateProduct.setText("Update Product");
+        btnUpdateProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateProductActionPerformed(evt);
+            }
+        });
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSave.setText("Save");
         btnSave.setEnabled(false);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -123,6 +152,58 @@ public class ViewProductJPanel extends javax.swing.JPanel {
                 .addGap(0, 181, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        Component[] componentArray = this.userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ProductManagerWorkAreaJPanel productManagerWorkAreaJPanel = (ProductManagerWorkAreaJPanel) component;
+        productManagerWorkAreaJPanel.populateStockTable();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnUpdateProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProductActionPerformed
+        // TODO add your handling code here:
+        txtProductName.setEditable(true);
+        txtProductPrice.setEditable(true);
+        btnSave.setEnabled(true);
+        btnUpdateProduct.setEnabled(false);
+    }//GEN-LAST:event_btnUpdateProductActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String stockName = txtProductName.getText();
+        String stockPrice = txtProductPrice.getText();
+        float stockFloatPrice = 0;
+        
+        if (stockName.isBlank() || stockPrice.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Name and Price cannot be blank.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            stockFloatPrice = Float.parseFloat(stockPrice);
+            if (stockFloatPrice < 0) {
+                JOptionPane.showMessageDialog(this, "Price cannot be negative.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Price can only be decimal or integer values.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        this.stock.setStockName(stockName);
+        this.stock.setStockPrice(stockFloatPrice);
+        
+        JOptionPane.showMessageDialog(this, "Product updated successfully in stock catalog.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+        txtProductName.setEditable(false);
+        txtProductPrice.setEditable(false);
+        btnSave.setEnabled(false);
+        btnUpdateProduct.setEnabled(true);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

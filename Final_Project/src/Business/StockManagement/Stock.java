@@ -30,6 +30,14 @@ public class Stock {
         this.stockPrice = price;
     }
     
+    public int getStockID() {
+        return stockID;
+    }
+
+    public void setStockID(int stockID) {
+        this.stockID = stockID;
+    }
+    
     public String getStockName() {
         return stockName;
     }

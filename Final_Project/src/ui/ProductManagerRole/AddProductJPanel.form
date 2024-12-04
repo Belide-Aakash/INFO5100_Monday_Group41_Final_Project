@@ -110,8 +110,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnBack">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;&lt;Back"/>
+            <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -142,6 +145,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Add Product"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddProductActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

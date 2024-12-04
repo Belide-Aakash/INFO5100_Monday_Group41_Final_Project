@@ -25,6 +25,10 @@ public class StockCatalog {
         this.stockCount = this.stockCount + 1;
     }
     
+    public void removeStock(Stock stock) {
+        this.stocks.remove(stock);
+    }
+    
     public void subStock(String name, int quantity) {
         Stock getStock = checkStockInList(name);
         if (getStock!=null) {
