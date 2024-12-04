@@ -50,8 +50,8 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
                 .addGap(42, 42, 42)
                 .addComponent(btnBack)
                 .addGap(185, 185, 185)
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addComponent(Title)
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

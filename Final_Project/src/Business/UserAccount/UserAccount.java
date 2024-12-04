@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.UserAccount;
+import Business.OrderManagement.MasterOrderCatalog;
 import Business.Person.Person;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
@@ -18,10 +19,12 @@ public class UserAccount {
     private Person person;
     private Role userRole;
     private WorkQueue workQueue;
+    private MasterOrderCatalog customerOrders;
     
     // This initiates the respective variables with empty queue
     public UserAccount() {
         this.workQueue = new WorkQueue();
+        this.customerOrders = new MasterOrderCatalog();
     }
     
     // Getter to get username
@@ -67,6 +70,10 @@ public class UserAccount {
     // Getter to get workQueue
     public WorkQueue getWorkQueue() {
         return this.workQueue;
+    }
+    
+    public MasterOrderCatalog custOrders() {
+        return this.customerOrders;
     }
     
     @Override
