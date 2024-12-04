@@ -23,4 +23,9 @@ public class WorkQueue {
     public ArrayList<WorkRequest> getWorkQueue() {
         return this.workQueue;
     }
+    
+    // This initiates anemptry directory
+    public void addToWorkQueue(WorkRequest workReq) {
+        this.workQueue.add(workReq);
+    }
 }

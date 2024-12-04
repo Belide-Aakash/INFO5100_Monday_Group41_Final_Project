@@ -8,6 +8,8 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Person.Person;
+import Business.Role.AdvertisementAdminRole;
+import Business.Role.AdvertisementManagerRole;
 import Business.Role.ProductManagerRole;
 import Business.Role.SuperMarketAdminRole;
 import Business.Role.SuperMarketStockManagerRole;
@@ -35,11 +37,16 @@ public class ConfigureABusiness {
         bostonNetwork.setNetworkName("Boston");
         
         // Create Enterprises
+        // Suppliers
         Enterprise ups1Supplier = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("UPS1", Enterprise.EnterpriseType.Supplier);
         Enterprise ups2Supplier = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("UPS2", Enterprise.EnterpriseType.Supplier);
         
+        // Super markets
         Enterprise targetSuperMarket = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("Target", Enterprise.EnterpriseType.SuperMarket);
         Enterprise starSuperMarket = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("Star Market", Enterprise.EnterpriseType.SuperMarket);
+        
+        // Advertisements
+        Enterprise adv1Advertisement = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("Advertisers 1", Enterprise.EnterpriseType.Advertisement);
         
         // Create Enterprise admins
         // UPS1 - Supplier
@@ -58,6 +65,10 @@ public class ConfigureABusiness {
         Person starPerson = starSuperMarket.getPersonDir().createPerson("star");
         UserAccount starUA = starSuperMarket.getUserAccountDir().createUserAccount("star", "star", starPerson, new SuperMarketAdminRole());
         
+        // Advertisers 1 - Advertisement
+        Person adv1Person = adv1Advertisement.getPersonDir().createPerson("adv1");
+        UserAccount adv1UA = adv1Advertisement.getUserAccountDir().createUserAccount("adv1", "adv1", adv1Person, new AdvertisementAdminRole());
+        
         // Create Organizations
         // UPS1 - Supplier | Product Org
         Organization ups1ProdOrg = ups1Supplier.getOrgDir().createOrg(Organization.Type.Product);
@@ -74,6 +85,9 @@ public class ConfigureABusiness {
         
         // Star - Super Market | Super Market Stock Org
         Organization starStockOrg = starSuperMarket.getOrgDir().createOrg(Organization.Type.SuperMarketStock);
+        
+        // Advertisers 1 - Advertisement | Advertisement Org
+        Organization adv1AdOrg = adv1Advertisement.getOrgDir().createOrg(Organization.Type.Advertisement);
         
         // Create Org users
         // UPS1 - Supplier | Product Org User
@@ -101,7 +115,10 @@ public class ConfigureABusiness {
         Person starStockPerson = starStockOrg.getPersonDir().createPerson("star1_stock");
         UserAccount starStockUA = starStockOrg.getUserAccountDir().createUserAccount("star1_stock", "star1_stock", starStockPerson, new SuperMarketStockManagerRole());
         
-
+        // Advertisers 1 - Advertisement | Advertisement Org User
+        Person adv1AdOrgPerson = adv1AdOrg.getPersonDir().createPerson("adv1_ad");
+        UserAccount adv1AdOrgUA = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_ad", "adv1_ad", adv1AdOrgPerson, new AdvertisementManagerRole());
+        
         return ecosystem;
     }
 }

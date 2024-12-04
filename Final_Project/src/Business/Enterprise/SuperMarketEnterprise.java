@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class SuperMarketEnterprise extends Enterprise{
     private String superMarketLocation;
-    private LatLong advLatLong;
+    private LatLong marketLatLong;
     private ProductCatalog prodList;
     
     public SuperMarketEnterprise(String enterpriseName){
@@ -41,12 +41,16 @@ public class SuperMarketEnterprise extends Enterprise{
     
     // Getter to get the advLatLong
     public LatLong getSuperMarketLatLong() {
-        return this.advLatLong;
+        return this.marketLatLong;
     }
     
     // Setter to set the advLatLong
     public void setSuperMarketLatLong(double superMarketLatitude, double superMarketLongitude) {
-        this.advLatLong = new LatLong(superMarketLatitude, superMarketLongitude);
+        this.marketLatLong = new LatLong(superMarketLatitude, superMarketLongitude);
+    }
+    
+    public double getDistance(LatLong other) {
+        return this.marketLatLong.measureDistance(other);
     }
     
     @Override
@@ -55,7 +59,6 @@ public class SuperMarketEnterprise extends Enterprise{
         allRoles.add(new SuperMarketAdminRole());
         return allRoles;
     }
-    
     
     @Override
     public ArrayList<Organization.Type> getSupportedOrganization() {

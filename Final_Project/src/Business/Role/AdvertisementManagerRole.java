@@ -5,6 +5,7 @@
 package Business.Role;
 
 import Business.Ecosystem;
+import Business.Enterprise.AdvertisementEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
@@ -20,7 +21,7 @@ public class AdvertisementManagerRole extends Role {
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Network network, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new AdvertisementManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
+        return new AdvertisementManagerWorkAreaJPanel(userProcessContainer, (AdvertisementEnterprise) enterprise, org, userAccount);
     }
     
     @Override

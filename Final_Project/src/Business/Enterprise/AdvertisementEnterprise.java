@@ -4,6 +4,7 @@
  */
 package Business.Enterprise;
 
+import Business.AdvManagement.AdvertisementCatalog;
 import Business.Organization.Organization;
 import Business.Role.AdvertisementAdminRole;
 import Business.Role.Role;
@@ -14,9 +15,15 @@ import java.util.ArrayList;
  * @author aakashbelide
  */
 public class AdvertisementEnterprise extends Enterprise{
-    //TO DO
+    private AdvertisementCatalog advList;
+    
     public AdvertisementEnterprise(String enterpriseName){
         super(enterpriseName, EnterpriseType.Advertisement);
+        this.advList = new AdvertisementCatalog();
+    }
+    
+    public AdvertisementCatalog getAdvertisementCatalog() {
+        return this.advList;
     }
     
     @Override

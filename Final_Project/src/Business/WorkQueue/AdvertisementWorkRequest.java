@@ -4,21 +4,23 @@
  */
 package Business.WorkQueue;
 
+import Business.AdvManagement.Advertisement;
+
 /**
  *
  * @author aakashbelide
  */
 public class AdvertisementWorkRequest extends WorkRequest {
     // Initializing the user advertisement work request variables
-    private String advertisementRequest;
+    private Advertisement reqAdv;
     
     // Getter to get advertisementRequest
-    public String getAdvertisementRequest() {
-        return this.advertisementRequest;
+    public Advertisement getRequestAdver() {
+        return this.reqAdv;
     }
     
     // Setter to set supplyRequest
-    public void setAdvertisementRequest(String advertisementRequest) {
-        this.advertisementRequest = advertisementRequest;
+    public void setRequestAdver(Advertisement advertisementRequest) {
+        this.reqAdv = advertisementRequest;
     }
 }

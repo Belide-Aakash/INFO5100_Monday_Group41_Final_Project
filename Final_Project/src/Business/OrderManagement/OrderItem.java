@@ -4,6 +4,7 @@
  */
 package Business.OrderManagement;
 
+import Business.Enterprise.SuperMarketEnterprise;
 import Business.ProductManagement.Product;
 
 /**
@@ -15,10 +16,17 @@ public class OrderItem {
     private int itemQuant;
     private String itemFeedback;
     private int itemRating;
+    private SuperMarketEnterprise market;
     
     public OrderItem(Product iProd, int iQuant) {
         this.itemProduct = iProd;
         this.itemQuant = iQuant;
+    }
+    
+    public OrderItem(Product iProd, int iQuant, SuperMarketEnterprise iMarket) {
+        this.itemProduct = iProd;
+        this.itemQuant = iQuant;
+        this.market = iMarket;
     }
     
     public float getOrderItemTotal() {
@@ -47,5 +55,21 @@ public class OrderItem {
     
     public int getItemRating() {
         return this.itemRating;
+    }
+    
+    public int getItemQuant() {
+        return itemQuant;
+    }
+
+    public void setItemQuant(int itemQuant) {
+        this.itemQuant = itemQuant;
+    }
+    
+    public SuperMarketEnterprise getMarket() {
+        return market;
+    }
+
+    public void setMarket(SuperMarketEnterprise market) {
+        this.market = market;
     }
 }

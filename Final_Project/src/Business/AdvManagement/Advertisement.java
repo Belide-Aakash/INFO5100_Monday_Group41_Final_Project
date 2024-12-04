@@ -35,6 +35,13 @@ public class Advertisement {
         advLatLong = new LatLong(lat, longi);
     }
     
+    public void updateAdvertisement(String name, LocalDateTime expDatetime, ImageIcon advImg, double lat, double longi) {
+        this.advName = name;
+        this.advExpiryDateTime = expDatetime;
+        this.advImage = advImg;
+        advLatLong = new LatLong(lat, longi);
+    }
+    
     public int getAdvID() {
         return advID;
     }
@@ -97,5 +104,10 @@ public class Advertisement {
     
     public double getDistance(LatLong other) {
         return this.advLatLong.measureDistance(other);
+    }
+    
+    @Override
+    public String toString() {
+        return this.advName;
     }
 }
