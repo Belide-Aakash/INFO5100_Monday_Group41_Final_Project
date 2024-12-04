@@ -9,6 +9,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Person.Person;
 import Business.Role.AdvertisementAdminRole;
+import Business.Role.AdvertisementAnalystRole;
 import Business.Role.AdvertisementManagerRole;
 import Business.Role.ProductManagerRole;
 import Business.Role.SuperMarketAdminRole;
@@ -115,9 +116,16 @@ public class ConfigureABusiness {
         Person starStockPerson = starStockOrg.getPersonDir().createPerson("star1_stock");
         UserAccount starStockUA = starStockOrg.getUserAccountDir().createUserAccount("star1_stock", "star1_stock", starStockPerson, new SuperMarketStockManagerRole());
         
-        // Advertisers 1 - Advertisement | Advertisement Org User
-        Person adv1AdOrgPerson = adv1AdOrg.getPersonDir().createPerson("adv1_ad");
-        UserAccount adv1AdOrgUA = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_ad", "adv1_ad", adv1AdOrgPerson, new AdvertisementManagerRole());
+        // Advertisers 1 - Advertisement | Advertisement Manager User
+        Person adv1ManagerPerson = adv1AdOrg.getPersonDir().createPerson("adv1_man");
+        UserAccount adv1ManagerUA = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_man", "adv1_man", adv1ManagerPerson, new AdvertisementManagerRole());
+        
+        // Advertisers 1 - Advertisement | Advertisement Analyst User
+        Person adv1AnalystPerson1 = adv1AdOrg.getPersonDir().createPerson("adv1_anl1");
+        UserAccount adv1AnalystUA1 = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_anl1", "adv1_anl1", adv1AnalystPerson1, new AdvertisementAnalystRole());
+        
+        Person adv1AnalystPerson2 = adv1AdOrg.getPersonDir().createPerson("adv1_anl2");
+        UserAccount adv1AnalystUA2 = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_anl2", "adv1_anl2", adv1AnalystPerson2, new AdvertisementAnalystRole());
         
         return ecosystem;
     }

@@ -4,17 +4,30 @@
  */
 package ui.AdvertisementAnalystRole;
 
+import Business.WorkQueue.AdvertisementWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author kotag
  */
 public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    AdvertisementWorkRequest selectedAdvReq;
 
     /**
      * Creates new form AdvertisementAnalystProcessRequestJPanel
      */
-    public AdvertisementAnalystProcessRequestJPanel() {
+    public AdvertisementAnalystProcessRequestJPanel(JPanel userProcessContainer, AdvertisementWorkRequest selectedAdvReq) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.selectedAdvReq = selectedAdvReq;
+        
+        txtResult.setText("Advertisement Click Count: " + String.valueOf(this.selectedAdvReq.getRequestAdver().getAdvClickCount()));
     }
 
     /**
@@ -40,7 +53,12 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title.setText("Process Advertisement Request");
 
-        btnBack.setText("<<Back");
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -51,7 +69,7 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
                 .addComponent(btnBack)
                 .addGap(185, 185, 185)
                 .addComponent(Title)
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,11 +81,18 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        lblResult.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblResult.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblResult.setText("Result:");
 
-        btnSubmitResult.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSubmitResult.setBackground(new java.awt.Color(0, 153, 255));
+        btnSubmitResult.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnSubmitResult.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitResult.setText("Submit Result");
+        btnSubmitResult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitResultActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,31 +100,55 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(344, 344, 344)
+                .addComponent(lblResult, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(353, 353, 353)
-                        .addComponent(lblResult, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(392, 392, 392)
-                        .addComponent(btnSubmitResult)))
+                    .addComponent(btnSubmitResult)
+                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblResult)
-                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addGap(189, 189, 189)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblResult))
+                .addGap(32, 32, 32)
                 .addComponent(btnSubmitResult)
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        Component[] componentArray = this.userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AdvertisementAnalystWorkAreaJPanel advertisementAnalystWorkAreaJPanel = (AdvertisementAnalystWorkAreaJPanel) component;
+        advertisementAnalystWorkAreaJPanel.populateAdvReqs();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSubmitResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitResultActionPerformed
+        // TODO add your handling code here:
+        String resultText = txtResult.getText();
+        
+        if (resultText.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Result cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        this.selectedAdvReq.setResult(resultText);
+        this.selectedAdvReq.setWorkStatus("Completed");
+        
+        txtResult.setEnabled(false);
+        
+        JOptionPane.showMessageDialog(this, "Result submitted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnSubmitResultActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

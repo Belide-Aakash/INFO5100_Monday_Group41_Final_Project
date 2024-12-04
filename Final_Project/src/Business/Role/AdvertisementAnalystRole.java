@@ -20,7 +20,7 @@ public class AdvertisementAnalystRole extends Role {
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Network network, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new AdvertisementAnalystWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
+        return new AdvertisementAnalystWorkAreaJPanel(userProcessContainer, enterprise, userAccount);
     }
     
     @Override

@@ -160,7 +160,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        // This is an advertisement from advertisement catalog
+        // This is an advertisement request from advertisement workqueue catalog
         AdvertisementWorkRequest selectedAdvReq = (AdvertisementWorkRequest) tblViewAdvAR.getValueAt(selectedRowIndex, 4);
         
         ViewAdvRequestAnalysisJPanel viewAdvRequestAnalysisJPanel = new ViewAdvRequestAnalysisJPanel(this.userProcessContainer, selectedAdvReq);
