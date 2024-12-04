@@ -4,6 +4,7 @@
  */
 package Business.Enterprise;
 
+import Business.Geolocation.LatLong;
 import Business.Organization.Organization;
 import Business.ProductManagement.ProductCatalog;
 import Business.Role.SuperMarketAdminRole;
@@ -16,8 +17,7 @@ import java.util.ArrayList;
  */
 public class SuperMarketEnterprise extends Enterprise{
     private String superMarketLocation;
-    private float superMarketLatitude;
-    private float superMarketLongitude;
+    private LatLong advLatLong;
     private ProductCatalog prodList;
     
     public SuperMarketEnterprise(String enterpriseName){
@@ -39,24 +39,14 @@ public class SuperMarketEnterprise extends Enterprise{
         this.superMarketLocation = superMarketLocation;
     }
     
-    // Getter to get the superMarketLatitude
-    public float getSuperMarketLatitude() {
-        return this.superMarketLatitude;
+    // Getter to get the advLatLong
+    public LatLong getSuperMarketLatLong() {
+        return this.advLatLong;
     }
     
-    // Setter to set the superMarketLatitude
-    public void setSuperMarketLatitude(float superMarketLatitude) {
-        this.superMarketLatitude = superMarketLatitude;
-    }
-    
-    // Getter to get the superMarketLongitude
-    public float getSuperMarketLongitude() {
-        return this.superMarketLongitude;
-    }
-    
-    // Setter to set the superMarketLongitude
-    public void setSuperMarketLongitude(float superMarketLongitude) {
-        this.superMarketLongitude = superMarketLongitude;
+    // Setter to set the advLatLong
+    public void setSuperMarketLatLong(double superMarketLatitude, double superMarketLongitude) {
+        this.advLatLong = new LatLong(superMarketLatitude, superMarketLongitude);
     }
     
     @Override
