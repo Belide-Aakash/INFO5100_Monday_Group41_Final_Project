@@ -4,17 +4,31 @@
  */
 package ui.SuperMarketStockManagerRole;
 
+import Business.ProductManagement.Product;
+import Business.ProductManagement.ProductCatalog;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Aishwarya
  */
 public class ViewProductCatalogJPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    ProductCatalog productCatalog;
 
     /**
      * Creates new form ViewProductCatalogJPanel
      */
-    public ViewProductCatalogJPanel() {
+    public ViewProductCatalogJPanel(JPanel userProcessContainer, ProductCatalog productCatalog) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.productCatalog = productCatalog;
+        
+        populateSuperMarketProductTable();
     }
 
     /**
@@ -28,9 +42,9 @@ public class ViewProductCatalogJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         lbltitle = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblViewProdCatalog = new javax.swing.JTable();
+        tblSuperMarkProdCatalog = new javax.swing.JTable();
         btnUpdateSalesPrice = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
@@ -40,30 +54,35 @@ public class ViewProductCatalogJPanel extends javax.swing.JPanel {
         lbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltitle.setText("View Product Catalog");
 
-        btnLogout.setText("Logout");
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLogout)
-                .addContainerGap())
+                .addGap(59, 59, 59)
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(303, 303, 303))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogout)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        tblViewProdCatalog.setModel(new javax.swing.table.DefaultTableModel(
+        tblSuperMarkProdCatalog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,44 +93,83 @@ public class ViewProductCatalogJPanel extends javax.swing.JPanel {
                 "Product ID", "Product Name", "Sales Price ", "Quantity"
             }
         ));
-        jScrollPane1.setViewportView(tblViewProdCatalog);
+        jScrollPane1.setViewportView(tblSuperMarkProdCatalog);
 
         btnUpdateSalesPrice.setText("Update Sales Price");
+        btnUpdateSalesPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateSalesPriceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnUpdateSalesPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnUpdateSalesPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(100, 100, 100)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnUpdateSalesPrice)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnUpdateSalesPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSalesPriceActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblSuperMarkProdCatalog.getSelectedRow();
+        
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Product selectedProd = (Product) tblSuperMarkProdCatalog.getValueAt(selectedRowIndex, 1);
+        
+        UpdateProductPriceJPanel updateProductPriceJPanel = new UpdateProductPriceJPanel(this.userProcessContainer, selectedProd);
+        this.userProcessContainer.add("UpdateProductPriceJPanel",updateProductPriceJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnUpdateSalesPriceActionPerformed
+
+    public void populateSuperMarketProductTable() {
+        DefaultTableModel model = (DefaultTableModel) tblSuperMarkProdCatalog.getModel();
+        model.setRowCount(0);
+
+        for (Product product : this.productCatalog.getProductList()) {
+            Object row[] = new Object[4];
+            row[0] = product.getProdID();
+            row[1] = product;
+            row[2] = product.getProdPrice();
+            row[3] = product.getProdQuant();
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnUpdateSalesPrice;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbltitle;
-    private javax.swing.JTable tblViewProdCatalog;
+    private javax.swing.JTable tblSuperMarkProdCatalog;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -18,8 +19,8 @@ import ui.AdvertisementAnalystRole.AdvertisementAnalystWorkAreaJPanel;
 public class AdvertisementAnalystRole extends Role {
     
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new AdvertisementAnalystWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
+    public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Network network, Enterprise enterprise, Organization org, UserAccount userAccount) {
+        return new AdvertisementAnalystWorkAreaJPanel(userProcessContainer, enterprise, userAccount);
     }
     
     @Override

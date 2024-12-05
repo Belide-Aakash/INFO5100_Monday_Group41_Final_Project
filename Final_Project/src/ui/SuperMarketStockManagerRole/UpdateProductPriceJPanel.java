@@ -4,17 +4,32 @@
  */
 package ui.SuperMarketStockManagerRole;
 
+import Business.ProductManagement.Product;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Aishwarya
  */
 public class UpdateProductPriceJPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    Product prod;
 
     /**
      * Creates new form UpdateProductPriceJPanel
      */
-    public UpdateProductPriceJPanel() {
+    public UpdateProductPriceJPanel(JPanel userProcessContainer, Product prod) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.prod = prod;
+        
+        txtProductName.setText(this.prod.getProdName());
+        txtQuantity.setText(Integer.toString(this.prod.getProdQuant()));
+        txtSalesPrice.setText(Float.toString(this.prod.getProdPrice()));
     }
 
     /**
@@ -32,7 +47,7 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
         lblProductName = new javax.swing.JLabel();
         lblSalesPrice = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
-        tcxtProductName = new javax.swing.JTextField();
+        txtProductName = new javax.swing.JTextField();
         txtSalesPrice = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
@@ -45,18 +60,23 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
         lbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltitle.setText("Update Product Price");
 
-        btnBack.setText("<<< Back");
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(52, 52, 52)
                 .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(237, 237, 237)
+                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,46 +88,57 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        lblProductName.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblProductName.setText("Product Name:");
-        lblProductName.setEnabled(false);
 
+        lblSalesPrice.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblSalesPrice.setText("Sales Price:");
-        lblSalesPrice.setEnabled(false);
 
+        lblQuantity.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblQuantity.setText("Quantity:");
-        lblQuantity.setEnabled(false);
+
+        txtProductName.setEnabled(false);
+
+        txtSalesPrice.setEnabled(false);
+
+        txtQuantity.setEnabled(false);
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
         btnSave.setEnabled(false);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(319, 319, 319)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblProductName, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(lblSalesPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(395, 395, 395)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblProductName, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(lblSalesPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tcxtProductName)
-                                .addComponent(txtSalesPrice)
-                                .addComponent(txtQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
-                        .addGap(0, 280, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtProductName)
+                        .addComponent(txtSalesPrice)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblProductName, lblQuantity, lblSalesPrice});
@@ -115,11 +146,10 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(140, 140, 140)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tcxtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblProductName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -133,12 +163,56 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdate)
                 .addGap(18, 18, 18)
                 .addComponent(btnSave)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblProductName, lblQuantity, lblSalesPrice});
 
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        Component[] componentArray = this.userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ViewProductCatalogJPanel viewProductCatalogJPanel = (ViewProductCatalogJPanel) component;
+        viewProductCatalogJPanel.populateSuperMarketProductTable();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        txtSalesPrice.setEnabled(true);
+        btnUpdate.setEnabled(false);
+        btnSave.setEnabled(true);
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String newSalesPrice = txtSalesPrice.getText();
+        float newFloatSalesPrice = 0;
+        
+        if (newSalesPrice.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Sales Price cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            newFloatSalesPrice = Float.parseFloat(newSalesPrice);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sales Price can only be decimal or integer values.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        this.prod.setProdPrice(newFloatSalesPrice);
+        
+        JOptionPane.showMessageDialog(this, "Product price updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+        txtSalesPrice.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        btnSave.setEnabled(false);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -150,7 +224,7 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblSalesPrice;
     private javax.swing.JLabel lbltitle;
-    private javax.swing.JTextField tcxtProductName;
+    private javax.swing.JTextField txtProductName;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtSalesPrice;
     // End of variables declaration//GEN-END:variables

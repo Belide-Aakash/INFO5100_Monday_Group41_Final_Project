@@ -4,7 +4,9 @@
  */
 package Business.Enterprise;
 
+import Business.Geolocation.LatLong;
 import Business.Organization.Organization;
+import Business.ProductManagement.ProductCatalog;
 import Business.Role.SuperMarketAdminRole;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -14,9 +16,41 @@ import java.util.ArrayList;
  * @author aakashbelide
  */
 public class SuperMarketEnterprise extends Enterprise{
-    // TO-DO
+    private String superMarketLocation;
+    private LatLong marketLatLong;
+    private ProductCatalog prodList;
+    
     public SuperMarketEnterprise(String enterpriseName){
         super(enterpriseName, EnterpriseType.SuperMarket);
+        this.prodList = new ProductCatalog();
+    }
+    
+    public ProductCatalog getProductCatalog() {
+        return this.prodList;
+    }
+    
+    // Getter to get the superMarketLocation
+    public String getSuperMarketLocation() {
+        return this.superMarketLocation;
+    }
+    
+    // Setter to set the superMarketLocation
+    public void setSuperMarketLocation(String superMarketLocation) {
+        this.superMarketLocation = superMarketLocation;
+    }
+    
+    // Getter to get the advLatLong
+    public LatLong getSuperMarketLatLong() {
+        return this.marketLatLong;
+    }
+    
+    // Setter to set the advLatLong
+    public void setSuperMarketLatLong(double superMarketLatitude, double superMarketLongitude) {
+        this.marketLatLong = new LatLong(superMarketLatitude, superMarketLongitude);
+    }
+    
+    public double getDistance(LatLong other) {
+        return this.marketLatLong.measureDistance(other);
     }
     
     @Override
@@ -25,7 +59,6 @@ public class SuperMarketEnterprise extends Enterprise{
         allRoles.add(new SuperMarketAdminRole());
         return allRoles;
     }
-    
     
     @Override
     public ArrayList<Organization.Type> getSupportedOrganization() {

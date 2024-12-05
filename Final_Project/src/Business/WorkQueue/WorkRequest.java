@@ -17,6 +17,7 @@ public abstract class WorkRequest {
     private UserAccount sender;
     private UserAccount receiver;
     private String workStatus;
+    private String result;
     private Date requestedDate;
     private Date resolutionDate;
     
@@ -83,5 +84,18 @@ public abstract class WorkRequest {
     // Setter to set the resolutionDate
     public void setResolutionDate(Date resolutionDate) {
         this.resolutionDate = resolutionDate;
+    }
+    
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+    
+    @Override
+    public String toString() {
+        return this.message;
     }
 }

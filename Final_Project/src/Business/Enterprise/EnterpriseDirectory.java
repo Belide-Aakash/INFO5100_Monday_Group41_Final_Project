@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Enterprise;
+import Business.Geolocation.LatLong;
 import java.util.ArrayList;
 
 /**
@@ -56,5 +57,17 @@ public class EnterpriseDirectory {
                 break;
         }
         return enterprise;
+    }
+    
+    // Java method to get the nearest Super Market within the radius from customer location
+    public ArrayList<SuperMarketEnterprise> getNearestMarkets(LatLong custLatLong, double radius) {
+        ArrayList<SuperMarketEnterprise> marketsNearCust = new ArrayList<SuperMarketEnterprise>();
+        for (Enterprise enterprise : this.enterpriseList) {
+            SuperMarketEnterprise superMarketEnt = (SuperMarketEnterprise) enterprise;
+            if (superMarketEnt.getDistance(custLatLong) < radius) {
+                marketsNearCust.add(superMarketEnt);
+            }
+        }
+        return marketsNearCust;
     }
 }

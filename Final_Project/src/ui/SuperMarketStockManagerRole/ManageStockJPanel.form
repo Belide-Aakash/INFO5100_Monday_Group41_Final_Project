@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -24,18 +24,18 @@
                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblSupplier" min="-2" pref="76" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="lblSupplier" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="cmbSupplier" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="btnModifyQuantity" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="txtNewQuantity" min="-2" pref="103" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="365" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="txtSearch" min="-2" pref="132" max="-2" attributes="0"/>
@@ -61,14 +61,12 @@
                                   <Component id="spnQuantity" min="-2" pref="55" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="74" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnAddToCart" min="-2" pref="237" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                          <Component id="btnProductDetails" min="-2" pref="217" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,25 +74,24 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSupplier" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="cmbSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSearchProduct" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnProductDetails" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblSalesPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSalesPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="spnQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAddToCart" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="110" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -132,7 +129,7 @@
                 <Column editable="false" title="Product Name" type="java.lang.Object"/>
                 <Column editable="false" title="Quantity" type="java.lang.Object"/>
                 <Column editable="false" title="Price" type="java.lang.Object"/>
-                <Column editable="false" title="Total Amount" type="java.lang.Object"/>
+                <Column editable="false" title="Supplier" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -223,6 +220,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblSalesPrice">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sales Price:"/>
       </Properties>
     </Component>
@@ -238,6 +238,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblQuantity">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Quantity:"/>
       </Properties>
     </Component>
@@ -261,6 +264,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblSupplier">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Supplier:"/>
       </Properties>
     </Component>
@@ -280,14 +286,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbSupplierActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnProductDetails">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Product Details"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProductDetailsActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSearch">
@@ -320,29 +318,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="301" max="-2" attributes="0"/>
-                      <Component id="Title" min="-2" pref="130" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="427" max="-2" attributes="0"/>
-                      <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+                      <Component id="Title" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="412" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="Title" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Title" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="35" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -353,13 +346,16 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Welcome!!"/>
+                <Property name="text" type="java.lang.String" value="Manage Stock"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnLogout">
+            <Component class="javax.swing.JButton" name="btnBack">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Logout"/>
+                <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

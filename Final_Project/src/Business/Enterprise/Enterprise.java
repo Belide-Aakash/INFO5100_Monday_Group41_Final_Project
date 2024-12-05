@@ -67,4 +67,9 @@ public abstract class Enterprise extends Organization{
     public OrganizationDirectory getOrgDir() {
         return this.orgDir;
     }
+    
+    @Override
+    public String toString() {
+        return this.getOrgName();
+    }
 }

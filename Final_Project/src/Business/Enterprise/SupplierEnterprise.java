@@ -6,6 +6,7 @@ package Business.Enterprise;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Role.SupplierAdminRole;
+import Business.StockManagement.StockCatalog;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +14,15 @@ import java.util.ArrayList;
  * @author aakashbelide
  */
 public class SupplierEnterprise extends Enterprise {
+    private StockCatalog stockList;
+    
     public SupplierEnterprise(String enterpriseName){
         super(enterpriseName, EnterpriseType.Supplier);
+        this.stockList = new StockCatalog();
+    }
+    
+    public StockCatalog getStockCatalog() {
+        return this.stockList;
     }
     
     @Override

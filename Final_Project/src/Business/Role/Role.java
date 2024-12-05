@@ -6,6 +6,7 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Person.Person;
 import Business.UserAccount.UserAccount;
@@ -52,7 +53,7 @@ public abstract class Role {
     }
     
     // Abstract method which creates the work area JPanel which has to be implemented the child classes
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount);
+    public abstract JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Network network, Enterprise enterprise, Organization org, UserAccount userAccount);
     
     @Override
     public String toString() {

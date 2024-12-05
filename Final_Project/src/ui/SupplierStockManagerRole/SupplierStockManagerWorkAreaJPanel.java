@@ -6,9 +6,14 @@ package ui.SupplierStockManagerRole;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.SupplierEnterprise;
 import Business.Organization.Organization;
+import Business.StockManagement.Stock;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,14 +23,14 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     Ecosystem ecosystemBusiness;
-    Enterprise enterprise;
+    SupplierEnterprise enterprise;
     Organization org;
     UserAccount userAccount;
 
     /**
      * Creates new form SupplierStockManagerWorkAreaJPanel
      */
-    public SupplierStockManagerWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
+    public SupplierStockManagerWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, SupplierEnterprise enterprise, Organization org, UserAccount userAccount) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -33,6 +38,8 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.org = org;
         this.userAccount = userAccount;
+        
+        populateStockTable();
     }
 
     /**
@@ -48,7 +55,9 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         lbltitle = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSupStkMR = new javax.swing.JTable();
+        tblStockDetails = new javax.swing.JTable();
+        txtAddQuant = new javax.swing.JTextField();
+        btnAddQuant = new javax.swing.JButton();
         btnUpdateQuant = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
@@ -59,29 +68,34 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         lbltitle.setText("Manage Product Catalog Quantities");
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156)
                 .addComponent(btnLogout)
-                .addContainerGap())
+                .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        tblSupStkMR.setModel(new javax.swing.table.DefaultTableModel(
+        tblStockDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -92,44 +106,138 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
                 "Product ID", "Product Name", "Price", "Quantity"
             }
         ));
-        jScrollPane1.setViewportView(tblSupStkMR);
+        jScrollPane1.setViewportView(tblStockDetails);
+
+        btnAddQuant.setText("Add Quantity");
+        btnAddQuant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddQuantActionPerformed(evt);
+            }
+        });
 
         btnUpdateQuant.setText("Update Quantity");
+        btnUpdateQuant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateQuantActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnUpdateQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtAddQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdateQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(67, 67, 67)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnUpdateQuant)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdateQuant)
+                    .addComponent(btnAddQuant)
+                    .addComponent(txtAddQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnUpdateQuantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateQuantActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblStockDetails.getSelectedRow();
+        
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Stock stock = (Stock) tblStockDetails.getValueAt(selectedRowIndex, 1);
+        
+        UpdateProductQuantityJPanel updateProductQuantityJPanel = new UpdateProductQuantityJPanel(this.userProcessContainer, stock);
+        this.userProcessContainer.add("UpdateProductQuantityJPanel",updateProductQuantityJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnUpdateQuantActionPerformed
+
+    private void btnAddQuantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddQuantActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblStockDetails.getSelectedRow();
+        
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String addQuant = txtAddQuant.getText();
+        int intAddQuant = 0;
+        
+        if (addQuant.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Quantity cannot be blank.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            intAddQuant = Integer.parseInt(addQuant);
+            if (intAddQuant < 0) {
+                JOptionPane.showMessageDialog(this, "Quantity cannot be negative.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Quantity can only be of integer values.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Stock stock = (Stock) tblStockDetails.getValueAt(selectedRowIndex, 1);
+        
+        stock.incStockQuant(intAddQuant);
+        
+        JOptionPane.showMessageDialog(this, "Stock quantity updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        txtAddQuant.setText("");
+        
+        populateStockTable();
+    }//GEN-LAST:event_btnAddQuantActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    public void populateStockTable() {
+        DefaultTableModel model = (DefaultTableModel) tblStockDetails.getModel();
+        model.setRowCount(0);
+        
+        for (Stock stock : this.enterprise.getStockCatalog().getStockList()){
+            Object[] row = new Object[4];
+            row[0] = stock.getStockID();
+            row[1] = stock;
+            row[2] = stock.getStockPrice();
+            row[3] = stock.getStockQuant();
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddQuant;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnUpdateQuant;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbltitle;
-    private javax.swing.JTable tblSupStkMR;
+    private javax.swing.JTable tblStockDetails;
+    private javax.swing.JTextField txtAddQuant;
     // End of variables declaration//GEN-END:variables
 }

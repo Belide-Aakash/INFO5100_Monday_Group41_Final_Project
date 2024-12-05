@@ -4,10 +4,11 @@
  */
 package ui.SuperMarketStockManagerRole;
 
-import Business.Ecosystem;
-import Business.Enterprise.Enterprise;
+import Business.Enterprise.SuperMarketEnterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -17,19 +18,19 @@ import javax.swing.JPanel;
 public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
-    Ecosystem ecosystemBusiness;
-    Enterprise enterprise;
+    Network network;
+    SuperMarketEnterprise enterprise;
     Organization org;
     UserAccount userAccount;
 
     /**
      * Creates new form SuperMarketStockManagerWorkAreaJPanel
      */
-    public SuperMarketStockManagerWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
+    public SuperMarketStockManagerWorkAreaJPanel(JPanel userProcessContainer, Network network, SuperMarketEnterprise enterprise, Organization org, UserAccount userAccount) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.ecosystemBusiness = ecosystemBusiness;
+        this.network = network;
         this.enterprise = enterprise;
         this.org = org;
         this.userAccount = userAccount;
@@ -58,48 +59,64 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         lbltitle.setText("WELCOME");
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(211, Short.MAX_VALUE)
+                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
                 .addComponent(btnLogout)
-                .addContainerGap())
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        btnMngStock.setBackground(new java.awt.Color(0, 153, 255));
+        btnMngStock.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnMngStock.setForeground(new java.awt.Color(255, 255, 255));
         btnMngStock.setText("Manage Stock");
+        btnMngStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMngStockActionPerformed(evt);
+            }
+        });
 
+        btnViewStkCatalog.setBackground(new java.awt.Color(0, 153, 255));
+        btnViewStkCatalog.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnViewStkCatalog.setForeground(new java.awt.Color(255, 255, 255));
         btnViewStkCatalog.setText("View Stock Catalog");
+        btnViewStkCatalog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewStkCatalogActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(420, 420, 420)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(393, 393, 393)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnViewStkCatalog)
-                            .addComponent(btnMngStock, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 441, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(btnViewStkCatalog)
+                    .addComponent(btnMngStock, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMngStock, btnViewStkCatalog});
@@ -107,18 +124,40 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(201, 201, 201)
                 .addComponent(btnMngStock)
                 .addGap(18, 18, 18)
                 .addComponent(btnViewStkCatalog)
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMngStock, btnViewStkCatalog});
 
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMngStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMngStockActionPerformed
+        // TODO add your handling code here:
+        ManageStockJPanel manageStockJPanel = new ManageStockJPanel(this.userProcessContainer, this.network, this.enterprise.getProductCatalog());
+        this.userProcessContainer.add("ManageStockJPanel",manageStockJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnMngStockActionPerformed
+
+    private void btnViewStkCatalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStkCatalogActionPerformed
+        // TODO add your handling code here:
+        ViewProductCatalogJPanel viewProductCatalogJPanel = new ViewProductCatalogJPanel(this.userProcessContainer, this.enterprise.getProductCatalog());
+        this.userProcessContainer.add("ViewProductCatalogJPanel",viewProductCatalogJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnViewStkCatalogActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

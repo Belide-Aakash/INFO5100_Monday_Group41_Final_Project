@@ -5,10 +5,21 @@
 package ui.ProductManagerRole;
 
 import Business.Ecosystem;
-import Business.Enterprise.Enterprise;
+import Business.Enterprise.SupplierEnterprise;
 import Business.Organization.Organization;
+import Business.StockManagement.Stock;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -22,11 +33,11 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Ecosystem ecosystemBusiness;
-    Enterprise enterprise;
+    SupplierEnterprise enterprise;
     Organization org;
     UserAccount userAccount;
     
-    public ProductManagerWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
+    public ProductManagerWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, SupplierEnterprise enterprise, Organization org, UserAccount userAccount) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -34,6 +45,31 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.org = org;
         this.userAccount = userAccount;
+        
+        // Get the table header
+        JTableHeader header = tblStockDetails.getTableHeader();
+        
+        // Customize the header background and text color
+        header.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
+        
+        populateStockTable();
     }
 
     /**
@@ -49,7 +85,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         Title = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblProductDetails = new javax.swing.JTable();
+        tblStockDetails = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -60,6 +96,11 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         Title.setText("Manage Product catalog");
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,7 +123,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        tblProductDetails.setModel(new javax.swing.table.DefaultTableModel(
+        tblStockDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -90,7 +131,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Product ID", "Product Name", "Price"
+                "Product ID", "Name", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -101,48 +142,120 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblProductDetails);
+        jScrollPane1.setViewportView(tblStockDetails);
 
         btnAdd.setText("Add Product");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnView.setText("View Details");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete Product");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(171, 171, 171)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120)
+                .addGap(80, 80, 80)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnView)
                     .addComponent(btnDelete))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        
+        AddProductJPanel addProductJPanel = new AddProductJPanel(this.userProcessContainer, this.enterprise.getStockCatalog());
+        this.userProcessContainer.add("AddProductJPanel",addProductJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        int selectedRowIndex = tblStockDetails.getSelectedRow();
+        
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Stock stock = (Stock) tblStockDetails.getValueAt(selectedRowIndex, 1);
+        
+        ViewProductJPanel viewProductJPanel = new ViewProductJPanel(this.userProcessContainer, stock);
+        this.userProcessContainer.add("ViewProductJPanel",viewProductJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int selectedRowIndex = tblStockDetails.getSelectedRow();
+        
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Stock stock = (Stock) tblStockDetails.getValueAt(selectedRowIndex, 1);
+        
+        this.enterprise.getStockCatalog().removeStock(stock);
+        
+        populateStockTable();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    public void populateStockTable() {
+        DefaultTableModel model = (DefaultTableModel) tblStockDetails.getModel();
+        model.setRowCount(0);
+        
+        for (Stock stock : this.enterprise.getStockCatalog().getStockList()){
+            Object[] row = new Object[3];
+            row[0] = stock.getStockID();
+            row[1] = stock;
+            row[2] = stock.getStockPrice();
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
@@ -152,6 +265,6 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnView;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblProductDetails;
+    private javax.swing.JTable tblStockDetails;
     // End of variables declaration//GEN-END:variables
 }

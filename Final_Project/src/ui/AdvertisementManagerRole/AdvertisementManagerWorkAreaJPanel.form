@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -16,28 +16,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="1013" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" alignment="1" pref="988" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="366" max="-2" attributes="0"/>
-                      <Component id="lblEnterpriseNametitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblEntry" min="-2" pref="179" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="312" max="-2" attributes="0"/>
+                      <Component id="lblEnterpriseNametitle" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEnterprise" pref="179" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnAddAdv" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="btnUpdateAdv" pref="174" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCreateAR" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnViewReq" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAddAdv" pref="174" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCreateAR" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnViewReq" pref="174" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" alignment="1" pref="900" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,20 +47,21 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblEnterpriseNametitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblEntry" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="lblEnterprise" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="224" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="224" max="32767" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnViewReq" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCreateAR" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAddAdv" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnUpdateAdv" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="206" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,11 +81,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblAdvMngrtitle" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
+                  <Component id="lblAdvMngrtitle" pref="460" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                   <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -113,6 +116,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Logout"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -124,9 +130,9 @@
         <Property name="text" type="java.lang.String" value="Enterprise Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblEntry">
+    <Component class="javax.swing.JLabel" name="lblEnterprise">
       <Properties>
-        <Property name="text" type="java.lang.String" value="enter"/>
+        <Property name="text" type="java.lang.String" value="&lt;enterprise&gt;"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -141,11 +147,11 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
-                <Column editable="true" title="ID" type="java.lang.Object"/>
-                <Column editable="true" title="Advertisement Name" type="java.lang.Object"/>
-                <Column editable="true" title="Created Date" type="java.lang.Object"/>
-                <Column editable="true" title="Expiry Date" type="java.lang.Object"/>
-                <Column editable="true" title="Image Path" type="java.lang.Object"/>
+                <Column editable="false" title="ID" type="java.lang.Object"/>
+                <Column editable="false" title="Advertisement Name" type="java.lang.Object"/>
+                <Column editable="false" title="Created Date" type="java.lang.Object"/>
+                <Column editable="false" title="Expiry Date" type="java.lang.Object"/>
+                <Column editable="false" title="Adv LatLong" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -184,6 +190,14 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnUpdateAdv">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update Advertisement"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateAdvActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnAddAdv">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Advertisements"/>
@@ -196,6 +210,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Analysis Request"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateARActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnViewReq">
       <Properties>
