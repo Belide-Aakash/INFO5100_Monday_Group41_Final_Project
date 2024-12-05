@@ -161,9 +161,9 @@ public class LoginPageJPanel extends javax.swing.JPanel {
                             }
                         }
                     } else {
-                        // 3.2 - If the user is found, then we assign the respective value of enterprise for the user
+                        // 3.2 - If the user is found, then we assign the respective value of enterprise and network for the user
                         userEnterprise = enterprise;
-                                
+                        userNetwork = network;  
                         // We break the loop because the user is found
                         break;
                     }

@@ -21,10 +21,14 @@ public class AdvertisementCatalog {
         this.advertisementList = new ArrayList<Advertisement>();
     }
     
-    public void addAdvertisement(String name, LocalDateTime expDatetime, ImageIcon advImg, float lat, float longi) {
+    public void addAdvertisement(String name, LocalDateTime expDatetime, ImageIcon advImg, double lat, double longi) {
         Advertisement newAdv = new Advertisement(advCounter, name, expDatetime, advImg, lat, longi);
         this.advCounter = this.advCounter + 1;
         this.advertisementList.add(newAdv);
+    }
+    
+    public void appendAdvertisement(Advertisement advertisement) {
+        this.advertisementList.add(advertisement);
     }
     
     public ArrayList<Advertisement> getAdvertisementList() {
@@ -33,8 +37,13 @@ public class AdvertisementCatalog {
     
     public ArrayList<Advertisement> getActiveAdverList() {
         ArrayList<Advertisement> activeAdvList = new ArrayList<Advertisement>();
+        //System.out.println("Time now:");
+        //System.out.println(LocalDateTime.now());
         for (Advertisement adv : this.advertisementList) {
-            if (adv.getAdvExpiryDateTime().isBefore(LocalDateTime.now())) {
+            //System.out.println(adv.getAdvName());
+            //System.out.println(adv.getAdvExpiryDateTime());
+            //System.out.println(adv.getAdvExpiryDateTime().isAfter(LocalDateTime.now()));
+            if (adv.getAdvExpiryDateTime().isAfter(LocalDateTime.now())) {
                 activeAdvList.add(adv);
             }
         }
@@ -44,7 +53,7 @@ public class AdvertisementCatalog {
     public ArrayList<Advertisement> getActiveRadiusAdverList(LatLong custLatLong, double radius) {
         ArrayList<Advertisement> activeAdvList = new ArrayList<Advertisement>();
         for (Advertisement adv : this.advertisementList) {
-            if ((adv.getAdvExpiryDateTime().isBefore(LocalDateTime.now())) && (adv.getDistance(custLatLong) <= radius)) {
+            if ((adv.getAdvExpiryDateTime().isAfter(LocalDateTime.now())) && (adv.getDistance(custLatLong) <= radius)) {
                 activeAdvList.add(adv);
             }
         }

@@ -30,7 +30,8 @@ public abstract class Enterprise extends Organization{
         Supplier("Supplier"),
         SuperMarket("Super Market"),
         Advertisement("Advertisement"),
-        Payment("Payment");
+        Payment("Payment"),
+        CustomerSupport("Customer Support");
         
         private String enterpriseVal;
         

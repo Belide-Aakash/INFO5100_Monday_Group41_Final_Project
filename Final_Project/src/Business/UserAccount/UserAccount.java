@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.UserAccount;
+import Business.Geolocation.LatLong;
 import Business.OrderManagement.MasterOrderCatalog;
 import Business.Person.Person;
 import Business.Role.Role;
@@ -20,6 +21,7 @@ public class UserAccount {
     private Role userRole;
     private WorkQueue workQueue;
     private MasterOrderCatalog customerOrders;
+    private LatLong custLatLong;
     
     // This initiates the respective variables with empty queue
     public UserAccount() {
@@ -74,6 +76,14 @@ public class UserAccount {
     
     public MasterOrderCatalog custOrders() {
         return this.customerOrders;
+    }
+    
+    public LatLong getCustLatLong() {
+        return custLatLong;
+    }
+
+    public void setCustLatLong(double custLatitude, double custLongitude) {
+        this.custLatLong = new LatLong(custLatitude, custLongitude);
     }
     
     @Override

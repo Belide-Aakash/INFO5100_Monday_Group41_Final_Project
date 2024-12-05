@@ -6,6 +6,7 @@ package Business.AdvManagement;
 
 import Business.Geolocation.LatLong;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 /**
  *
@@ -19,10 +20,12 @@ public class Advertisement {
     private int advClickCount;
     private ImageIcon advImage;
     private LatLong advLatLong;
+    private ArrayList<ArrayList<Object>> clickStream;
     
     public Advertisement() {
         this.advDateTime = LocalDateTime.now();
         this.advClickCount = 0;
+        this.clickStream = new ArrayList<ArrayList<Object>>();
     }
     
     public Advertisement(int id, String name, LocalDateTime expDatetime, ImageIcon advImg, double lat, double longi) {
@@ -32,7 +35,8 @@ public class Advertisement {
         this.advExpiryDateTime = expDatetime;
         this.advClickCount = 0;
         this.advImage = advImg;
-        advLatLong = new LatLong(lat, longi);
+        this.advLatLong = new LatLong(lat, longi);
+        this.clickStream = new ArrayList<ArrayList<Object>>();
     }
     
     public void updateAdvertisement(String name, LocalDateTime expDatetime, ImageIcon advImg, double lat, double longi) {
@@ -84,6 +88,29 @@ public class Advertisement {
     
     public void addClickCount() {
         this.advClickCount = this.advClickCount + 1;
+    }
+    
+    public ArrayList<ArrayList<Object>> getClickStream() {
+        return clickStream;
+    }
+    
+    public void addClickStream(String username) {
+        ArrayList<Object> tmpObj = new ArrayList<Object>();
+        tmpObj.add(username); // add username
+        tmpObj.add(LocalDateTime.now()); // add current time
+        this.clickStream.add(tmpObj);
+    }
+    
+    public String getClickStreamAnalysis() {
+        String analysis = "";
+        for (ArrayList<Object> obj : this.clickStream) {
+            analysis = analysis + obj.get(0) + " | " + obj.get(1) + System.lineSeparator();
+        }
+        return analysis;
+    }
+
+    public void setClickStream(ArrayList<ArrayList<Object>> clickStream) {
+        this.clickStream = clickStream;
     }
 
     public ImageIcon getAdvImage() {
