@@ -4,17 +4,43 @@
  */
 package ui.CustomerRole;
 
+import Business.AdvManagement.AdvertisementCatalog;
+import Business.AdvManagement.AdvertisementDisplay;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kotag
  */
 public class ViewOrderTotalJPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    Map<String, Object> result;
+    UserAccount userAccount;
+    AdvertisementCatalog custAdvList;
+    AdvertisementDisplay adDisplay;
 
     /**
      * Creates new form ViewOrderTotalJPanel
      */
-    public ViewOrderTotalJPanel() {
+    public ViewOrderTotalJPanel(JPanel userProcessContainer, Map<String, Object> result, UserAccount userAccount, AdvertisementCatalog custAdvList) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.result = result;
+        this.userAccount = userAccount;
+        this.custAdvList = custAdvList;
+        
+        // Initialize and start the AdvertisementDisplay thread
+        adDisplay = new AdvertisementDisplay(this.custAdvList, imageAdvertisement, this.userAccount.getUsername());
+        
+        lblOrderTot.setText(String.valueOf(result.get("totalCost")));
+        
+        populateOrderTable();
     }
 
     /**
@@ -27,60 +53,62 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        Title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViewOrder = new javax.swing.JTable();
         lblTotOrdAmt = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblOrderTot = new javax.swing.JLabel();
         btnPay = new javax.swing.JButton();
+        imageAdvertisement = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
-        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Title.setText("Welcome!!");
-
-        btnBack.setText("<<Back");
+        btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Title.setText("Confirm Order");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(56, 56, 56)
                 .addComponent(btnBack)
-                .addGap(326, 326, 326)
-                .addComponent(Title)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Title)
-                    .addComponent(btnBack))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(btnBack)
+                    .addComponent(Title))
+                .addGap(38, 38, 38))
         );
 
         tblViewOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Product Name", "Quantity", "Price", "Market Name", "Total Amount"
+                "Product Name", "Quantity", "Price", "Market Name", "Total Amount", "Distance"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -89,13 +117,20 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblViewOrder);
 
-        lblTotOrdAmt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotOrdAmt.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         lblTotOrdAmt.setText("Total Order Amount :");
 
-        jLabel2.setText("jLabel2");
+        lblOrderTot.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOrderTot.setText("jLabel2");
 
-        btnPay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPay.setBackground(new java.awt.Color(0, 153, 255));
+        btnPay.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnPay.setForeground(new java.awt.Color(255, 255, 255));
         btnPay.setText("Pay");
+
+        imageAdvertisement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imageAdvertisement.setText("<Advertisement>");
+        imageAdvertisement.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,45 +138,119 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(475, 475, 475)
                         .addComponent(lblTotOrdAmt)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPay)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                            .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblOrderTot, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1))
+                .addGap(35, 35, 35)
+                .addComponent(imageAdvertisement, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotOrdAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(31, 31, 31)
-                .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imageAdvertisement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotOrdAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblOrderTot, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
+                .addGap(107, 107, 107))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void populateOrderTable() {
+        DefaultTableModel model = (DefaultTableModel) tblViewOrder.getModel();
+        model.setRowCount(0);
+
+//        for (Object prodName : this.result.get("recommendations")) {
+//            Object row[] = new Object[1];
+//            row[0] = prodName;
+//            model.addRow(row);
+//        }
+        
+        // Iterating the result map
+        if (result.containsKey("recommendations")) {
+            Object recommendationsObj = result.get("recommendations");
+            
+            if (recommendationsObj instanceof Map) {
+                Map<String, List<Map<String, Object>>> recommendationsMap = 
+                    (Map<String, List<Map<String, Object>>>) recommendationsObj;
+
+                for (Map.Entry<String, List<Map<String, Object>>> entry : recommendationsMap.entrySet()) {
+                    String productName = entry.getKey();
+                    List<Map<String, Object>> storeDetails = entry.getValue();
+
+                    System.out.println("Product: " + productName);
+
+                    for (Map<String, Object> storeDetail : storeDetails) {
+                        String storeName = (String) storeDetail.get("storeName");
+                        System.out.println("  Store Name: " + storeName);
+                        
+                        
+                        String price = String.valueOf(storeDetail.get("price"));
+                        System.out.println("  Price: " + price);
+                        
+                        String qAvl = String.valueOf(storeDetail.get("quantityAvailable"));
+                        System.out.println("  Quantity Available: " + qAvl);
+                        
+                        String qFulfil = String.valueOf(storeDetail.get("quantityFulfilled"));
+                        System.out.println("  Quantity Fulfilled: " + qFulfil);
+                        
+                        String dist = String.valueOf(storeDetail.get("distance"));
+                        System.out.println("  Distance: " + dist);
+                        
+                        float totCost;
+                        
+                        try {
+                            totCost = (Integer) storeDetail.get("quantityFulfilled") * (float) storeDetail.get("price");
+                        } catch (Exception e) {
+                            totCost = 0;
+                        }
+                        
+                        
+                        Object row[] = new Object[6];
+                        row[0] = productName;
+                        row[1] = qFulfil;
+                        row[2] = price;
+                        row[3] = storeName;
+                        row[4] = totCost;
+                        row[5] = dist;
+                        model.addRow(row);
+                    }
+                }
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnPay;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel imageAdvertisement;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblOrderTot;
     private javax.swing.JLabel lblTotOrdAmt;
     private javax.swing.JTable tblViewOrder;
     // End of variables declaration//GEN-END:variables

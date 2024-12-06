@@ -10,21 +10,20 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import ui.CustomerRole.CustomerWorkAreaJPanel;
+import ui.EnterpriseAdminRole.EnterpriseAdminWorkAreaJPanel;
 
 /**
  *
  * @author aakashbelide
  */
-public class CustomerRole extends Role{
-    
+public class CustomerSupportAdminRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Network network, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new CustomerWorkAreaJPanel(userProcessContainer, network, enterprise, userAccount);
+        return new EnterpriseAdminWorkAreaJPanel(userProcessContainer, enterprise);
     }
     
     @Override
     public String toString() {
-        return "Customer Role";
+        return "Customer Support Admin Role";
     }
 }

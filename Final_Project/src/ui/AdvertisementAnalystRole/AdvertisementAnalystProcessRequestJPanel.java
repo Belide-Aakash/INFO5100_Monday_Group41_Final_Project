@@ -27,7 +27,11 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
         this.userProcessContainer = userProcessContainer;
         this.selectedAdvReq = selectedAdvReq;
         
-        txtResult.setText("Advertisement Click Count: " + String.valueOf(this.selectedAdvReq.getRequestAdver().getAdvClickCount()));
+        String output = "";
+        output = output + "Advertisement Click Count: " + String.valueOf(this.selectedAdvReq.getRequestAdver().getAdvClickCount()) + System.lineSeparator();
+        output = output + "Clickstream data: " + String.valueOf(this.selectedAdvReq.getRequestAdver().getClickStreamAnalysis()) + System.lineSeparator();
+        
+        txtResult.setText(output);
     }
 
     /**
@@ -43,8 +47,9 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
         Title = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
-        txtResult = new javax.swing.JTextField();
         btnSubmitResult = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtResult = new javax.swing.JTextArea();
 
         setPreferredSize(new java.awt.Dimension(1000, 650));
 
@@ -68,8 +73,8 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
                 .addGap(42, 42, 42)
                 .addComponent(btnBack)
                 .addGap(185, 185, 185)
-                .addComponent(Title)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(298, 298, 298))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,31 +99,39 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
             }
         });
 
+        txtResult.setColumns(20);
+        txtResult.setRows(5);
+        jScrollPane1.setViewportView(txtResult);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(344, 344, 344)
-                .addComponent(lblResult, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSubmitResult)
-                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(269, 269, 269)
+                .addComponent(lblResult)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSubmitResult)
+                .addGap(434, 434, 434))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblResult))
-                .addGap(32, 32, 32)
+                .addGap(143, 143, 143)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(lblResult)))
+                .addGap(18, 18, 18)
                 .addComponent(btnSubmitResult)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -156,7 +169,8 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmitResult;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblResult;
-    private javax.swing.JTextField txtResult;
+    private javax.swing.JTextArea txtResult;
     // End of variables declaration//GEN-END:variables
 }

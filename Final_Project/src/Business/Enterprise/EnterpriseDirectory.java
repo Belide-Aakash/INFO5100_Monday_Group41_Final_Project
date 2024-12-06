@@ -53,6 +53,11 @@ public class EnterpriseDirectory {
                 enterprise = new PaymentEnterprise(enterpriseName);
                 enterpriseList.add(enterprise);
                 break;
+            case CustomerSupport:
+                // Creating Customer Support type enterprise and adding it to the enterpriseList
+                enterprise = new CustomerSupportEnterprise(enterpriseName);
+                enterpriseList.add(enterprise);
+                break;
             default:
                 break;
         }
