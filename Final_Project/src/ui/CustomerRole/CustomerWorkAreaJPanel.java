@@ -33,7 +33,8 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     Set<String> allProductList = new HashSet<>();
     AdvertisementCatalog custAdvList = new AdvertisementCatalog();
     AdvertisementDisplay adDisplay;
-    List<SuperMarketEnterprise> supermarkets = new ArrayList<>();
+    List<SuperMarketEnterprise> nearBySupermarkets = new ArrayList<>();
+    List<SuperMarketEnterprise> allSupermarkets = new ArrayList<>();
     int radius = 2;
     
     /**
@@ -51,11 +52,13 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             if (enter.getEnterpriseType() == Enterprise.EnterpriseType.SuperMarket) {
                 SuperMarketEnterprise market = (SuperMarketEnterprise) enter;
                 if (market.getDistance(this.userAccount.getCustLatLong()) <= radius) {
-                    this.supermarkets.add(market);
+                    this.nearBySupermarkets.add(market);
                     for (Product prod : market.getProductCatalog().getProductList()) {
                         allProductList.add(prod.getProdName());
                     }
                 }
+                // List of all super markets in the network
+                allSupermarkets.add(market);
             }
             if (enter.getEnterpriseType() == Enterprise.EnterpriseType.Advertisement) {
                 AdvertisementEnterprise adEnter = (AdvertisementEnterprise) enter;
@@ -67,9 +70,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 for (Advertisement activeAdv : adEnter.getAdvertisementCatalog().getActiveRadiusAdverList(userAccount.getCustLatLong(), 2)) {
                     this.custAdvList.appendAdvertisement(activeAdv);
                 }
-//                for (Advertisement activeAdv : adEnter.getAdvertisementCatalog().getActiveAdverList()) {
-//                    this.custAdvList.appendAdvertisement(activeAdv);
-//                }
+                //for (Advertisement activeAdv : adEnter.getAdvertisementCatalog().getActiveAdverList()) {
+                //    this.custAdvList.appendAdvertisement(activeAdv);
+                //}
             }
         }
         
@@ -115,15 +118,15 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(138, 138, 138)
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
+                .addGap(101, 101, 101)
                 .addComponent(btnLogout)
                 .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
                     .addComponent(Title))
@@ -169,11 +172,11 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(397, 397, 397)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSmartShop, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnShop, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSmartShop, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(btnShop, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(btnViewOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                 .addGap(279, 279, 279)
                 .addComponent(imageAdvertisement, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -185,11 +188,11 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
+                        .addGap(96, 96, 96)
                         .addComponent(imageAdvertisement, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                         .addGap(104, 104, 104))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
+                        .addGap(199, 199, 199)
                         .addComponent(btnSmartShop)
                         .addGap(18, 18, 18)
                         .addComponent(btnShop)
@@ -204,11 +207,13 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.previous(this.userProcessContainer);
+        
+        this.adDisplay.stopAdvertisementDisplay();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnSmartShopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSmartShopActionPerformed
         // TODO add your handling code here:
-        CustomerCartJPanel customerCartJPanel = new CustomerCartJPanel(this.userProcessContainer,this.supermarkets, this.allProductList, this.userAccount, this.custAdvList);
+        SmartShoppingJPanel customerCartJPanel = new SmartShoppingJPanel(this.userProcessContainer,this.nearBySupermarkets, this.allProductList, this.userAccount, this.custAdvList);
         this.userProcessContainer.add("CustomerCartJPanel",customerCartJPanel);
         CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
         layout.next(this.userProcessContainer);
@@ -216,18 +221,18 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrdersActionPerformed
         // TODO add your handling code here:
-//        CustomerCartJPanel customerCartJPanel = new CustomerCartJPanel(this.userProcessContainer, this.enterprise, selectedAdv, this.userAccount);
-//        this.userProcessContainer.add("CustomerCartJPanel",customerCartJPanel);
-//        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
-//        layout.next(this.userProcessContainer);
+        CustomerOrdersJPanel customerOrdersJPanel = new CustomerOrdersJPanel(this.userProcessContainer, this.userAccount.getCustOrders().getOrders(), this.userAccount, this.custAdvList);
+        this.userProcessContainer.add("CustomerOrdersJPanel",customerOrdersJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
     }//GEN-LAST:event_btnViewOrdersActionPerformed
 
     private void btnShopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShopActionPerformed
         // TODO add your handling code here:
-//        CustomerCartJPanel customerCartJPanel = new CustomerCartJPanel(this.userProcessContainer, this.enterprise, selectedAdv, this.userAccount);
-//        this.userProcessContainer.add("CustomerCartJPanel",customerCartJPanel);
-//        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
-//        layout.next(this.userProcessContainer);
+        ShoppingJPanel shoppingJPanel = new ShoppingJPanel(this.userProcessContainer, this.allSupermarkets, this.userAccount, this.custAdvList);
+        this.userProcessContainer.add("ShoppingJPanel",shoppingJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
     }//GEN-LAST:event_btnShopActionPerformed
 
 

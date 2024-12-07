@@ -7,14 +7,12 @@ package ui.CustomerRole;
 import Business.AdvManagement.AdvertisementCatalog;
 import Business.AdvManagement.AdvertisementDisplay;
 import Business.Enterprise.SuperMarketEnterprise;
-import Business.ProductManagement.BestStoreFinder;
+import Business.OrderManagement.Order;
+import Business.OrderManagement.OrderItem;
+import Business.ProductManagement.Product;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -23,32 +21,32 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author aakashbelide
  */
-public class SmartShoppingJPanel extends javax.swing.JPanel {
+public class ShoppingJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
-    List<SuperMarketEnterprise> supermarkets;
-    Set<String> allProductList;
+    List<SuperMarketEnterprise> allSupermarkets;
     UserAccount userAccount;
-    ArrayList<ArrayList<Object>> currentOrder = new ArrayList<>();
     AdvertisementCatalog custAdvList;
+    Order currentOrder;
     AdvertisementDisplay adDisplay;
     
     /**
-     * Creates new form CustomerCartJPanel
+     * Creates new form ShoppingJPanel
      */
-    public SmartShoppingJPanel(JPanel userProcessContainer, List<SuperMarketEnterprise> supermarkets, Set<String> allProductList, UserAccount userAccount, AdvertisementCatalog custAdvList) {
+    public ShoppingJPanel(JPanel userProcessContainer, List<SuperMarketEnterprise> allSupermarkets, UserAccount userAccount, AdvertisementCatalog custAdvList) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.supermarkets = supermarkets;
-        this.allProductList = allProductList;
+        this.allSupermarkets = allSupermarkets;
         this.userAccount = userAccount;
         this.custAdvList = custAdvList;
-        
-        populateProdTable();
-        populateCartTable();
+        this.currentOrder = this.userAccount.getCustOrders().newOrder();
         
         // Initialize and start the AdvertisementDisplay thread
         adDisplay = new AdvertisementDisplay(this.custAdvList, imageAdvertisement, this.userAccount.getUsername());
+        
+        populateSupMarketCombobox();
+        populateSupMarketProdTable();
+        populateCartTable();
     }
 
     /**
@@ -63,6 +61,8 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         Title = new javax.swing.JLabel();
+        lblSuperMarket = new javax.swing.JLabel();
+        cmbSuperMarket = new javax.swing.JComboBox();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -77,7 +77,6 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
         btnCheckout = new javax.swing.JButton();
         txtModifyQuant = new javax.swing.JTextField();
         imageAdvertisement = new javax.swing.JLabel();
-        btnRefresh = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -90,7 +89,7 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setText("Smart Shopping");
+        Title.setText("Start Shopping");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,6 +112,15 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
                 .addGap(38, 38, 38))
         );
 
+        lblSuperMarket.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblSuperMarket.setText("Super Market:");
+
+        cmbSuperMarket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSuperMarketActionPerformed(evt);
+            }
+        });
+
         btnSearch.setBackground(new java.awt.Color(0, 153, 255));
         btnSearch.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,17 +133,17 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
 
         tblProductNames.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Products Name"
+                "Products Name", "Price", "Availability"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -159,17 +167,17 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
 
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Product Name", "Quantity"
+                "Product Name", "Quantity", "Price", "Total Price", "Super Market"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -210,16 +218,6 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
         imageAdvertisement.setText("<Advertisement>");
         imageAdvertisement.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
-        btnRefresh.setBackground(new java.awt.Color(0, 153, 255));
-        btnRefresh.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setText("Refresh Catalog");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,6 +225,14 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSuperMarket)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbSuperMarket, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -244,13 +250,7 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnCart, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(31, 31, 31)
                 .addComponent(imageAdvertisement, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -264,7 +264,8 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
-                    .addComponent(btnRefresh))
+                    .addComponent(cmbSuperMarket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSuperMarket))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -295,19 +296,51 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        
+        for (OrderItem orderItem : this.currentOrder.getOrderItems()) {
+            int itemQuant = orderItem.getItemQuant();
+            orderItem.getItemProduct().incProdQuant(itemQuant);
+        }
+        
+        this.adDisplay.stopAdvertisementDisplay();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        String searchProd = txtSearch.getText();
+        SuperMarketEnterprise selectedSuperMarket = (SuperMarketEnterprise) cmbSuperMarket.getSelectedItem();
+        
+        if (selectedSuperMarket == null) {
+            JOptionPane.showMessageDialog(this, "Select a super market from the drop down.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (searchProd.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Type something in the input box to search.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        populateSupMarketProdTable(searchProd, selectedSuperMarket);
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblProductNames.getSelectedRow();
-        
+
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
+        SuperMarketEnterprise selectedSuperMarket = (SuperMarketEnterprise) cmbSuperMarket.getSelectedItem();
+        
+        if (selectedSuperMarket == null) {
+            JOptionPane.showMessageDialog(this, "Select a super market from the drop down.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         // This is the supplier stock from supplier catalog
-        String selectedProdName = (String) tblProductNames.getValueAt(selectedRowIndex, 0);
+        Product selectedProd = (Product) tblProductNames.getValueAt(selectedRowIndex, 0);
         int quant = 0;
         
         try {
@@ -316,152 +349,180 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Quantity should be greater than 0.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please provide a valid quantity.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+
+        OrderItem itemInCart = this.currentOrder.findOrderItem(selectedProd);
         
-        ArrayList<Object> itemInCart = findCartItem(selectedProdName);
-        
-        if (itemInCart != null) {
-            itemInCart.remove(1);
-            itemInCart.add(quant);
+        if (itemInCart == null) {
+            if (selectedProd.getProdQuant() >= quant && quant >= 0) {
+                if (selectedProd.getProdQuant() == 0) {
+                    JOptionPane.showMessageDialog(this, "Product out of stock.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                selectedProd.decProdQuant(quant);
+                this.currentOrder.addOrderItem(selectedProd, quant, selectedSuperMarket);
+            } else {
+                JOptionPane.showMessageDialog(this, "Order quantity more than product availability.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
         } else {
-            ArrayList<Object> newCartItem = new ArrayList<Object>();
-            newCartItem.add(selectedProdName);
-            newCartItem.add(quant);
-            currentOrder.add(newCartItem);
+            int oldQuant = itemInCart.getItemQuant();
+            
+            if (itemInCart.getItemProduct().getProdQuant() == 0) {
+                JOptionPane.showMessageDialog(this, "Product out of stock.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            if (itemInCart.getItemProduct().getProdQuant() + oldQuant < quant) {
+                JOptionPane.showMessageDialog(this, "Order quantity more than product availability.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            itemInCart.getItemProduct().incProdQuant(oldQuant);
+            itemInCart.getItemProduct().decProdQuant(quant);
+
+            itemInCart.setItemQuant(quant);
         }
         
+        populateSupMarketProdTable();
         populateCartTable();
     }//GEN-LAST:event_btnCartActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
-        String searchProd = txtSearch.getText();
-        
-        if (searchProd.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Type something in the input box to search.", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        populateProdTable(searchProd);
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
-        populateProdTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblCart.getSelectedRow();
-        
+
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a cart item first.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         String modQuant = txtModifyQuant.getText();
         if (modQuant.isBlank()) {
             JOptionPane.showMessageDialog(this, "Modify quantity cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        String selectedCartProdName = (String) tblCart.getValueAt(selectedRowIndex, 0);
-        ArrayList<Object> selectedCartItem = findCartItem(selectedCartProdName);
-        
+
+        OrderItem selectedCartItem = (OrderItem) tblCart.getValueAt(selectedRowIndex, 0);
+
         if (selectedCartItem == null) {
             JOptionPane.showMessageDialog(this, "Cart item not found.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         int quant = 0;
-        
+
         try {
             quant = Integer.parseInt(modQuant);
             if (!(quant > 0)) {
-                JOptionPane.showMessageDialog(this, "Quantity should be greater than 0.", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Modify quantity should be greater than 0.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please provide a valid quantity.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        selectedCartItem.remove(1);
-        selectedCartItem.add(quant);
+        int oldQuant = selectedCartItem.getItemQuant();
+        
+        if (selectedCartItem.getItemProduct().getProdQuant() + oldQuant < quant) {
+            JOptionPane.showMessageDialog(this, "Modify quantity more than product availability.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        selectedCartItem.getItemProduct().incProdQuant(oldQuant);
+        selectedCartItem.getItemProduct().decProdQuant(quant);
+            
+        selectedCartItem.setItemQuant(quant);
+        
+        populateSupMarketProdTable();
         populateCartTable();
     }//GEN-LAST:event_btnModifyActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblCart.getSelectedRow();
-        
+
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a cart item first.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        String selectedCartProdName = (String) tblCart.getValueAt(selectedRowIndex, 0);
-        ArrayList<Object> selectedCartItem = findCartItem(selectedCartProdName);
-        
+
+        OrderItem selectedCartItem = (OrderItem) tblCart.getValueAt(selectedRowIndex, 0);
+
         if (selectedCartItem == null) {
             JOptionPane.showMessageDialog(this, "Cart item not found.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        this.currentOrder.remove(selectedCartItem);
+        // The respective Product quantity is increased in the removeOrderItem method
+        this.currentOrder.removeOrderItem(selectedCartItem);
+        populateSupMarketProdTable();
         populateCartTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
         // TODO add your handling code here:
+        this.userAccount.getCustOrders().addOrder(this.currentOrder);
         
-        Map<String, Integer> requestedProducts = new HashMap<>();
+        JOptionPane.showMessageDialog(this, "Thank you for ordering. Order has been placed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
         
-        for (ArrayList<Object> catItem : currentOrder) {
-            if (catItem.size() >= 2 && catItem.get(0) instanceof String && catItem.get(1) instanceof Integer) {
-                String productName = (String) catItem.get(0);
-                int quantity = (Integer) catItem.get(1);
-
-                // Accumulate quantities if the product already exists in the map
-                requestedProducts.put(productName, requestedProducts.getOrDefault(productName, 0) + quantity);
-            }
-        }
-        
-        // Find the best stores
-        Map<String, Object> result = BestStoreFinder.findBestStores(supermarkets, requestedProducts, this.userAccount.getCustLatLong(), "Price");
-        
-        ViewOrderTotalJPanel viewOrderTotalJPanel = new ViewOrderTotalJPanel(this.userProcessContainer,result, this.userAccount, this.custAdvList);
-        this.userProcessContainer.add("ViewOrderTotalJPanel",viewOrderTotalJPanel);
-        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
-        layout.next(this.userProcessContainer);
+        this.currentOrder = this.userAccount.getCustOrders().newOrder();
+        populateSupMarketProdTable();
+        populateCartTable();
     }//GEN-LAST:event_btnCheckoutActionPerformed
 
-    private void populateProdTable() {
+    private void cmbSuperMarketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSuperMarketActionPerformed
+        // TODO add your handling code here:
+        populateSupMarketProdTable();
+    }//GEN-LAST:event_cmbSuperMarketActionPerformed
+
+    private void populateSupMarketProdTable() {
+        SuperMarketEnterprise selectedSuperMarket = (SuperMarketEnterprise) cmbSuperMarket.getSelectedItem();
+        
+        if (selectedSuperMarket == null) {
+            return;
+        }
+        
         DefaultTableModel model = (DefaultTableModel) tblProductNames.getModel();
         model.setRowCount(0);
 
-        for (String prodName : this.allProductList) {
-            Object row[] = new Object[1];
-            row[0] = prodName;
+        for (Product product : selectedSuperMarket.getProductCatalog().getProductList()) {
+            Object row[] = new Object[3];
+            row[0] = product;
+            row[1] = product.getProdPrice();
+            row[2] = product.getProdQuant();
             model.addRow(row);
         }
     }
     
-    private void populateProdTable(String searchProd) {
+    private void populateSupMarketProdTable(String searchProdName, SuperMarketEnterprise selectedSuperMarket) {
+        if (selectedSuperMarket == null) {
+            return;
+        }
+        
+        Product searchProduct = selectedSuperMarket.getProductCatalog().checkProdInList(searchProdName);
+        
         DefaultTableModel model = (DefaultTableModel) tblProductNames.getModel();
         model.setRowCount(0);
-
-        for (String prodName : this.allProductList) {
-            if (prodName.equalsIgnoreCase(searchProd)) {
-                Object row[] = new Object[1];
-                row[0] = prodName;
-                model.addRow(row);
-            }
+        
+        Object row[] = new Object[3];
+        row[0] = searchProduct;
+        row[1] = searchProduct.getProdPrice();
+        row[2] = searchProduct.getProdQuant();
+        model.addRow(row);
+    }
+    
+    private void populateSupMarketCombobox() {
+        cmbSuperMarket.removeAllItems();
+        
+        for (SuperMarketEnterprise market : this.allSupermarkets) {
+            cmbSuperMarket.addItem(market);
         }
     }
     
@@ -469,26 +530,15 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
         model.setRowCount(0);
 
-        for (ArrayList<Object> cartItem : this.currentOrder) {
-            Object row[] = new Object[2];
-            row[0] = cartItem.get(0);
-            row[1] = cartItem.get(1);
+        for (OrderItem orderItem : this.currentOrder.getOrderItems()) {
+            Object row[] = new Object[5];
+            row[0] = orderItem;
+            row[1] = orderItem.getItemQuant();
+            row[2] = orderItem.getBuyPrice();
+            row[3] = orderItem.getOrderItemTotal();
+            row[4] = orderItem.getMarket();
             model.addRow(row);
         }
-    }
-    
-    private ArrayList<Object> findCartItem(String prodName) {
-        for (ArrayList<Object> cartItem : this.currentOrder) {
-            if (cartItem.get(0).equals(prodName)) {
-                return cartItem;
-            }
-        }
-        return null;
-    }
-    
-    public void resetCart() {
-        currentOrder = new ArrayList<>();
-        populateCartTable();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -497,14 +547,15 @@ public class SmartShoppingJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCart;
     private javax.swing.JButton btnCheckout;
     private javax.swing.JButton btnModify;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox cmbSuperMarket;
     private javax.swing.JLabel imageAdvertisement;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblSuperMarket;
     private javax.swing.JSpinner spnQuantity;
     private javax.swing.JTable tblCart;
     private javax.swing.JTable tblProductNames;

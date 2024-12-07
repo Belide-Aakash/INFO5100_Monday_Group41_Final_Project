@@ -15,6 +15,8 @@ import Business.Role.AdvertisementAnalystRole;
 import Business.Role.AdvertisementManagerRole;
 import Business.Role.CustomerRole;
 import Business.Role.CustomerSupportAdminRole;
+import Business.Role.PaymentAdminRole;
+import Business.Role.PaymentFraudAnalyst;
 import Business.Role.ProductManagerRole;
 import Business.Role.SuperMarketAdminRole;
 import Business.Role.SuperMarketStockManagerRole;
@@ -39,6 +41,8 @@ public class ConfigureABusiness {
         Person person = ecosystem.getPersonDir().createPerson("SystemAdmin");
 
         UserAccount userAccount = ecosystem.getUserAccountDir().createUserAccount("SystemAdmin", "SystemAdmin", person, new SystemAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(userAccount);
         
         // Create new network
         Network bostonNetwork = ecosystem.createAndAddNetwork();
@@ -57,32 +61,53 @@ public class ConfigureABusiness {
         Enterprise starSuperMarket = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("Star Market", Enterprise.EnterpriseType.SuperMarket);
         
         // Advertisements
-        Enterprise adv1Advertisement = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("Advertisers 1", Enterprise.EnterpriseType.Advertisement);
+        Enterprise adv1Advertisement = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("AD Vantage", Enterprise.EnterpriseType.Advertisement);
+        
+        // Payments
+        Enterprise chasePayment = bostonNetwork.getEnterpriseDirectory().createAndAddEnterprise("Chase", Enterprise.EnterpriseType.Payment);
         
         // Create Enterprise admins
         // UPS1 - Supplier
         Person ups1Person = ups1Supplier.getPersonDir().createPerson("ups1");
         UserAccount ups1UA = ups1Supplier.getUserAccountDir().createUserAccount("ups1", "ups1", ups1Person, new SupplierAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(ups1UA);
         
         // UPS2 - Supplier
         Person ups2Person = ups2Supplier.getPersonDir().createPerson("ups2");
         UserAccount ups2UA = ups2Supplier.getUserAccountDir().createUserAccount("ups2", "ups2", ups2Person, new SupplierAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(ups2UA);
         
         // Support1 - Customer Support
         Person support1Person = support1Cust.getPersonDir().createPerson("support1");
         UserAccount support1UA = support1Cust.getUserAccountDir().createUserAccount("support1", "support1", support1Person, new CustomerSupportAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(support1UA);
         
         // Target - Super market
         Person targetPerson = targetSuperMarket.getPersonDir().createPerson("target");
         UserAccount targetUA = targetSuperMarket.getUserAccountDir().createUserAccount("target", "target", targetPerson, new SuperMarketAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(targetUA);
         
         // Star - Super market
         Person starPerson = starSuperMarket.getPersonDir().createPerson("star");
         UserAccount starUA = starSuperMarket.getUserAccountDir().createUserAccount("star", "star", starPerson, new SuperMarketAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(starUA);
         
-        // Advertisers 1 - Advertisement
+        // AD Vantage - Advertisement
         Person adv1Person = adv1Advertisement.getPersonDir().createPerson("adv1");
         UserAccount adv1UA = adv1Advertisement.getUserAccountDir().createUserAccount("adv1", "adv1", adv1Person, new AdvertisementAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(adv1UA);
+        
+        // Chase - Payment
+        Person pay1Person = chasePayment.getPersonDir().createPerson("pay1");
+        UserAccount pay1UA = chasePayment.getUserAccountDir().createUserAccount("pay1", "pay1", pay1Person, new PaymentAdminRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(pay1UA);
         
         // Create Organizations
         // UPS1 - Supplier | Product Org
@@ -104,17 +129,24 @@ public class ConfigureABusiness {
         // Star - Super Market | Super Market Stock Org
         Organization starStockOrg = starSuperMarket.getOrgDir().createOrg(Organization.Type.SuperMarketStock);
         
-        // Advertisers 1 - Advertisement | Advertisement Org
+        // AD Vantage - Advertisement | Advertisement Org
         Organization adv1AdOrg = adv1Advertisement.getOrgDir().createOrg(Organization.Type.Advertisement);
+        
+        // Chase - Payment | Payment Org
+        Organization pay1AdOrg = chasePayment.getOrgDir().createOrg(Organization.Type.Payment);
         
         // Create customer
         Person customer1 = support1SupOrg.getPersonDir().createPerson("customer1");
         UserAccount custUA1 = support1SupOrg.getUserAccountDir().createUserAccount("customer1", "customer1", customer1, new CustomerRole());
         custUA1.setCustLatLong(42.3458, -71.0949);
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(custUA1);
         
         Person customer2 = support1SupOrg.getPersonDir().createPerson("customer2");
         UserAccount custUA2 = support1SupOrg.getUserAccountDir().createUserAccount("customer2", "customer2", customer2, new CustomerRole());
         custUA2.setCustLatLong(42.3458, -71.0949);
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(custUA2);
         
         // Create Advertisements
         AdvertisementEnterprise adv1AdvertisementEnt = (AdvertisementEnterprise) adv1Advertisement;
@@ -148,38 +180,62 @@ public class ConfigureABusiness {
         // UPS1 - Supplier | Product Org User
         Person ups1ProdPerson = ups1ProdOrg.getPersonDir().createPerson("ups1_prod");
         UserAccount ups1ProdUA = ups1ProdOrg.getUserAccountDir().createUserAccount("ups1_prod", "ups1_prod", ups1ProdPerson, new ProductManagerRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(ups1ProdUA);
         
         // UPS1 - Supplier | Stock Org User
         Person ups1StockPerson = ups1StockOrg.getPersonDir().createPerson("ups1_stock");
         UserAccount ups1StockUA = ups1StockOrg.getUserAccountDir().createUserAccount("ups1_stock", "ups1_stock", ups1StockPerson, new SupplierStockManagerRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(ups1StockUA);
         
         // UPS2 - Supplier | Product Org User
         Person ups2ProdPerson = ups2ProdOrg.getPersonDir().createPerson("ups2_prod");
         UserAccount ups2ProdUA = ups2ProdOrg.getUserAccountDir().createUserAccount("ups2_prod", "ups2_prod", ups2ProdPerson, new ProductManagerRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(ups2ProdUA);
         
         // UPS2 - Supplier | Stock Org User
         Person ups2StockPerson = ups2StockOrg.getPersonDir().createPerson("ups2_stock");
         UserAccount ups2StockUA = ups2StockOrg.getUserAccountDir().createUserAccount("ups2_stock", "ups2_stock", ups2StockPerson, new SupplierStockManagerRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(ups2StockUA);
         
         
         // Target - Super Market | Super Market Stock Org User
         Person targetStockPerson = targetStockOrg.getPersonDir().createPerson("target1_stock");
         UserAccount targetStockUA = targetStockOrg.getUserAccountDir().createUserAccount("target1_stock", "target1_stock", targetStockPerson, new SuperMarketStockManagerRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(targetStockUA);
         
         // Star Market - Super Market | Super Market Stock Org User
         Person starStockPerson = starStockOrg.getPersonDir().createPerson("star1_stock");
         UserAccount starStockUA = starStockOrg.getUserAccountDir().createUserAccount("star1_stock", "star1_stock", starStockPerson, new SuperMarketStockManagerRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(starStockUA);
         
-        // Advertisers 1 - Advertisement | Advertisement Manager User
+        // AD Vantage - Advertisement | Advertisement Manager User
         Person adv1ManagerPerson = adv1AdOrg.getPersonDir().createPerson("adv1_man");
         UserAccount adv1ManagerUA = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_man", "adv1_man", adv1ManagerPerson, new AdvertisementManagerRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(adv1ManagerUA);
         
-        // Advertisers 1 - Advertisement | Advertisement Analyst User
+        // AD Vantage - Advertisement | Advertisement Analyst User
         Person adv1AnalystPerson1 = adv1AdOrg.getPersonDir().createPerson("adv1_anl1");
         UserAccount adv1AnalystUA1 = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_anl1", "adv1_anl1", adv1AnalystPerson1, new AdvertisementAnalystRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(adv1AnalystUA1);
         
         Person adv1AnalystPerson2 = adv1AdOrg.getPersonDir().createPerson("adv1_anl2");
         UserAccount adv1AnalystUA2 = adv1AdOrg.getUserAccountDir().createUserAccount("adv1_anl2", "adv1_anl2", adv1AnalystPerson2, new AdvertisementAnalystRole());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(adv1AnalystUA2);
+        
+        // Chase - Payment | Payment FraudAnalyst User
+        Person pay1AnalystPerson = pay1AdOrg.getPersonDir().createPerson("pay1_anl");
+        UserAccount pay1AnalystUA = pay1AdOrg.getUserAccountDir().createUserAccount("pay1_anl", "pay1_anl", pay1AnalystPerson, new PaymentFraudAnalyst());
+        // Add the userAccount at the ecosystem level to have unique useraccounts
+        ecosystem.getUserAccountDir().addUserAccount(pay1AnalystUA);
         
         // Add Products to super market catalogs
         // Target - Super Market
@@ -187,7 +243,7 @@ public class ConfigureABusiness {
         targetSuperMarketEnt.setSuperMarketLatLong(42.3453, -71.0998);
         targetSuperMarketEnt.getProductCatalog().addProduct("Apple", 10, 4.5f);
         targetSuperMarketEnt.getProductCatalog().addProduct("Banana", 100, 0.4f);
-        targetSuperMarketEnt.getProductCatalog().addProduct("Melon", 40, 3.4f);
+        targetSuperMarketEnt.getProductCatalog().addProduct("Melon", 100, 3.4f);
         
         // Add Products to super market catalogs
         // Target - Super Market
@@ -195,6 +251,7 @@ public class ConfigureABusiness {
         starSuperMarketEnt.setSuperMarketLatLong(42.3508, -71.0744);
         starSuperMarketEnt.getProductCatalog().addProduct("Apple", 5, 3.8f);
         starSuperMarketEnt.getProductCatalog().addProduct("Banana", 20, 0.3f);
+        starSuperMarketEnt.getProductCatalog().addProduct("Pineapple", 100, 8.4f);
         
         return ecosystem;
     }

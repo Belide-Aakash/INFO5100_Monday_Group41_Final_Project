@@ -4,6 +4,7 @@
  */
 package Business.OrderManagement;
 
+import Business.Enterprise.SuperMarketEnterprise;
 import Business.ProductManagement.Product;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,17 +23,40 @@ public class Order {
         this.orderDateTime = LocalDateTime.now();
     }
     
-    public void addOrderItem(Product iProd, int iQuant) {
-        OrderItem oi = new OrderItem(iProd, iQuant);
+    public OrderItem addOrderItem(Product iProd, int iQuant, SuperMarketEnterprise iMarket) {
+        OrderItem oi = new OrderItem(iProd, iQuant, iMarket);
         this.orderitems.add(oi);
+        return oi;
+    }
+    
+    public void removeOrderItem(OrderItem removeOrderItem) {
+        removeOrderItem.getItemProduct().incProdQuant(removeOrderItem.getItemQuant());
+        this.orderitems.remove(removeOrderItem);
     }
     
     public void setOrderID(int id) {
         this.orderID = id;
     }
     
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public LocalDateTime getOrderDateTime() {
+        return orderDateTime;
+    }
+    
     public ArrayList<OrderItem> getOrderItems() {
         return this.orderitems;
+    }
+    
+    public OrderItem findOrderItem(Product iProd) {
+        for (OrderItem oi : this.orderitems) {
+            if (oi.getItemProduct().equals(iProd)) {
+                return oi;
+            }
+        }
+        return null;
     }
     
     public float getTransactionAmount() {
@@ -41,5 +65,10 @@ public class Order {
             totalAmount = totalAmount + oi.getOrderItemTotal();
         }
         return totalAmount;
+    }
+    
+    @Override
+    public String toString() {
+        return String.valueOf(this.orderID);
     }
 }

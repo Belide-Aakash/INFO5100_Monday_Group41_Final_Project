@@ -80,8 +80,8 @@ public class BestStoreFinder {
                 int quantityFromThisStore = Math.min(quantityNeeded - quantityFulfilled, stockAvailable);
 
                 productRecommendations.add(Map.of(
-                        "storeName", store.getOrgName(),
-                        "productName", productName,
+                        "storeName", store,
+                        "productName", product,
                         "price", price,
                         "quantityAvailable", stockAvailable,
                         "quantityFulfilled", quantityFromThisStore,
@@ -90,9 +90,6 @@ public class BestStoreFinder {
 
                 quantityFulfilled += quantityFromThisStore;
                 totalCost += price * quantityFromThisStore;
-
-                // Reduce the stock in the store
-                product.decProdQuant(quantityFromThisStore);
             }
 
             // Handle cases where the product is not fully fulfilled

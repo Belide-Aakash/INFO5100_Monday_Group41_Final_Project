@@ -74,7 +74,7 @@ public class UserAccount {
         return this.workQueue;
     }
     
-    public MasterOrderCatalog custOrders() {
+    public MasterOrderCatalog getCustOrders() {
         return this.customerOrders;
     }
     

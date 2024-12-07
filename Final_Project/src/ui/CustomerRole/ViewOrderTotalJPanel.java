@@ -6,10 +6,16 @@ package ui.CustomerRole;
 
 import Business.AdvManagement.AdvertisementCatalog;
 import Business.AdvManagement.AdvertisementDisplay;
+import Business.Enterprise.SuperMarketEnterprise;
+import Business.OrderManagement.Order;
+import Business.OrderManagement.OrderItem;
+import Business.ProductManagement.Product;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,7 +44,7 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
         // Initialize and start the AdvertisementDisplay thread
         adDisplay = new AdvertisementDisplay(this.custAdvList, imageAdvertisement, this.userAccount.getUsername());
         
-        lblOrderTot.setText(String.valueOf(result.get("totalCost")));
+        lblOrderTot.setText("$ " + String.valueOf(result.get("totalCost")));
         
         populateOrderTable();
     }
@@ -89,7 +95,7 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(Title))
@@ -121,12 +127,17 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
         lblTotOrdAmt.setText("Total Order Amount :");
 
         lblOrderTot.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOrderTot.setText("jLabel2");
+        lblOrderTot.setText("$ 0");
 
         btnPay.setBackground(new java.awt.Color(0, 153, 255));
         btnPay.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnPay.setForeground(new java.awt.Color(255, 255, 255));
         btnPay.setText("Pay");
+        btnPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPayActionPerformed(evt);
+            }
+        });
 
         imageAdvertisement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imageAdvertisement.setText("<Advertisement>");
@@ -156,7 +167,7 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imageAdvertisement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -177,17 +188,73 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        
+        this.adDisplay.stopAdvertisementDisplay();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
+        // TODO add your handling code here:
+        // Iterating the result map
+        if (result.containsKey("recommendations")) {
+            Object recommendationsObj = result.get("recommendations");
+            
+            if (recommendationsObj instanceof Map) {
+                Map<String, List<Map<String, Object>>> recommendationsMap = 
+                    (Map<String, List<Map<String, Object>>>) recommendationsObj;
+                
+                String finalOrder = "";
+                finalOrder = finalOrder + "---------------------------------------------------------------------" + System.lineSeparator();
+                finalOrder = finalOrder + "---------------------------Order Details-----------------------------" + System.lineSeparator();
+                Order newOrder = this.userAccount.getCustOrders().newOrder();
+
+                for (Map.Entry<String, List<Map<String, Object>>> entry : recommendationsMap.entrySet()) {
+                    //String productName = entry.getKey();
+                    List<Map<String, Object>> storeDetails = entry.getValue();
+
+                    for (Map<String, Object> storeDetail : storeDetails) {
+                        String price = String.valueOf(storeDetail.get("price"));
+                        String qAvl = String.valueOf(storeDetail.get("quantityAvailable"));
+                        
+                        if (price != storeDetail.get("price") || qAvl.equalsIgnoreCase("N/A")) {
+                            Product orderProd = (Product) storeDetail.get("productName");
+                            SuperMarketEnterprise store = (SuperMarketEnterprise) storeDetail.get("storeName");
+                            String qFulfil = String.valueOf(storeDetail.get("quantityFulfilled"));
+                            String dist = String.valueOf(storeDetail.get("distance"));
+                            
+                            finalOrder = finalOrder + "Product: " + orderProd.getProdName() + System.lineSeparator();
+                            finalOrder = finalOrder + "  Store Name: " + store.getOrgName() + System.lineSeparator();
+                            finalOrder = finalOrder + "  Price: " + price + System.lineSeparator();
+                            finalOrder = finalOrder + "  Quantity ordered from the store: " + qFulfil + System.lineSeparator();
+                            
+                            OrderItem newOrderItem = newOrder.addOrderItem(orderProd, (Integer) storeDetail.get("quantityFulfilled"), store);
+                            
+                            finalOrder = finalOrder + "  Item Total: " + String.valueOf(newOrderItem.getOrderItemTotal()) + System.lineSeparator();
+                            finalOrder = finalOrder + "  Store Distance: " + dist + System.lineSeparator();
+                            finalOrder = finalOrder + "---------------------------------------------------------------------" + System.lineSeparator();
+                        }
+                    }
+                }
+                this.userAccount.getCustOrders().addSmartOrder(newOrder);
+                finalOrder = finalOrder + "Order Total: " + String.valueOf(newOrder.getTransactionAmount()) + System.lineSeparator();
+                finalOrder = finalOrder + "---------------------------------------------------------------------" + System.lineSeparator();
+                System.out.println(finalOrder);
+            }
+        }
+        
+        JOptionPane.showMessageDialog(this, "Thank you for ordering. Order has been placed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+        this.userProcessContainer.remove(this);
+        Component[] componentArray = this.userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SmartShoppingJPanel customerCartJPanel = (SmartShoppingJPanel) component;
+        customerCartJPanel.resetCart();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnPayActionPerformed
 
     private void populateOrderTable() {
         DefaultTableModel model = (DefaultTableModel) tblViewOrder.getModel();
         model.setRowCount(0);
-
-//        for (Object prodName : this.result.get("recommendations")) {
-//            Object row[] = new Object[1];
-//            row[0] = prodName;
-//            model.addRow(row);
-//        }
         
         // Iterating the result map
         if (result.containsKey("recommendations")) {
@@ -201,24 +268,30 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
                     String productName = entry.getKey();
                     List<Map<String, Object>> storeDetails = entry.getValue();
 
-                    System.out.println("Product: " + productName);
+                    //System.out.println("Product: " + productName);
 
                     for (Map<String, Object> storeDetail : storeDetails) {
-                        String storeName = (String) storeDetail.get("storeName");
-                        System.out.println("  Store Name: " + storeName);
+                        String storeName = "";
+                        try {
+                            SuperMarketEnterprise store = (SuperMarketEnterprise) storeDetail.get("storeName");
+                            storeName = (String) store.getOrgName();
+                        } catch (Exception e) {
+                            storeName = (String) storeDetail.get("storeName");
+                        }
+                        //System.out.println("  Store Name: " + storeName);
                         
                         
                         String price = String.valueOf(storeDetail.get("price"));
-                        System.out.println("  Price: " + price);
+                        //System.out.println("  Price: " + price);
                         
                         String qAvl = String.valueOf(storeDetail.get("quantityAvailable"));
-                        System.out.println("  Quantity Available: " + qAvl);
+                        //System.out.println("  Quantity Available: " + qAvl);
                         
                         String qFulfil = String.valueOf(storeDetail.get("quantityFulfilled"));
-                        System.out.println("  Quantity Fulfilled: " + qFulfil);
+                        //System.out.println("  Quantity Fulfilled: " + qFulfil);
                         
                         String dist = String.valueOf(storeDetail.get("distance"));
-                        System.out.println("  Distance: " + dist);
+                        //System.out.println("  Distance: " + dist);
                         
                         float totCost;
                         

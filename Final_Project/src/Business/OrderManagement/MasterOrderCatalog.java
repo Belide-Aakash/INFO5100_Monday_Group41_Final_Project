@@ -5,6 +5,7 @@
 package Business.OrderManagement;
 
 import Business.ProductManagement.Product;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,10 @@ public class MasterOrderCatalog {
         this.orders = new ArrayList<Order>();
     }
     
+    public ArrayList<Order> getOrders() {
+        return this.orders;
+    }
+    
     public Order newOrder() {
         Order newCustOrder = new Order();
         return newCustOrder;
@@ -30,7 +35,7 @@ public class MasterOrderCatalog {
         for(OrderItem oi : order.getOrderItems()) {
             Product getProduct = oi.getItemProduct();
             getProduct.addOrderItem(oi);
-            getProduct.decProdQuant(oi.getItemQuantity());
+            getProduct.decProdQuant(oi.getItemQuant());
         }
         this.orders.add(order);
     }
@@ -43,5 +48,26 @@ public class MasterOrderCatalog {
             getProduct.addOrderItem(oi);
         }
         this.orders.add(order);
+    }
+    
+    public float getAmountSpent() {
+        float totAmountSpent = 0;
+        
+        for (Order order : this.getOrders()) {
+            totAmountSpent = totAmountSpent + order.getTransactionAmount();
+        }
+        
+        return totAmountSpent;
+    }
+    
+    public int getNoOrders() {
+        return this.orders.size();
+    }
+    
+    public LocalDateTime getLastOrderDate() {
+        if (this.orders.size() > 0) {
+            return this.orders.get(this.orders.size() - 1).getOrderDateTime();
+        }
+        return null;
     }
 }

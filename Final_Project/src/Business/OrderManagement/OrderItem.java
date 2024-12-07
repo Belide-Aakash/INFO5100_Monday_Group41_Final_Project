@@ -16,29 +16,27 @@ public class OrderItem {
     private int itemQuant;
     private String itemFeedback;
     private int itemRating;
-    private SuperMarketEnterprise market;
+    private float buyPrice;
     
-    public OrderItem(Product iProd, int iQuant) {
-        this.itemProduct = iProd;
-        this.itemQuant = iQuant;
-    }
+    private SuperMarketEnterprise market;
     
     public OrderItem(Product iProd, int iQuant, SuperMarketEnterprise iMarket) {
         this.itemProduct = iProd;
         this.itemQuant = iQuant;
         this.market = iMarket;
+        this.buyPrice = iProd.getProdPrice();
     }
     
     public float getOrderItemTotal() {
-        return itemProduct.getProdPrice() * this.itemQuant;
+        return this.buyPrice * this.itemQuant;
     }
     
     public Product getItemProduct() {
         return this.itemProduct;
     }
     
-    public int getItemQuantity() {
-        return this.itemQuant;
+     public float getBuyPrice() {
+        return buyPrice;
     }
     
     public void setItemFeedback(String feedback) {
@@ -58,7 +56,7 @@ public class OrderItem {
     }
     
     public int getItemQuant() {
-        return itemQuant;
+        return this.itemQuant;
     }
 
     public void setItemQuant(int itemQuant) {
@@ -71,5 +69,10 @@ public class OrderItem {
 
     public void setMarket(SuperMarketEnterprise market) {
         this.market = market;
+    }
+    
+    @Override
+    public String toString() {
+        return this.itemProduct.getProdName();
     }
 }

@@ -4,11 +4,15 @@
  */
 package ui.PaymentFraudAnalystRole;
 
-import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,22 +21,24 @@ import javax.swing.JPanel;
 public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
-    Ecosystem ecosystemBusiness;
+    Network network;
     Enterprise enterprise;
-    Organization org;
     UserAccount userAccount;
 
     /**
      * Creates new form PaymentFraudAnalystWorkAreaJPanel
      */
-    public PaymentFraudAnalystWorkAreaJPanel(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Enterprise enterprise, Organization org, UserAccount userAccount) {
+    public PaymentFraudAnalystWorkAreaJPanel(JPanel userProcessContainer, Network network, Enterprise enterprise, UserAccount userAccount) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-        this.ecosystemBusiness = ecosystemBusiness;
+        this.network = network;
         this.enterprise = enterprise;
-        this.org = org;
         this.userAccount = userAccount;
+        
+        lblEnterpriseName.setText(this.enterprise.getOrgName());
+        
+        populateCustTable();
     }
 
     /**
@@ -44,19 +50,179 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        Title = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
+        lblEnterpriseNameTitle = new javax.swing.JLabel();
+        lblEnterpriseName = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblAnalyseCust = new javax.swing.JTable();
+        btnAnalyseCust = new javax.swing.JButton();
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 102));
+
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setText("Payment Fraud Analyst Work Area");
+
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(243, Short.MAX_VALUE)
+                .addComponent(Title)
+                .addGap(199, 199, 199)
+                .addComponent(btnLogout)
+                .addGap(58, 58, 58))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Title)
+                    .addComponent(btnLogout))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        lblEnterpriseNameTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblEnterpriseNameTitle.setText("Enterprise Name:");
+
+        lblEnterpriseName.setText("<enterprise>");
+
+        tblAnalyseCust.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Customer Name", "No of Orders", "Total Amount Spent", "Last Order Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblAnalyseCust);
+
+        btnAnalyseCust.setBackground(new java.awt.Color(0, 153, 255));
+        btnAnalyseCust.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnAnalyseCust.setForeground(new java.awt.Color(255, 255, 255));
+        btnAnalyseCust.setText("Analyse Customer");
+        btnAnalyseCust.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalyseCustActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 995, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(365, 365, 365)
+                        .addComponent(lblEnterpriseNameTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAnalyseCust)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEnterpriseNameTitle)
+                    .addComponent(lblEnterpriseName))
+                .addGap(69, 69, 69)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnAnalyseCust)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        this.userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.previous(this.userProcessContainer);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnAnalyseCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyseCustActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblAnalyseCust.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a request first.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // This is an advertisement request from advertisement workqueue catalog
+        UserAccount selectedUser = (UserAccount) tblAnalyseCust.getValueAt(selectedRowIndex, 0);
+
+        PaymentFraudAnalystProcessRequestJPanel paymentFraudAnalystProcessRequestJPanel = new PaymentFraudAnalystProcessRequestJPanel(this.userProcessContainer, selectedUser);
+        this.userProcessContainer.add("PaymentFraudAnalystProcessRequestJPanel",paymentFraudAnalystProcessRequestJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnAnalyseCustActionPerformed
+
+    public void populateCustTable() {
+        DefaultTableModel model = (DefaultTableModel) tblAnalyseCust.getModel();
+        model.setRowCount(0);
+        
+        for (Enterprise enterprise : this.network.getEnterpriseDirectory().getEnterpriseList()) {
+            System.out.println(enterprise.getOrgName());
+            if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.CustomerSupport) {
+                for (Organization org : enterprise.getOrgDir().getOrgList()) {
+                    System.out.println(enterprise.getOrgName());
+                    for (UserAccount userAccount : org.getUserAccountDir().getUserAccountList()) {
+                        System.out.println(userAccount.getUsername());
+                        if (userAccount.getUserRole() instanceof CustomerRole) {
+                            Object row[] = new Object[4];
+                            row[0] = userAccount;
+                            row[1] = userAccount.getCustOrders().getNoOrders();
+                            row[2] = userAccount.getCustOrders().getAmountSpent();
+                            row[3] = userAccount.getCustOrders().getLastOrderDate();
+
+                            model.addRow(row);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Title;
+    private javax.swing.JButton btnAnalyseCust;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblEnterpriseName;
+    private javax.swing.JLabel lblEnterpriseNameTitle;
+    private javax.swing.JTable tblAnalyseCust;
     // End of variables declaration//GEN-END:variables
 }

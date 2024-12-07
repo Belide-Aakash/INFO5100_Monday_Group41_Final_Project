@@ -21,7 +21,7 @@ public class PaymentFraudAnalyst extends Role {
     
      @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Network network, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new PaymentFraudAnalystWorkAreaJPanel(userProcessContainer, ecosystemBusiness, enterprise, org, userAccount);
+        return new PaymentFraudAnalystWorkAreaJPanel(userProcessContainer, network, enterprise, userAccount);
     }
     
     @Override

@@ -14,12 +14,12 @@ public class AdvertisementWorkRequest extends WorkRequest {
     // Initializing the user advertisement work request variables
     private Advertisement reqAdv;
     
-    // Getter to get advertisementRequest
+    // Getter to get reqAdv
     public Advertisement getRequestAdver() {
         return this.reqAdv;
     }
     
-    // Setter to set supplyRequest
+    // Setter to set reqAdv
     public void setRequestAdver(Advertisement advertisementRequest) {
         this.reqAdv = advertisementRequest;
     }

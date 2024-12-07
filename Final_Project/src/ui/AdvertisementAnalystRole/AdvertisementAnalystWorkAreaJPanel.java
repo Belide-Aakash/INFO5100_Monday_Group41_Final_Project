@@ -86,7 +86,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title)
                     .addComponent(btnLogout))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         lblEnterpriseNameTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -160,8 +160,8 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEnterpriseNameTitle)
                     .addComponent(lblEnterpriseName))
@@ -189,6 +189,11 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         
         if (selectedAdvReq.getReceiver() != this.userAccount) {
             JOptionPane.showMessageDialog(this, "Assign the request to yourself first.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (selectedAdvReq.getWorkStatus().equalsIgnoreCase("Completed")) {
+            JOptionPane.showMessageDialog(this, "Request already completed.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         

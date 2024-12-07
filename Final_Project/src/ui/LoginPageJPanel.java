@@ -42,13 +42,18 @@ public class LoginPageJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        companyMotto = new javax.swing.JLabel();
         lblUsername = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
+        btnSignup = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        companyMotto = new javax.swing.JLabel();
+
+        companyMotto.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        companyMotto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        companyMotto.setText("Saving Money and Time for Groceries");
 
         lblUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUsername.setText("Username");
@@ -66,6 +71,16 @@ public class LoginPageJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSignup.setBackground(new java.awt.Color(0, 153, 255));
+        btnSignup.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSignup.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignup.setText("Sign-Up");
+        btnSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignupActionPerformed(evt);
+            }
+        });
+
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -79,10 +94,6 @@ public class LoginPageJPanel extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        companyMotto.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        companyMotto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        companyMotto.setText("Saving Money and Time for Groceries");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,12 +102,13 @@ public class LoginPageJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(368, 368, 368)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnLogin)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addComponent(lblUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                         .addComponent(txtUsername)
                         .addComponent(txtPassword)
-                        .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(355, 355, 355))
             .addComponent(companyMotto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -116,7 +128,9 @@ public class LoginPageJPanel extends javax.swing.JPanel {
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnLogin)
-                .addGap(226, 226, 226))
+                .addGap(18, 18, 18)
+                .addComponent(btnSignup)
+                .addGap(185, 185, 185))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,9 +209,18 @@ public class LoginPageJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
+        // TODO add your handling code here:
+        SignupPageJPanel signupPageJPanel = new SignupPageJPanel(workAreaJPanel, business);
+        workAreaJPanel.add("SignupPageJPanel",signupPageJPanel);
+        CardLayout layout=(CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
+    }//GEN-LAST:event_btnSignupActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnSignup;
     private javax.swing.JLabel companyMotto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblPassword;

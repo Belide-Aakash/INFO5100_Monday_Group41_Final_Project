@@ -42,6 +42,13 @@ public class UserAccountDirectory {
         return userAccount;
     }
     
+    // Method to add a user account
+    //      This method takes a user account as input and then appends
+    //      it to the userAccountList
+    public void addUserAccount(UserAccount addUserAccount) {
+        this.userAccountList.add(addUserAccount);
+    }
+    
     // Method to check if a username is unique in the user account directory
     //      This method takes in username as input, iterates over all the user accounts in the user account
     //      directory, it checks it the provided username and each user account username are same, if same

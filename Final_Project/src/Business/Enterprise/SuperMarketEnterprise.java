@@ -23,6 +23,8 @@ public class SuperMarketEnterprise extends Enterprise{
     public SuperMarketEnterprise(String enterpriseName){
         super(enterpriseName, EnterpriseType.SuperMarket);
         this.prodList = new ProductCatalog();
+        // Set default lat laong to 42.3458, -71.0949
+        this.marketLatLong = new LatLong(42.3458, -71.0949);
     }
     
     public ProductCatalog getProductCatalog() {

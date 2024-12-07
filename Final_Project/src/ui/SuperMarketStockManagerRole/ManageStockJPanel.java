@@ -113,7 +113,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Product Name", "Price", "Avail"
+                "Product Name", "Price", "Availability"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -422,11 +422,12 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         SupplierEnterprise selectedSupplier = (SupplierEnterprise) cmbSupplier.getSelectedItem();
         
         if (selectedSupplier == null) {
+            JOptionPane.showMessageDialog(this, "Select a supplier from the drop down.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         if (stockItem == null) {
-            if (stock.getStockQuant() >= quant && quant > 0) {
+            if (stock.getStockQuant() >= quant && quant >= 0) {
                 if (stock.getStockQuant() == 0) {
                     JOptionPane.showMessageDialog(this, "Product out of stock.", "Warning", JOptionPane.WARNING_MESSAGE);
                     return;
@@ -435,7 +436,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 this.currentProdList.add(newstockItem);
                 stock.decStockQuant(quant);
             } else {
-                JOptionPane.showMessageDialog(this, "Please check product availability and order quantity.", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Order quantity more than product stock availability.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
         } else {
@@ -445,7 +446,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 return;
             }
             if (stockItem.getStockProd().getStockQuant() + oldQuant < quant) {
-                JOptionPane.showMessageDialog(this, "Please check product availability and order quantity.", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Order quantity more than product stock availability.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             
