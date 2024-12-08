@@ -99,7 +99,8 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         lblAdvMngrtitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdvMngrtitle.setText("Advertisement Manager Work Area");
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -112,7 +113,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(272, 272, 272)
-                .addComponent(lblAdvMngrtitle, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(lblAdvMngrtitle, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addGap(155, 155, 155)
                 .addComponent(btnLogout)
                 .addGap(54, 54, 54))
@@ -120,7 +121,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogout)
                     .addComponent(lblAdvMngrtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -154,6 +155,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblAdvMngr);
 
+        btnUpdateAdv.setBackground(new java.awt.Color(0, 153, 255));
         btnUpdateAdv.setText("Update Advertisement");
         btnUpdateAdv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +163,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnAddAdv.setBackground(new java.awt.Color(0, 153, 255));
         btnAddAdv.setText("Add Advertisements");
         btnAddAdv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +171,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCreateAR.setBackground(new java.awt.Color(0, 153, 255));
         btnCreateAR.setText("Create Analysis Request");
         btnCreateAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +179,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewReq.setBackground(new java.awt.Color(0, 153, 255));
         btnViewReq.setText("View Requests");
         btnViewReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +191,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1013, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

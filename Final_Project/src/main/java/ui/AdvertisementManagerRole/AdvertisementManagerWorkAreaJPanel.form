@@ -82,7 +82,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
-                  <Component id="lblAdvMngrtitle" pref="460" max="32767" attributes="0"/>
+                  <Component id="lblAdvMngrtitle" pref="500" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                   <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
@@ -92,7 +92,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAdvMngrtitle" min="-2" pref="30" max="-2" attributes="0"/>
@@ -114,7 +114,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnLogout">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Logout"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="0" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/power-off.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
@@ -192,6 +197,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnUpdateAdv">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Update Advertisement"/>
       </Properties>
       <Events>
@@ -200,6 +208,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAddAdv">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add Advertisements"/>
       </Properties>
       <Events>
@@ -208,6 +219,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCreateAR">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Create Analysis Request"/>
       </Properties>
       <Events>
@@ -216,6 +230,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnViewReq">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="View Requests"/>
       </Properties>
       <Events>

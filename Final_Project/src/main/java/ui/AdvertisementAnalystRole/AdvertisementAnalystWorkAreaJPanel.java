@@ -43,7 +43,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         lblEnterpriseName.setText(this.enterprise.getOrgName());
         
         // Get the table header
-        JTableHeader header = tblViewAdvAR.getTableHeader();
+        JTableHeader header = tblAdvAnlWork.getTableHeader();
         
         // Customize the header background and text color
         header.setDefaultRenderer(new DefaultTableCellRenderer() {
@@ -83,7 +83,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         lblEnterpriseNameTitle = new javax.swing.JLabel();
         lblEnterpriseName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblViewAdvAR = new javax.swing.JTable();
+        tblAdvAnlWork = new javax.swing.JTable();
         btnAsgnMe = new javax.swing.JButton();
         btnAnalyse = new javax.swing.JButton();
 
@@ -94,7 +94,8 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Advertisement Analyst Work Area");
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -119,7 +120,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title)
                     .addComponent(btnLogout))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         lblEnterpriseNameTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -127,7 +128,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
 
         lblEnterpriseName.setText("<enterprise>");
 
-        tblViewAdvAR.setModel(new javax.swing.table.DefaultTableModel(
+        tblAdvAnlWork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -146,7 +147,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblViewAdvAR);
+        jScrollPane1.setViewportView(tblAdvAnlWork);
 
         btnAsgnMe.setBackground(new java.awt.Color(0, 153, 255));
         btnAsgnMe.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -172,7 +173,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -184,10 +185,10 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnAsgnMe)
+                                .addGap(543, 543, 543)
+                                .addComponent(btnAsgnMe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(27, 27, 27)
-                                .addComponent(btnAnalyse)
+                                .addComponent(btnAnalyse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(28, 28, 28))
                             .addComponent(jScrollPane1))))
                 .addGap(104, 104, 104))
@@ -212,7 +213,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAnalyseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyseActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblViewAdvAR.getSelectedRow();
+        int selectedRowIndex = tblAdvAnlWork.getSelectedRow();
         
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select an advertisement request first.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -220,7 +221,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         // This is an advertisement request from advertisement workqueue catalog
-        AdvertisementWorkRequest selectedAdvReq = (AdvertisementWorkRequest) tblViewAdvAR.getValueAt(selectedRowIndex, 2);
+        AdvertisementWorkRequest selectedAdvReq = (AdvertisementWorkRequest) tblAdvAnlWork.getValueAt(selectedRowIndex, 2);
         
         if (selectedAdvReq.getReceiver() != this.userAccount) {
             JOptionPane.showMessageDialog(this, "Assign the request to yourself first.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -240,7 +241,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAsgnMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsgnMeActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblViewAdvAR.getSelectedRow();
+        int selectedRowIndex = tblAdvAnlWork.getSelectedRow();
         
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select an advertisement request first.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -248,7 +249,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         // This is an advertisement request from advertisement workqueue catalog
-        AdvertisementWorkRequest selectedAdvReq = (AdvertisementWorkRequest) tblViewAdvAR.getValueAt(selectedRowIndex, 2);
+        AdvertisementWorkRequest selectedAdvReq = (AdvertisementWorkRequest) tblAdvAnlWork.getValueAt(selectedRowIndex, 2);
         
         if (selectedAdvReq.getWorkStatus().equalsIgnoreCase("Completed")) {
             JOptionPane.showMessageDialog(this, "Request already completed.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -269,7 +270,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     public void populateAdvReqs() {
-        DefaultTableModel model = (DefaultTableModel) tblViewAdvAR.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblAdvAnlWork.getModel();
         model.setRowCount(0);
 
         for (WorkRequest workReq : this.enterprise.getWorkQueue().getWorkQueue()) {
@@ -294,6 +295,6 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEnterpriseName;
     private javax.swing.JLabel lblEnterpriseNameTitle;
-    private javax.swing.JTable tblViewAdvAR;
+    private javax.swing.JTable tblAdvAnlWork;
     // End of variables declaration//GEN-END:variables
 }
