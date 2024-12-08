@@ -74,9 +74,9 @@ public class ViewMarketRequestsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(btnBack)
-                .addGap(333, 333, 333)
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                .addGap(394, 394, 394))
+                .addGap(276, 276, 276)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(451, 451, 451))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
