@@ -213,8 +213,8 @@ public class UpdateProductQuantityJPanel extends javax.swing.JPanel {
         this.userProcessContainer.remove(this);
         Component[] componentArray = this.userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SupplierStockManagerWorkAreaJPanel supplierStockManagerWorkAreaJPanel = (SupplierStockManagerWorkAreaJPanel) component;
-        supplierStockManagerWorkAreaJPanel.populateStockTable();
+        ManageStockJPanel manageStockJPanel = (ManageStockJPanel) component;
+        manageStockJPanel.populateStockTable();
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.previous(this.userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed

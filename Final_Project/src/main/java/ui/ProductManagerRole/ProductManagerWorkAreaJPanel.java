@@ -86,6 +86,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         btnLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStockDetails = new javax.swing.JTable();
+        btnViewSupReqs = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -144,6 +145,19 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblStockDetails);
 
+        btnViewSupReqs.setBackground(new java.awt.Color(0, 153, 255));
+        btnViewSupReqs.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnViewSupReqs.setForeground(new java.awt.Color(255, 255, 255));
+        btnViewSupReqs.setText("View Supplier Requests");
+        btnViewSupReqs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewSupReqsActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setBackground(new java.awt.Color(0, 153, 255));
+        btnAdd.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add Product");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +165,9 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnView.setBackground(new java.awt.Color(0, 153, 255));
+        btnView.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnView.setForeground(new java.awt.Color(255, 255, 255));
         btnView.setText("View Details");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +175,9 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(0, 153, 255));
+        btnDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete Product");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,14 +194,16 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(btnViewSupReqs)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
                 .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,12 +211,13 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnView)
-                    .addComponent(btnDelete))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addComponent(btnDelete)
+                    .addComponent(btnViewSupReqs))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,6 +267,14 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         populateStockTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnViewSupReqsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewSupReqsActionPerformed
+        // TODO add your handling code here:
+        ViewSupplierRequestsJPanel viewSupplierRequestsJPanel = new ViewSupplierRequestsJPanel(this.userProcessContainer, this.enterprise, this.userAccount);
+        this.userProcessContainer.add("ViewSupplierRequestsJPanel",viewSupplierRequestsJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnViewSupReqsActionPerformed
+
     public void populateStockTable() {
         DefaultTableModel model = (DefaultTableModel) tblStockDetails.getModel();
         model.setRowCount(0);
@@ -263,6 +294,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnView;
+    private javax.swing.JButton btnViewSupReqs;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblStockDetails;

@@ -34,6 +34,8 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.org = org;
         this.userAccount = userAccount;
+        
+        lbltitle.setText(this.enterprise.getOrgName());
     }
 
     /**
@@ -48,8 +50,11 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         lbltitle = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         btnMngStock = new javax.swing.JButton();
         btnViewStkCatalog = new javax.swing.JButton();
+        btnViewMarket = new javax.swing.JButton();
+        btnViewSupReqs = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 102));
@@ -58,7 +63,9 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         lbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltitle.setText("WELCOME");
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
+        btnLogout.setBorder(null);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -70,9 +77,9 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
-                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
+                .addGap(195, 195, 195)
+                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                .addGap(163, 163, 163)
                 .addComponent(btnLogout)
                 .addGap(32, 32, 32))
         );
@@ -80,11 +87,13 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLogout)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Supermarket workers-pana.png"))); // NOI18N
 
         btnMngStock.setBackground(new java.awt.Color(0, 153, 255));
         btnMngStock.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -106,30 +115,60 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewMarket.setBackground(new java.awt.Color(0, 153, 255));
+        btnViewMarket.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnViewMarket.setForeground(new java.awt.Color(255, 255, 255));
+        btnViewMarket.setText("View Market Details");
+        btnViewMarket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewMarketActionPerformed(evt);
+            }
+        });
+
+        btnViewSupReqs.setBackground(new java.awt.Color(0, 153, 255));
+        btnViewSupReqs.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnViewSupReqs.setForeground(new java.awt.Color(255, 255, 255));
+        btnViewSupReqs.setText("View Supplier Requests");
+        btnViewSupReqs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewSupReqsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(420, 420, 420)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnViewStkCatalog)
-                    .addComponent(btnMngStock, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jLabel1)
+                .addGap(156, 156, 156)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnViewSupReqs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewMarket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewStkCatalog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMngStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(165, 165, 165))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMngStock, btnViewStkCatalog});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(201, 201, 201)
-                .addComponent(btnMngStock)
-                .addGap(18, 18, 18)
-                .addComponent(btnViewStkCatalog)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(btnMngStock)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewStkCatalog)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewMarket)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewSupReqs)))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMngStock, btnViewStkCatalog});
@@ -159,11 +198,30 @@ public class SuperMarketStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         layout.previous(this.userProcessContainer);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnViewMarketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMarketActionPerformed
+        // TODO add your handling code here:
+        ViewMarketJPanel viewMarketJPanel = new ViewMarketJPanel(this.userProcessContainer, this.enterprise);
+        this.userProcessContainer.add("ViewMarketJPanel",viewMarketJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnViewMarketActionPerformed
+
+    private void btnViewSupReqsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewSupReqsActionPerformed
+        // TODO add your handling code here:
+        ViewSupplierRequestsJPanel viewSupplierRequestsJPanel = new ViewSupplierRequestsJPanel(this.userProcessContainer, this.enterprise, this.userAccount);
+        this.userProcessContainer.add("ViewSupplierRequestsJPanel",viewSupplierRequestsJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnViewSupReqsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMngStock;
+    private javax.swing.JButton btnViewMarket;
     private javax.swing.JButton btnViewStkCatalog;
+    private javax.swing.JButton btnViewSupReqs;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbltitle;
     // End of variables declaration//GEN-END:variables

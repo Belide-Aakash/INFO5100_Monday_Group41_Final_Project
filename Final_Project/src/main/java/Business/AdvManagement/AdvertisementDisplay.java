@@ -88,7 +88,7 @@ public class AdvertisementDisplay {
                 Advertisement clickedAdv = advList.get((currentAdvIndex - 1 + advList.size()) % advList.size());
                 clickedAdv.addClickCount();
                 clickedAdv.addClickStream(username);
-                System.out.println("Click count for " + clickedAdv.getAdvName() + ": " + clickedAdv.getAdvClickCount());
+                //System.out.println("Click count for " + clickedAdv.getAdvName() + ": " + clickedAdv.getAdvClickCount());
             }
         }
     });

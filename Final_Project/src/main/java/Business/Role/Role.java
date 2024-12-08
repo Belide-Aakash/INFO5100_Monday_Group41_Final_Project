@@ -22,7 +22,7 @@ public abstract class Role {
     public enum RoleType {
         SupportManager("Customer Support Manager"),
         ProductManager("Product Manager"),
-        StockManager("Supplier Stock Manager"),
+        SupplierStockManager("Supplier Stock Manager"),
         SuperMarketStockManager("Super Market Stock Manager"),
         AdvertisementManager("Advertisement Manager"),
         AdvertisementAnalyst("Advertisement Analyst"),

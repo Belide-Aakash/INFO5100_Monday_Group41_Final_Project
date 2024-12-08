@@ -4,8 +4,12 @@
  */
 package ui.AdvertisementManagerRole;
 
+import static Business.AdvManagement.AdvertisementVisualizations.showBarChart;
+import static Business.AdvManagement.AdvertisementVisualizations.showClickTable;
 import Business.WorkQueue.AdvertisementWorkRequest;
 import java.awt.CardLayout;
+import java.util.List;
+import java.util.Map;
 import javax.swing.JPanel;
 
 /**
@@ -25,7 +29,19 @@ public class ViewAdvRequestAnalysisJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.selectedAdvReq = selectedAdvReq;
         
-        txtArAnalysis.setText(this.selectedAdvReq.getResult());
+        String result = this.selectedAdvReq.getResult();
+        
+        txtArAnalysis.setText(result);
+        
+        if (!result.equalsIgnoreCase("N/A")) {
+            // Top n (Max 5) Customers
+            List<Map.Entry<String, Integer>> topCustomers = selectedAdvReq.getRequestAdver().getTop5Customers();
+            showBarChart(topCustomers);
+
+            // Click Counts
+            Map<String, Integer> clickData = selectedAdvReq.getRequestAdver().getClicksInTimeFrame(this.selectedAdvReq.getResolutionDate());
+            showClickTable(clickData);
+        }
     }
 
     /**
