@@ -76,6 +76,9 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         Title = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
 
+        btnSearchProduct.setBackground(new java.awt.Color(0, 153, 255));
+        btnSearchProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSearchProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnSearchProduct.setText("Search Product");
         btnSearchProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +129,9 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblProductCatalog);
 
+        btnModifyQuantity.setBackground(new java.awt.Color(0, 153, 255));
+        btnModifyQuantity.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnModifyQuantity.setForeground(new java.awt.Color(255, 255, 255));
         btnModifyQuantity.setText("Modify Quantity");
         btnModifyQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +142,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         lblSalesPrice.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblSalesPrice.setText("Sales Price:");
 
+        btnRemoveOrderItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRemoveOrderItem.setText("Remove");
         btnRemoveOrderItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +153,9 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         lblQuantity.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblQuantity.setText("Quantity:");
 
-        btnCheckOut.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        btnCheckOut.setBackground(new java.awt.Color(0, 153, 255));
+        btnCheckOut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCheckOut.setForeground(new java.awt.Color(255, 255, 255));
         btnCheckOut.setText("Checkout");
         btnCheckOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +168,9 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         lblSupplier.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblSupplier.setText("Supplier:");
 
+        btnAddToCart.setBackground(new java.awt.Color(0, 153, 255));
+        btnAddToCart.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAddToCart.setForeground(new java.awt.Color(255, 255, 255));
         btnAddToCart.setText("Add to Cart");
         btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +191,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Manage Stock");
 
+        btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +207,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 .addGap(47, 47, 47)
                 .addComponent(btnBack)
                 .addGap(329, 329, 329)
-                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                 .addGap(390, 390, 390))
         );
         jPanel2Layout.setVerticalGroup(
@@ -241,13 +254,13 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                                     .addComponent(btnModifyQuantity)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(txtNewQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(28, 28, 28)
                                     .addComponent(btnSearchProduct))
-                                .addComponent(btnRemoveOrderItem, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(btnRemoveOrderItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jScrollPane1)
                         .addComponent(jScrollPane2)
                         .addGroup(layout.createSequentialGroup()
@@ -276,7 +289,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearchProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSalesPrice)
@@ -285,7 +298,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                     .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddToCart))
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRemoveOrderItem)

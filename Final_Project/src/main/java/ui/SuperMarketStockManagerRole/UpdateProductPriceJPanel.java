@@ -60,7 +60,8 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
         lbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltitle.setText("Update Product Price");
 
-        btnBack.setText("<< Back");
+        btnBack.setBackground(new java.awt.Color(0, 153, 255));
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -75,8 +76,8 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
                 .addGap(52, 52, 52)
                 .addComponent(btnBack)
                 .addGap(237, 237, 237)
-                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(356, 356, 356))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,7 +86,7 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         lblProductName.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -103,6 +104,9 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
 
         txtQuantity.setEnabled(false);
 
+        btnUpdate.setBackground(new java.awt.Color(0, 153, 255));
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +114,9 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSave.setBackground(new java.awt.Color(0, 153, 255));
+        btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");
         btnSave.setEnabled(false);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -130,14 +137,15 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
                     .addComponent(lblQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtProductName)
-                        .addComponent(txtSalesPrice)
-                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtProductName)
+                    .addComponent(txtSalesPrice)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(60, 60, 60)))
+                .addGap(362, 362, 362))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -163,7 +171,7 @@ public class UpdateProductPriceJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdate)
                 .addGap(18, 18, 18)
                 .addComponent(btnSave)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblProductName, lblQuantity, lblSalesPrice});

@@ -55,6 +55,7 @@ public class CreateSupplierRequestJPanel extends javax.swing.JPanel {
         lbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltitle.setText("Create Supplier Request");
 
+        btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
