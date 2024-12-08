@@ -47,7 +47,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         
         // Get the table header
-        JTableHeader header = tblStockDetails.getTableHeader();
+        JTableHeader header = tblProdCatalog.getTableHeader();
         
         // Customize the header background and text color
         header.setDefaultRenderer(new DefaultTableCellRenderer() {
@@ -85,7 +85,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         Title = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblStockDetails = new javax.swing.JTable();
+        tblProdCatalog = new javax.swing.JTable();
         btnViewSupReqs = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
@@ -94,9 +94,11 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Manage Product catalog");
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -108,9 +110,9 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Title)
-                .addGap(244, 244, 244)
+                .addGap(350, 350, 350)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(258, 258, 258)
                 .addComponent(btnLogout)
                 .addGap(78, 78, 78))
         );
@@ -118,13 +120,13 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Title)
-                    .addComponent(btnLogout))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLogout)
+                    .addComponent(Title))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        tblStockDetails.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdCatalog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -143,7 +145,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblStockDetails);
+        jScrollPane1.setViewportView(tblProdCatalog);
 
         btnViewSupReqs.setBackground(new java.awt.Color(0, 153, 255));
         btnViewSupReqs.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -191,33 +193,34 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(btnViewSupReqs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1)))
                 .addGap(37, 37, 37))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(btnViewSupReqs)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnView)
                     .addComponent(btnDelete)
+                    .addComponent(btnView)
+                    .addComponent(btnAdd)
                     .addComponent(btnViewSupReqs))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(104, 104, 104))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -237,14 +240,14 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        int selectedRowIndex = tblStockDetails.getSelectedRow();
+        int selectedRowIndex = tblProdCatalog.getSelectedRow();
         
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        Stock stock = (Stock) tblStockDetails.getValueAt(selectedRowIndex, 1);
+        Stock stock = (Stock) tblProdCatalog.getValueAt(selectedRowIndex, 1);
         
         ViewProductJPanel viewProductJPanel = new ViewProductJPanel(this.userProcessContainer, stock);
         this.userProcessContainer.add("ViewProductJPanel",viewProductJPanel);
@@ -253,14 +256,14 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int selectedRowIndex = tblStockDetails.getSelectedRow();
+        int selectedRowIndex = tblProdCatalog.getSelectedRow();
         
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        Stock stock = (Stock) tblStockDetails.getValueAt(selectedRowIndex, 1);
+        Stock stock = (Stock) tblProdCatalog.getValueAt(selectedRowIndex, 1);
         
         this.enterprise.getStockCatalog().removeStock(stock);
         
@@ -276,7 +279,7 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewSupReqsActionPerformed
 
     public void populateStockTable() {
-        DefaultTableModel model = (DefaultTableModel) tblStockDetails.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblProdCatalog.getModel();
         model.setRowCount(0);
         
         for (Stock stock : this.enterprise.getStockCatalog().getStockList()){
@@ -297,6 +300,6 @@ public class ProductManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnViewSupReqs;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblStockDetails;
+    private javax.swing.JTable tblProdCatalog;
     // End of variables declaration//GEN-END:variables
 }

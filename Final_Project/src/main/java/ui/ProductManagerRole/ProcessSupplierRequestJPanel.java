@@ -49,9 +49,11 @@ public class ProcessSupplierRequestJPanel extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(0, 153, 255));
 
         Title3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title3.setText("Process Request");
 
-        btnBack3.setText("<< Back");
+        btnBack3.setBackground(new java.awt.Color(0, 153, 255));
+        btnBack3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
         btnBack3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBack3ActionPerformed(evt);
@@ -65,8 +67,8 @@ public class ProcessSupplierRequestJPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(btnBack3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
-                .addComponent(Title3)
+                .addGap(320, 320, 320)
+                .addComponent(Title3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                 .addGap(394, 394, 394))
         );
         jPanel4Layout.setVerticalGroup(
@@ -102,15 +104,16 @@ public class ProcessSupplierRequestJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(253, 253, 253)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblResponse)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1)
                         .addGap(377, 377, 377))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSubmit)
+                        .addGap(192, 192, 192)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(453, 453, 453))))
         );
         layout.setVerticalGroup(
@@ -126,7 +129,7 @@ public class ProcessSupplierRequestJPanel extends javax.swing.JPanel {
                         .addComponent(lblResponse)))
                 .addGap(44, 44, 44)
                 .addComponent(btnSubmit)
-                .addGap(0, 189, Short.MAX_VALUE))
+                .addGap(0, 184, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,18 +164,9 @@ public class ProcessSupplierRequestJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Title;
-    private javax.swing.JLabel Title1;
-    private javax.swing.JLabel Title2;
     private javax.swing.JLabel Title3;
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnBack1;
-    private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnBack3;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblResponse;
