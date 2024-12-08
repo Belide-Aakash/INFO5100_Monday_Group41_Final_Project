@@ -9,9 +9,16 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.AdvertisementWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -35,6 +42,29 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         
         lblEnterpriseName.setText(this.enterprise.getOrgName());
         
+        // Get the table header
+        JTableHeader header = tblViewAdvAR.getTableHeader();
+        
+        // Customize the header background and text color
+        header.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
+
         populateAdvReqs();
     }
 
@@ -61,6 +91,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 102));
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Advertisement Analyst Work Area");
 
         btnLogout.setText("Logout");
@@ -75,9 +106,9 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(251, Short.MAX_VALUE)
-                .addComponent(Title)
-                .addGap(199, 199, 199)
+                .addGap(252, 252, 252)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(232, 232, 232)
                 .addComponent(btnLogout)
                 .addGap(58, 58, 58))
         );
@@ -88,7 +119,7 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title)
                     .addComponent(btnLogout))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         lblEnterpriseNameTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -145,19 +176,21 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(365, 365, 365)
+                        .addGap(359, 359, 359)
                         .addComponent(lblEnterpriseNameTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(lblEnterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnAsgnMe)
-                                .addGap(43, 43, 43)
-                                .addComponent(btnAnalyse))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(27, 27, 27)
+                                .addComponent(btnAnalyse)
+                                .addGap(28, 28, 28))
+                            .addComponent(jScrollPane1))))
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,12 +201,12 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(lblEnterpriseNameTitle)
                     .addComponent(lblEnterpriseName))
                 .addGap(69, 69, 69)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAsgnMe)
                     .addComponent(btnAnalyse))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
         );
     }// </editor-fold>//GEN-END:initComponents
 
