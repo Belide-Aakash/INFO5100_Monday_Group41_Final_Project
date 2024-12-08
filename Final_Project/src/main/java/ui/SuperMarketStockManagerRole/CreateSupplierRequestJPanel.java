@@ -55,7 +55,7 @@ public class CreateSupplierRequestJPanel extends javax.swing.JPanel {
         lbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltitle.setText("Create Supplier Request");
 
-        btnBack.setText("<<< Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -70,8 +70,8 @@ public class CreateSupplierRequestJPanel extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addComponent(btnBack)
                 .addGap(221, 221, 221)
-                .addComponent(lbltitle)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(381, 381, 381))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +80,7 @@ public class CreateSupplierRequestJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         lblMessage.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -106,9 +106,12 @@ public class CreateSupplierRequestJPanel extends javax.swing.JPanel {
                 .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCreateReq)
-                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtMessage)
+                        .addGap(374, 374, 374))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCreateReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(445, 445, 445))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

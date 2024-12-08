@@ -21,7 +21,7 @@
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="btnCheckOut" min="-2" pref="216" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -35,7 +35,7 @@
                                   <Component id="txtNewQuantity" min="-2" pref="103" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="365" max="32767" attributes="0"/>
+                          <EmptySpace pref="341" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="txtSearch" min="-2" pref="132" max="-2" attributes="0"/>
@@ -66,7 +66,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,7 +74,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSupplier" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="cmbSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -82,7 +82,7 @@
                   <Component id="btnSearchProduct" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="100" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSalesPrice" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -92,8 +92,8 @@
                   <Component id="btnAddToCart" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="110" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" pref="110" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnRemoveOrderItem" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNewQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -101,7 +101,7 @@
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="btnCheckOut" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -295,7 +295,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel2" alignment="0" pref="1000" max="32767" attributes="0"/>
+              <Component id="jPanel2" alignment="0" pref="976" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -319,23 +319,28 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
-                      <Component id="Title" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="412" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="329" max="-2" attributes="0"/>
+                      <Component id="Title" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="390" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Title" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="Title" min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -346,12 +351,15 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Manage Stock"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnBack">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Images/arrow.png"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
