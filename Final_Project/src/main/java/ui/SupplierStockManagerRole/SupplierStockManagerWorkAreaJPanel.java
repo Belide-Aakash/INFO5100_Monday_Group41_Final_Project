@@ -67,7 +67,8 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         lbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltitle.setText("Supplier Stock Manager Work Area");
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -79,8 +80,8 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
-                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(314, 314, 314)
+                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addGap(156, 156, 156)
                 .addComponent(btnLogout)
                 .addGap(34, 34, 34))
@@ -92,7 +93,7 @@ public class SupplierStockManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Supermarket workers-pana.png"))); // NOI18N
