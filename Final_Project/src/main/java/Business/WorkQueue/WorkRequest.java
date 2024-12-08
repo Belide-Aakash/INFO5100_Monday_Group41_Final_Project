@@ -5,7 +5,7 @@
 package Business.WorkQueue;
 
 import Business.UserAccount.UserAccount;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -18,12 +18,12 @@ public abstract class WorkRequest {
     private UserAccount receiver;
     private String workStatus;
     private String result;
-    private Date requestedDate;
-    private Date resolutionDate;
+    private LocalDateTime requestedDate;
+    private LocalDateTime resolutionDate;
     
     // This initiates the requestedDate with a Date
     public WorkRequest() {
-        requestedDate = new Date();
+        requestedDate = LocalDateTime.now();
     }
     
     // Getter to get the message
@@ -67,22 +67,22 @@ public abstract class WorkRequest {
     }
     
     // Getter to get the requestedDate
-    public Date getRequestedDate() {
+    public LocalDateTime getRequestedDate() {
         return this.requestedDate;
     }
     
     // Setter to set the requestedDate
-    public void setRequestedDate(Date requestedDate) {
+    public void setRequestedDate(LocalDateTime requestedDate) {
         this.requestedDate = requestedDate;
     }
     
     // Getter to get the resolutionDate
-    public Date getResolutionDate() {
+    public LocalDateTime getResolutionDate() {
         return this.resolutionDate;
     }
     
     // Setter to set the resolutionDate
-    public void setResolutionDate(Date resolutionDate) {
+    public void setResolutionDate(LocalDateTime resolutionDate) {
         this.resolutionDate = resolutionDate;
     }
     

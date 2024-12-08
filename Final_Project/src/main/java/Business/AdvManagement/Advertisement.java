@@ -5,8 +5,13 @@
 package Business.AdvManagement;
 
 import Business.Geolocation.LatLong;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 /**
  *
@@ -111,6 +116,43 @@ public class Advertisement {
 
     public void setClickStream(ArrayList<ArrayList<Object>> clickStream) {
         this.clickStream = clickStream;
+    }
+    
+    public List<Map.Entry<String, Integer>> getTop5Customers() {
+        Map<String, Integer> customerClickMap = new HashMap<>();
+
+        for (ArrayList<Object> click : this.clickStream) {
+            String username = (String) click.get(0);
+            customerClickMap.put(username, customerClickMap.getOrDefault(username, 0) + 1);
+        }
+
+        // Sort the map entries by click count in descending order and limit to top 5
+        return customerClickMap.entrySet()
+                               .stream()
+                               .sorted((a, b) -> b.getValue() - a.getValue())
+                               .limit(5)
+                               .collect(Collectors.toList());
+    }
+    
+    public Map<String, Integer> getClicksInTimeFrame(LocalDateTime inTime) {
+        LocalDateTime nowTime = inTime;
+        int count1Min = 0, count5Min = 0, count10Min = 0;
+
+        for (ArrayList<Object> click : this.clickStream) {
+            LocalDateTime clickTime = (LocalDateTime) click.get(1);
+            Duration duration = Duration.between(clickTime, nowTime);
+
+            if (duration.toMinutes() <= 1) count1Min++;
+            if (duration.toMinutes() <= 5) count5Min++;
+            if (duration.toMinutes() <= 10) count10Min++;
+        }
+
+        Map<String, Integer> result = new HashMap<>();
+        result.put("1 Minute", count1Min);
+        result.put("5 Minutes", count5Min);
+        result.put("10 Minutes", count10Min);
+
+        return result;
     }
 
     public ImageIcon getAdvImage() {

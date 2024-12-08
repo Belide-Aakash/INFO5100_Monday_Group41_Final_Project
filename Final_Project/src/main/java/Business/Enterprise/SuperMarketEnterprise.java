@@ -4,6 +4,7 @@
  */
 package Business.Enterprise;
 
+import static Business.Geolocation.GetLocation.getAddress;
 import Business.Geolocation.LatLong;
 import Business.Organization.Organization;
 import Business.ProductManagement.ProductCatalog;
@@ -34,6 +35,10 @@ public class SuperMarketEnterprise extends Enterprise{
     // Getter to get the superMarketLocation
     public String getSuperMarketLocation() {
         return this.superMarketLocation;
+    }
+    
+    public void setSuperMarketLatLongLocation() {
+        this.superMarketLocation = getAddress(marketLatLong.getLatitude(), marketLatLong.getLongitude());
     }
     
     // Setter to set the superMarketLocation

@@ -11,6 +11,7 @@ import Business.Enterprise.AdvertisementEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.SuperMarketEnterprise;
 import Business.Network.Network;
+import Business.Organization.Organization;
 import Business.ProductManagement.Product;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -29,6 +30,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     Enterprise enterprise;
     Network network;
+    Organization org;
     UserAccount userAccount;
     Set<String> allProductList = new HashSet<>();
     AdvertisementCatalog custAdvList = new AdvertisementCatalog();
@@ -40,12 +42,13 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CustomerWorkAreaJPanel
      */
-    public CustomerWorkAreaJPanel(JPanel userProcessContainer, Network network, Enterprise enterprise, UserAccount userAccount) {
+    public CustomerWorkAreaJPanel(JPanel userProcessContainer, Network network, Enterprise enterprise, Organization org, UserAccount userAccount) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.network = network;
+        this.org = org;
         this.userAccount = userAccount;
         
         for (Enterprise enter : this.network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -95,13 +98,17 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         btnSmartShop = new javax.swing.JButton();
         btnShop = new javax.swing.JButton();
         btnViewOrders = new javax.swing.JButton();
+        btnViewProfile = new javax.swing.JButton();
         imageAdvertisement = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1000, 650));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
+        btnLogout.setBorder(null);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -118,7 +125,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(138, 138, 138)
-                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
                 .addGap(101, 101, 101)
                 .addComponent(btnLogout)
                 .addGap(32, 32, 32))
@@ -163,21 +170,36 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewProfile.setBackground(new java.awt.Color(0, 153, 255));
+        btnViewProfile.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnViewProfile.setForeground(new java.awt.Color(255, 255, 255));
+        btnViewProfile.setText("View Profile");
+        btnViewProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewProfileActionPerformed(evt);
+            }
+        });
+
         imageAdvertisement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imageAdvertisement.setText("<Advertisement>");
         imageAdvertisement.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fruit shop-rafiki.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(397, 397, 397)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel1)
+                .addGap(123, 123, 123)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSmartShop, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                     .addComponent(btnShop, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(btnViewOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addGap(279, 279, 279)
+                    .addComponent(btnViewOrders, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(btnViewProfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addGap(183, 183, 183)
                 .addComponent(imageAdvertisement, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,15 +211,22 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
-                        .addComponent(imageAdvertisement, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                        .addComponent(imageAdvertisement, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                         .addGap(104, 104, 104))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(btnSmartShop)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnShop)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnViewOrders)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(195, 195, 195)
+                                .addComponent(btnSmartShop)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnShop)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnViewOrders)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnViewProfile))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(jLabel1)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -245,6 +274,17 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(this.userProcessContainer);
     }//GEN-LAST:event_btnShopActionPerformed
 
+    private void btnViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfileActionPerformed
+        // TODO add your handling code here:
+        // Stop the advertisements
+        stopAdv();
+        
+        ViewProfileJPanel viewProfileJPanel = new ViewProfileJPanel(this.userProcessContainer, this.org, this.userAccount, this.custAdvList);
+        this.userProcessContainer.add("ViewProfileJPanel",viewProfileJPanel);
+        CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
+        layout.next(this.userProcessContainer);
+    }//GEN-LAST:event_btnViewProfileActionPerformed
+
     public void startAdv() {
         // Initialize and start the AdvertisementDisplay thread
         adDisplay = new AdvertisementDisplay(this.custAdvList, imageAdvertisement, this.userAccount.getUsername());
@@ -261,7 +301,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnShop;
     private javax.swing.JButton btnSmartShop;
     private javax.swing.JButton btnViewOrders;
+    private javax.swing.JButton btnViewProfile;
     private javax.swing.JLabel imageAdvertisement;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

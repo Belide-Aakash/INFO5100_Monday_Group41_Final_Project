@@ -21,7 +21,7 @@ import ui.SupplierStockManagerRole.SupplierStockManagerWorkAreaJPanel;
 public class SupplierStockManagerRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Ecosystem ecosystemBusiness, Network network, Enterprise enterprise, Organization org, UserAccount userAccount) {
-        return new SupplierStockManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, (SupplierEnterprise) enterprise, org, userAccount);
+        return new SupplierStockManagerWorkAreaJPanel(userProcessContainer, ecosystemBusiness, network, (SupplierEnterprise) enterprise, org, userAccount);
     }
     
     @Override

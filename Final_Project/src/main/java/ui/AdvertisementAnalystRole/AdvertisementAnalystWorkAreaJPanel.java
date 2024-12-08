@@ -217,6 +217,11 @@ public class AdvertisementAnalystWorkAreaJPanel extends javax.swing.JPanel {
         // This is an advertisement request from advertisement workqueue catalog
         AdvertisementWorkRequest selectedAdvReq = (AdvertisementWorkRequest) tblViewAdvAR.getValueAt(selectedRowIndex, 2);
         
+        if (selectedAdvReq.getWorkStatus().equalsIgnoreCase("Completed")) {
+            JOptionPane.showMessageDialog(this, "Request already completed.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         selectedAdvReq.setReceiver(this.userAccount);
         
         JOptionPane.showMessageDialog(this, "Assigned the request to you.", "Success", JOptionPane.INFORMATION_MESSAGE);

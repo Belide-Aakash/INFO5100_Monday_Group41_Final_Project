@@ -4,9 +4,14 @@
  */
 package ui.AdvertisementAnalystRole;
 
+import static Business.AdvManagement.AdvertisementVisualizations.showBarChart;
+import static Business.AdvManagement.AdvertisementVisualizations.showClickTable;
 import Business.WorkQueue.AdvertisementWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -17,6 +22,7 @@ import javax.swing.JPanel;
 public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     AdvertisementWorkRequest selectedAdvReq;
+    LocalDateTime anlTime;
 
     /**
      * Creates new form AdvertisementAnalystProcessRequestJPanel
@@ -28,8 +34,24 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
         this.selectedAdvReq = selectedAdvReq;
         
         String output = "";
-        output = output + "Advertisement Click Count: " + String.valueOf(this.selectedAdvReq.getRequestAdver().getAdvClickCount()) + System.lineSeparator();
-        output = output + "Clickstream data: " + String.valueOf(this.selectedAdvReq.getRequestAdver().getClickStreamAnalysis()) + System.lineSeparator();
+        int advCount = this.selectedAdvReq.getRequestAdver().getAdvClickCount();
+        if (advCount > 0) {
+            output = output + "Advertisement Click Count: " + String.valueOf(advCount) + System.lineSeparator();
+            output = output + "Clickstream data: " + String.valueOf(this.selectedAdvReq.getRequestAdver().getClickStreamAnalysis()) + System.lineSeparator();
+            
+            // Top n (Max 5) Customers
+            List<Map.Entry<String, Integer>> topCustomers = selectedAdvReq.getRequestAdver().getTop5Customers();
+            showBarChart(topCustomers);
+            
+            this.anlTime = LocalDateTime.now();
+
+            // Click Counts
+            Map<String, Integer> clickData = selectedAdvReq.getRequestAdver().getClicksInTimeFrame(this.anlTime );
+            showClickTable(clickData);
+        } else {
+            output = "N/A";
+        }
+        
         
         txtResult.setText(output);
     }
@@ -157,6 +179,7 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
         
         this.selectedAdvReq.setResult(resultText);
         this.selectedAdvReq.setWorkStatus("Completed");
+        this.selectedAdvReq.setResolutionDate(this.anlTime);
         
         txtResult.setEnabled(false);
         
