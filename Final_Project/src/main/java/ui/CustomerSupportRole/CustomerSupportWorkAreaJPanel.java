@@ -9,9 +9,11 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerSupportWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -233,6 +235,21 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCheckReqActionPerformed
 
     public void populateCustomerReqs() {
+        DefaultTableModel model = (DefaultTableModel) tblViewCustReq.getModel();
+        model.setRowCount(0);
+
+        for (WorkRequest workReq : this.userAccount.getWorkQueue().getWorkQueue()) {
+            CustomerSupportWorkRequest custWorkReq = (CustomerSupportWorkRequest) workReq;
+            Object row[] = new Object[7];
+            row[0] = custWorkReq.getReqOrderItem();
+            row[1] = custWorkReq.getReqOrderItem().getBuyPrice();
+            row[2] = custWorkReq.getReqOrderItem().getItemQuant();
+            row[3] = custWorkReq;
+            row[4] = custWorkReq.getSender();
+            row[5] = custWorkReq.getReceiver();
+            row[6] = custWorkReq.getWorkStatus();
+            model.addRow(row);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

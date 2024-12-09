@@ -58,6 +58,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -97,6 +98,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
 
         btnUpdateProduct.setBackground(new java.awt.Color(0, 153, 255));
         btnUpdateProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdateProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdateProduct.setText("Update");
         btnUpdateProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +153,7 @@ public class ViewProductJPanel extends javax.swing.JPanel {
                 .addComponent(btnUpdateProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSave)
-                .addGap(0, 220, Short.MAX_VALUE))
+                .addGap(0, 226, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

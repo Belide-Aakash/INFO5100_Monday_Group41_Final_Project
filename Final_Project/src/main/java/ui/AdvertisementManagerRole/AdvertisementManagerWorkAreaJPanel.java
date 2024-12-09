@@ -101,6 +101,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         btnLogout.setBackground(new java.awt.Color(0, 153, 255));
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
+        btnLogout.setBorder(null);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -113,7 +114,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(272, 272, 272)
-                .addComponent(lblAdvMngrtitle, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(lblAdvMngrtitle, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
                 .addGap(155, 155, 155)
                 .addComponent(btnLogout)
                 .addGap(54, 54, 54))
@@ -121,7 +122,7 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogout)
                     .addComponent(lblAdvMngrtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,6 +157,8 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblAdvMngr);
 
         btnUpdateAdv.setBackground(new java.awt.Color(0, 153, 255));
+        btnUpdateAdv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdateAdv.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdateAdv.setText("Update Advertisement");
         btnUpdateAdv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +167,8 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnAddAdv.setBackground(new java.awt.Color(0, 153, 255));
+        btnAddAdv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAddAdv.setForeground(new java.awt.Color(255, 255, 255));
         btnAddAdv.setText("Add Advertisements");
         btnAddAdv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +177,8 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnCreateAR.setBackground(new java.awt.Color(0, 153, 255));
+        btnCreateAR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCreateAR.setForeground(new java.awt.Color(255, 255, 255));
         btnCreateAR.setText("Create Analysis Request");
         btnCreateAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +187,8 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnViewReq.setBackground(new java.awt.Color(0, 153, 255));
+        btnViewReq.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnViewReq.setForeground(new java.awt.Color(255, 255, 255));
         btnViewReq.setText("View Requests");
         btnViewReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,13 +212,13 @@ public class AdvertisementManagerWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(232, 232, 232))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(btnUpdateAdv, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                        .addComponent(btnUpdateAdv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAddAdv, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                        .addComponent(btnAddAdv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCreateAR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnViewReq, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                        .addComponent(btnViewReq, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
                 .addGap(57, 57, 57))
         );

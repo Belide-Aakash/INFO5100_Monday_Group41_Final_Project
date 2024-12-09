@@ -6,6 +6,7 @@ package ui.CustomerRole;
 
 import Business.AdvManagement.AdvertisementCatalog;
 import Business.AdvManagement.AdvertisementDisplay;
+import Business.Enterprise.Enterprise;
 import Business.Enterprise.SuperMarketEnterprise;
 import Business.OrderManagement.Order;
 import Business.OrderManagement.OrderItem;
@@ -26,21 +27,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CustomerOrdersJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
+    Enterprise enterprise;
     ArrayList<Order> userOrders;
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
+    
 
     /**
      * Creates new form ViewOrdersJPanel
      */
-    public CustomerOrdersJPanel(JPanel userProcessContainer, ArrayList<Order> userOrders, UserAccount userAccount, AdvertisementCatalog custAdvList) {
+    public CustomerOrdersJPanel(JPanel userProcessContainer, Enterprise enterprise, ArrayList<Order> userOrders, UserAccount userAccount, AdvertisementCatalog custAdvList) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userOrders = userOrders;
         this.userAccount = userAccount;
         this.custAdvList = custAdvList;
+        this.enterprise = enterprise;
         
         // Start the advertisements
         startAdv();
@@ -237,7 +241,7 @@ public class CustomerOrdersJPanel extends javax.swing.JPanel {
         // Stop the advertisements
         stopAdv();
         
-        CheckReqJPanel checkReqJPanel = new CheckReqJPanel(this.userProcessContainer, this.userAccount, this.custAdvList);
+        CheckReqJPanel checkReqJPanel = new CheckReqJPanel(this.userProcessContainer, this.userAccount, this.custAdvList, this.enterprise);
         this.userProcessContainer.add("CheckReqJPanel",checkReqJPanel);
         CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
         layout.next(this.userProcessContainer);

@@ -6,9 +6,13 @@ package ui.CustomerRole;
 
 import Business.AdvManagement.AdvertisementCatalog;
 import Business.AdvManagement.AdvertisementDisplay;
+import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerSupportWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,16 +23,19 @@ public class CheckReqJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
+    Enterprise enterprise;
+ 
 
     /**
      * Creates new form CheckRefundReqJPanel
      */
-    public CheckReqJPanel(JPanel userProcessContainer, UserAccount userAccount, AdvertisementCatalog custAdvList) {
+    public CheckReqJPanel(JPanel userProcessContainer, UserAccount userAccount, AdvertisementCatalog custAdvList, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.custAdvList = custAdvList;
+        this.enterprise = enterprise;
         
         // Initialize and start the AdvertisementDisplay thread
         adDisplay = new AdvertisementDisplay(this.custAdvList, imageAdvertisement, this.userAccount.getUsername());
@@ -148,6 +155,20 @@ public class CheckReqJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void populateOrderRefundReqTable() {
+        DefaultTableModel model = (DefaultTableModel) tblOrders.getModel();
+        model.setRowCount(0);
+
+        for (WorkRequest workReq : this.userAccount.getWorkQueue().getWorkQueue()) {
+            CustomerSupportWorkRequest custWorkReq = (CustomerSupportWorkRequest) workReq;
+            Object row[] = new Object[6];
+            row[0] = custWorkReq.getReqOrderItem();
+            row[1] = custWorkReq.getReqOrderItem().getItemQuant();
+            row[2] = custWorkReq.getWorkStatus();
+            row[3] = custWorkReq.getRequestedDate();
+            row[4] = custWorkReq;
+            row[5] = custWorkReq.getResult();
+            model.addRow(row);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

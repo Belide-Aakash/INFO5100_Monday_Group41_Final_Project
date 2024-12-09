@@ -57,6 +57,7 @@ public class PaymentFraudAnalystProcessRequestJPanel extends javax.swing.JPanel 
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -175,7 +176,7 @@ public class PaymentFraudAnalystProcessRequestJPanel extends javax.swing.JPanel 
                         .addComponent(btnAbnSpend)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnOddHour)))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

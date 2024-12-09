@@ -257,7 +257,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         // Stop the advertisements
         stopAdv();
         
-        CustomerOrdersJPanel customerOrdersJPanel = new CustomerOrdersJPanel(this.userProcessContainer, this.userAccount.getCustOrders().getOrders(), this.userAccount, this.custAdvList);
+        CustomerOrdersJPanel customerOrdersJPanel = new CustomerOrdersJPanel(this.userProcessContainer, this.enterprise, this.userAccount.getCustOrders().getOrders(), this.userAccount, this.custAdvList);
         this.userProcessContainer.add("CustomerOrdersJPanel",customerOrdersJPanel);
         CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
         layout.next(this.userProcessContainer);

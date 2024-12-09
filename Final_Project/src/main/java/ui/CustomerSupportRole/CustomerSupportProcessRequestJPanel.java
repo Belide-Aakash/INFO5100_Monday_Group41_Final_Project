@@ -52,7 +52,8 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Process Customer Request");
 
-        btnBack.setText("<< Back");
+        btnBack.setBackground(new java.awt.Color(0, 153, 255));
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -67,7 +68,7 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addComponent(btnBack)
                 .addGap(185, 185, 185)
-                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                 .addGap(296, 296, 296))
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +126,7 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
                         .addComponent(lblResponse)))
                 .addGap(18, 18, 18)
                 .addComponent(btnSubmitResponse)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

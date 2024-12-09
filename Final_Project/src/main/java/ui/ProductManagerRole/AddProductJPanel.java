@@ -56,6 +56,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -91,6 +92,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
 
         btnAddProduct.setBackground(new java.awt.Color(0, 153, 255));
         btnAddProduct.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAddProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnAddProduct.setText("Add Product");
         btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +135,7 @@ public class AddProductJPanel extends javax.swing.JPanel {
                     .addComponent(lblProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(btnAddProduct)
-                .addGap(0, 263, Short.MAX_VALUE))
+                .addGap(0, 269, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblProductName, lblProductPrice});

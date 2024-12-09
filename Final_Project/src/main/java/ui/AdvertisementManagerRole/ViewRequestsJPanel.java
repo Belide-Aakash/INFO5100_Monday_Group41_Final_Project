@@ -92,6 +92,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -106,7 +107,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
                 .addGap(57, 57, 57)
                 .addComponent(btnBack)
                 .addGap(113, 113, 113)
-                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
                 .addGap(255, 255, 255))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,7 +117,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         tblViewAdvAR.setModel(new javax.swing.table.DefaultTableModel(

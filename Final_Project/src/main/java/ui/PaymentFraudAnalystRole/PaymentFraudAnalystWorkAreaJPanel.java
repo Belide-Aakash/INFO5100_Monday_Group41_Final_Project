@@ -99,6 +99,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
 
         btnLogout.setBackground(new java.awt.Color(0, 153, 255));
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
+        btnLogout.setBorder(null);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -123,7 +124,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title)
                     .addComponent(btnLogout))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         lblEnterpriseNameTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
