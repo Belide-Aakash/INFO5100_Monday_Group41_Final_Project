@@ -361,6 +361,11 @@ public class ViewProfileJPanel extends javax.swing.JPanel {
             return;
         }
         
+        if (password1.isBlank() || password2.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Passwordcannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         this.userAccount.setPassword(password2);
         
         StringBuilder emailBody = new StringBuilder();

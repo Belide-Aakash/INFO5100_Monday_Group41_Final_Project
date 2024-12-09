@@ -21,10 +21,11 @@ public class AdvertisementCatalog {
         this.advertisementList = new ArrayList<Advertisement>();
     }
     
-    public void addAdvertisement(String name, LocalDateTime expDatetime, ImageIcon advImg, double lat, double longi) {
+    public Advertisement addAdvertisement(String name, LocalDateTime expDatetime, ImageIcon advImg, double lat, double longi) {
         Advertisement newAdv = new Advertisement(advCounter, name, expDatetime, advImg, lat, longi);
         this.advCounter = this.advCounter + 1;
         this.advertisementList.add(newAdv);
+        return newAdv;
     }
     
     public void appendAdvertisement(Advertisement advertisement) {

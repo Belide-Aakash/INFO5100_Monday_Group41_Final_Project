@@ -482,6 +482,11 @@ public class ManageStockJPanel extends javax.swing.JPanel {
             return;
         }
         
+        if (quant == 0) {
+            JOptionPane.showMessageDialog(this, "Quantity cannot be 0.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if (stockItem == null) {
             if (stock.getStockQuant() >= quant && quant >= 0) {
                 if (stock.getStockQuant() == 0) {
