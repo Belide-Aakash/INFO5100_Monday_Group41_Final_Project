@@ -70,6 +70,25 @@ public class ManageStockJPanel extends javax.swing.JPanel {
             }
         });
         
+        header1.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
+        
         populateSupplierCombobox();
         populateSupplierProductTable();
         populateCartTable();
@@ -528,12 +547,10 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         if (cartSize != 0) {
             for (Stock stockItem : tmpProdList) {
                 stockItem.getStockProd().incStockQuant(stockItem.getStockQuant());
-        
-                this.currentProdList.remove(stockItem);
             }
+            
+            this.currentProdList = new ArrayList<Stock>();
         }
-        
-        
         
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

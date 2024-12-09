@@ -29,6 +29,10 @@ public class Order {
         return oi;
     }
     
+    public void removeOrderItemProdQuant(OrderItem removeOrderItem) {
+        removeOrderItem.getItemProduct().incProdQuant(removeOrderItem.getItemQuant());
+    }
+    
     public void removeOrderItem(OrderItem removeOrderItem) {
         removeOrderItem.getItemProduct().incProdQuant(removeOrderItem.getItemQuant());
         this.orderitems.remove(removeOrderItem);
