@@ -38,7 +38,6 @@ public class CustomerOrdersJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
-    Enterprise enterprise;
 
     /**
      * Creates new form ViewOrdersJPanel
