@@ -6,8 +6,10 @@ package ui.CustomerRole;
 
 import Business.AdvManagement.AdvertisementCatalog;
 import Business.AdvManagement.AdvertisementDisplay;
+import Business.Enterprise.Enterprise;
 import Business.OrderManagement.OrderItem;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerSupportWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -23,17 +25,19 @@ public class RaiseReqJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
+    Enterprise enterprise;
 
     /**
      * Creates new form RaiseRefundReqJPanel
      */
-    public RaiseReqJPanel(JPanel userProcessContainer, OrderItem selectedOrderItem, UserAccount userAccount, AdvertisementCatalog custAdvList) {
+    public RaiseReqJPanel(JPanel userProcessContainer, OrderItem selectedOrderItem, UserAccount userAccount, AdvertisementCatalog custAdvList, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.selectedOrderItem = selectedOrderItem;
         this.userAccount = userAccount;
         this.custAdvList = custAdvList;
+        this.enterprise = enterprise;
         
         // Start the advertisements
         startAdv();
@@ -127,10 +131,10 @@ public class RaiseReqJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1)
                         .addGap(208, 208, 208))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(379, 379, 379)
-                        .addComponent(btnRaiseReq, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(263, 263, 263)))
+                        .addComponent(btnRaiseReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(262, 262, 262)))
                 .addComponent(imageAdvertisement, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -175,6 +179,24 @@ public class RaiseReqJPanel extends javax.swing.JPanel {
     private void btnRaiseReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaiseReqActionPerformed
         // TODO add your handling code here:
         //TO-DO: Post the work request for the selected orderitem
+               String getMessage = txtReason.getText();
+        
+        if (getMessage.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Message cannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        CustomerSupportWorkRequest newCusWorkReq = new CustomerSupportWorkRequest();
+        newCusWorkReq.setMessage(getMessage);
+        newCusWorkReq.setSender(this.userAccount);
+        newCusWorkReq.setWorkStatus("Pending");
+        newCusWorkReq.setReqOrderItem(this.selectedOrderItem);
+        
+        this.userAccount.getWorkQueue().addToWorkQueue(newCusWorkReq);
+        this.enterprise.getWorkQueue().addToWorkQueue(newCusWorkReq);
+        
+        JOptionPane.showMessageDialog(this, "Request Raised successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        txtReason.setText("");
     }//GEN-LAST:event_btnRaiseReqActionPerformed
 
     public void startAdv() {

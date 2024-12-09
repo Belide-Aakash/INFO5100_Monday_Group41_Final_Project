@@ -10,9 +10,16 @@ import Business.Organization.Organization;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -38,6 +45,30 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
         
         lblEnterpriseName.setText(this.enterprise.getOrgName());
         
+        // Get the table header
+        JTableHeader header = tblPaymentAnlWork.getTableHeader();
+        
+        // Customize the header background and text color
+        header.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
+
+        
         populateCustTable();
     }
 
@@ -56,16 +87,19 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
         lblEnterpriseNameTitle = new javax.swing.JLabel();
         lblEnterpriseName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblAnalyseCust = new javax.swing.JTable();
+        tblPaymentAnlWork = new javax.swing.JTable();
         btnAnalyseCust = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 102));
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Payment Fraud Analyst Work Area");
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
+        btnLogout.setBorder(null);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -77,8 +111,8 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(243, Short.MAX_VALUE)
-                .addComponent(Title)
+                .addGap(314, 314, 314)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(199, 199, 199)
                 .addComponent(btnLogout)
                 .addGap(58, 58, 58))
@@ -90,7 +124,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title)
                     .addComponent(btnLogout))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         lblEnterpriseNameTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -98,7 +132,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
 
         lblEnterpriseName.setText("<enterprise>");
 
-        tblAnalyseCust.setModel(new javax.swing.table.DefaultTableModel(
+        tblPaymentAnlWork.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -117,7 +151,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblAnalyseCust);
+        jScrollPane1.setViewportView(tblPaymentAnlWork);
 
         btnAnalyseCust.setBackground(new java.awt.Color(0, 153, 255));
         btnAnalyseCust.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -144,9 +178,11 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAnalyseCust)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(635, 635, 635)
+                                .addComponent(btnAnalyseCust, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))))
+                .addGap(99, 99, 99))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,10 +193,10 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(lblEnterpriseNameTitle)
                     .addComponent(lblEnterpriseName))
                 .addGap(69, 69, 69)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addGap(38, 38, 38)
                 .addComponent(btnAnalyseCust)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -173,7 +209,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAnalyseCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyseCustActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblAnalyseCust.getSelectedRow();
+        int selectedRowIndex = tblPaymentAnlWork.getSelectedRow();
 
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a request first.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -181,7 +217,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
         }
 
         // This is an advertisement request from advertisement workqueue catalog
-        UserAccount selectedUser = (UserAccount) tblAnalyseCust.getValueAt(selectedRowIndex, 0);
+        UserAccount selectedUser = (UserAccount) tblPaymentAnlWork.getValueAt(selectedRowIndex, 0);
 
         PaymentFraudAnalystProcessRequestJPanel paymentFraudAnalystProcessRequestJPanel = new PaymentFraudAnalystProcessRequestJPanel(this.userProcessContainer, selectedUser);
         this.userProcessContainer.add("PaymentFraudAnalystProcessRequestJPanel",paymentFraudAnalystProcessRequestJPanel);
@@ -190,7 +226,7 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAnalyseCustActionPerformed
 
     public void populateCustTable() {
-        DefaultTableModel model = (DefaultTableModel) tblAnalyseCust.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblPaymentAnlWork.getModel();
         model.setRowCount(0);
         
         for (Enterprise enterprise : this.network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -223,6 +259,6 @@ public class PaymentFraudAnalystWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEnterpriseName;
     private javax.swing.JLabel lblEnterpriseNameTitle;
-    private javax.swing.JTable tblAnalyseCust;
+    private javax.swing.JTable tblPaymentAnlWork;
     // End of variables declaration//GEN-END:variables
 }

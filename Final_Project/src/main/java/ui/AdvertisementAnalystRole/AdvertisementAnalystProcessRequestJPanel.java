@@ -78,9 +78,12 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Process Advertisement Request");
 
-        btnBack.setText("<< Back");
+        btnBack.setBackground(new java.awt.Color(0, 153, 255));
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -134,11 +137,11 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
                 .addGap(269, 269, 269)
                 .addComponent(lblResult)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addGap(318, 318, 318))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSubmitResult)
+                .addGap(438, 438, 438)
+                .addComponent(btnSubmitResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(434, 434, 434))
         );
         layout.setVerticalGroup(
@@ -153,7 +156,7 @@ public class AdvertisementAnalystProcessRequestJPanel extends javax.swing.JPanel
                         .addComponent(lblResult)))
                 .addGap(18, 18, 18)
                 .addComponent(btnSubmitResult)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

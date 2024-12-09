@@ -18,17 +18,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblName" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblEmail" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblLat" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblLong" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPass" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRePass" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLat" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblRePass" alignment="1" min="-2" pref="134" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtLong" max="32767" attributes="0"/>
                   <Component id="txtLat" max="32767" attributes="0"/>
                   <Component id="txtEmail" max="32767" attributes="0"/>
@@ -36,11 +36,11 @@
                   <Component id="btnUpdate" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnSave" max="32767" attributes="0"/>
                   <Component id="pass1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pass2" alignment="1" pref="180" max="32767" attributes="0"/>
+                  <Component id="pass2" alignment="1" max="32767" attributes="0"/>
                   <Component id="btnUpdatePass" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnSavePass" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="288" max="-2" attributes="0"/>
               <Component id="imageAdvertisement" min="-2" pref="150" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
@@ -117,7 +117,7 @@
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="Title" pref="705" max="32767" attributes="0"/>
+                  <Component id="Title" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
               </Group>
           </Group>
