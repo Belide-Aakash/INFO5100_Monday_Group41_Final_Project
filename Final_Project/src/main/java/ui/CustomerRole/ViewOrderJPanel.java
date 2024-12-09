@@ -6,6 +6,7 @@ package ui.CustomerRole;
 
 import Business.AdvManagement.AdvertisementCatalog;
 import Business.AdvManagement.AdvertisementDisplay;
+import Business.Enterprise.Enterprise;
 import Business.OrderManagement.Order;
 import Business.OrderManagement.OrderItem;
 import Business.UserAccount.UserAccount;
@@ -25,17 +26,19 @@ public class ViewOrderJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
+    Enterprise enterprise;
 
     /**
      * Creates new form ViewOrderJPanel
      */
-    public ViewOrderJPanel(JPanel userProcessContainer, Order selectedOrder, UserAccount userAccount, AdvertisementCatalog custAdvList) {
+    public ViewOrderJPanel(JPanel userProcessContainer, Order selectedOrder, UserAccount userAccount, AdvertisementCatalog custAdvList ,Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.selectedOrder = selectedOrder;
         this.userAccount = userAccount;
         this.custAdvList = custAdvList;
+        this.enterprise = enterprise;
         
         // Start the advertisements
         startAdv();
@@ -93,9 +96,9 @@ public class ViewOrderJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(Title))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Title)
+                    .addComponent(btnBack))
                 .addGap(38, 38, 38))
         );
 
@@ -220,7 +223,7 @@ public class ViewOrderJPanel extends javax.swing.JPanel {
         
         // TO-DO: Show new page with option for the user to raise a request for the selected orderitem
 
-        RaiseReqJPanel raiseReqJPanel = new RaiseReqJPanel(this.userProcessContainer, selectedOrderItem, this.userAccount, this.custAdvList);
+        RaiseReqJPanel raiseReqJPanel = new RaiseReqJPanel(this.userProcessContainer, selectedOrderItem, this.userAccount, this.custAdvList,this.enterprise);
         this.userProcessContainer.add("RaiseReqJPanel", raiseReqJPanel);
         CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
         layout.next(this.userProcessContainer);

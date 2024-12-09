@@ -59,6 +59,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -73,7 +74,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(btnBack)
                 .addGap(156, 156, 156)
-                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addGap(262, 262, 262))
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,7 +84,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         tblStockDetails.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,6 +104,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         btnAddQuant.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAddQuant.setForeground(new java.awt.Color(255, 255, 255));
         btnAddQuant.setText("Add Quantity");
+        btnAddQuant.setBorder(null);
         btnAddQuant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddQuantActionPerformed(evt);

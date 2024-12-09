@@ -54,6 +54,7 @@ public class ProcessMarketRequestJPanel extends javax.swing.JPanel {
 
         btnBack3.setBackground(new java.awt.Color(0, 153, 255));
         btnBack3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack3.setBorder(null);
         btnBack3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBack3ActionPerformed(evt);

@@ -56,6 +56,7 @@ public class ViewProductCatalogJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -70,7 +71,7 @@ public class ViewProductCatalogJPanel extends javax.swing.JPanel {
                 .addGap(59, 59, 59)
                 .addComponent(btnBack)
                 .addGap(204, 204, 204)
-                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(lbltitle, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addGap(303, 303, 303))
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,7 +81,7 @@ public class ViewProductCatalogJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         tblSuperMarkProdCatalog.setModel(new javax.swing.table.DefaultTableModel(

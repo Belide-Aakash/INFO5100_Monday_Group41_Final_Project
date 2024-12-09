@@ -144,6 +144,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
 
         btnRemoveOrderItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRemoveOrderItem.setText("Remove");
+        btnRemoveOrderItem.setBorder(null);
         btnRemoveOrderItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveOrderItemActionPerformed(evt);
@@ -193,6 +194,7 @@ public class ManageStockJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -207,13 +209,13 @@ public class ManageStockJPanel extends javax.swing.JPanel {
                 .addGap(47, 47, 47)
                 .addComponent(btnBack)
                 .addGap(329, 329, 329)
-                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addGap(390, 390, 390))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnBack)
