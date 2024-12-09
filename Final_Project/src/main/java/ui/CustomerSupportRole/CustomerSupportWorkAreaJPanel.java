@@ -69,6 +69,8 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         
+        lblEnterpriseName.setText(this.enterprise.getOrgName());
+        
         populateCustomerReqs();
     }
 
@@ -271,7 +273,7 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblViewCustReq.getModel();
         model.setRowCount(0);
 
-        for (WorkRequest workReq : this.userAccount.getWorkQueue().getWorkQueue()) {
+        for (WorkRequest workReq : this.enterprise.getWorkQueue().getWorkQueue()) {
             CustomerSupportWorkRequest custWorkReq = (CustomerSupportWorkRequest) workReq;
             Object row[] = new Object[7];
             row[0] = custWorkReq.getReqOrderItem();

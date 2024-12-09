@@ -73,4 +73,9 @@ public class SuperMarketEnterprise extends Enterprise{
         allOrgs.add(Organization.Type.SuperMarketStock);
         return allOrgs;
     }
+    
+    @Override
+    public String toString() {
+        return this.getOrgName() + " - " + this.superMarketLocation;
+    }
 }

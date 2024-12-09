@@ -25,6 +25,12 @@ public class StockCatalog {
         this.stockCount = this.stockCount + 1;
     }
     
+    public void addStockAndQuant(String name, float price, int quant) {
+        Stock stock = new Stock(this.stockCount, name, quant, price);
+        this.stocks.add(stock);
+        this.stockCount = this.stockCount + 1;
+    }
+    
     public void removeStock(Stock stock) {
         this.stocks.remove(stock);
     }
