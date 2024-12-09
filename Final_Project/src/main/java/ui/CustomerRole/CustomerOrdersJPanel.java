@@ -13,13 +13,19 @@ import Business.OrderManagement.OrderItem;
 import static Business.Organization.Organization.Type.Product;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -32,12 +38,12 @@ public class CustomerOrdersJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
-    
+    Enterprise enterprise;
 
     /**
      * Creates new form ViewOrdersJPanel
      */
-    public CustomerOrdersJPanel(JPanel userProcessContainer, Enterprise enterprise, ArrayList<Order> userOrders, UserAccount userAccount, AdvertisementCatalog custAdvList) {
+    public CustomerOrdersJPanel(JPanel userProcessContainer, ArrayList<Order> userOrders, UserAccount userAccount, AdvertisementCatalog custAdvList ,Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -48,6 +54,29 @@ public class CustomerOrdersJPanel extends javax.swing.JPanel {
         
         // Start the advertisements
         startAdv();
+        
+        // Get the table header
+        JTableHeader header = tblOrders.getTableHeader();
+        
+        // Customize the header background and text color
+        header.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
         
         populateOrdersTable();
     }
@@ -229,7 +258,7 @@ public class CustomerOrdersJPanel extends javax.swing.JPanel {
         // Stop the advertisements
         stopAdv();
         
-        ViewOrderJPanel viewOrderJPanel = new ViewOrderJPanel(this.userProcessContainer, selectedOrder, this.userAccount, this.custAdvList);
+        ViewOrderJPanel viewOrderJPanel = new ViewOrderJPanel(this.userProcessContainer, selectedOrder, this.userAccount, this.custAdvList , this.enterprise);
         this.userProcessContainer.add("ViewOrderJPanel",viewOrderJPanel);
         CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
         layout.next(this.userProcessContainer);

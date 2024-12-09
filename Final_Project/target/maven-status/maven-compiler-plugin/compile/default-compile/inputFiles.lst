@@ -1,100 +1,112 @@
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/PaymentAdminRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/ProductManagement/Product.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/ItemFeedbaackJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/OrderManagement/OrderItem.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/WorkQueue/WorkQueue.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SuperMarketStockManagerRole/ManageStockJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/AdvManagement/AdvertisementDisplay.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/LoginPageJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/SuperMarketAdminRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/ProductManagerRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/AdvertisementAdminRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Enterprise/CustomerSupportEnterprise.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/EnterpriseAdminRole/MngOrganizationJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/ConfigureABusiness.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/WorkQueue/AdvertisementWorkRequest.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/Organization.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Enterprise/SupplierEnterprise.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementAnalystRole/AdvertisementAnalystProcessRequestJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/AdvManagement/Advertisement.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/SystemAdminRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/CustomerRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/Role.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/ViewOrderJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/PaymentFraudAnalyst.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/StockManagement/StockCatalog.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/AdvertisementOrganization.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Network/Network.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/EnterpriseAdminRole/MngPeopleJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementAnalystRole/AdvertisementVisualizations.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/CustomerSupportAdminRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Enterprise/PaymentEnterprise.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/OrderManagement/MasterOrderCatalog.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SupplierStockManagerRole/SupplierStockManagerWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/ViewOrderTotalJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SuperMarketStockManagerRole/ViewProductCatalogJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerSupportRole/CustomerSupportProcessRequestJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Person/PersonDirectory.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/PaymentOrganization.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Enterprise/SuperMarketEnterprise.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Enterprise/EnterpriseDirectory.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/PaymentFraudAnalystRole/PaymentFraudAnalystWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementManagerRole/AddAdvertisementJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SupplierStockManagerRole/UpdateProductQuantityJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/SuperMarketStockManagerRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SystemAdminRole/MngNetworksJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Enterprise/AdvertisementEnterprise.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/UserAccount/UserAccountDirectory.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/StockOrganization.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementManagerRole/ViewRequestsJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/ProductManagement/BestStoreFinder.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Geolocation/GetLocation.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/ViewProfileJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/ProductManagerRole/AddProductJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SignupPageJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SystemAdminRole/MngEnterpriseAdminsJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SuperMarketStockManagerRole/UpdateProductPriceJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/ProductOrganization.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementManagerRole/UpdateAdvertisementJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/CustomerWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/EnterpriseAdminRole/MngUsersJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/OrganizationDirectory.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SystemAdminRole/SystemAdminWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/SmartShoppingJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Geolocation/LatLong.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/CheckReqJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/RaiseReqJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerSupportRole/CustomerSupportWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/ProductManagerRole/ProductManagerWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/PaymentFraudAnalystRole/PaymentFraudAnalystProcessRequestJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/SuperMarketStockOrganization.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/WorkQueue/WorkRequest.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/WorkQueue/SupplierWorkRequest.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/SupplierStockManagerRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SuperMarketStockManagerRole/SuperMarketStockManagerWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/OrderManagement/Mailer.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementManagerRole/CreateAdvAnalysisRequestJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/AdvManagement/AdvertisementCatalog.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/SupplierAdminRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementManagerRole/ViewAdvRequestAnalysisJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SystemAdminRole/MngEnterprisesJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/OrderManagement/Order.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/CustomerOrdersJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/SuperMarketStockManagerRole/ViewMarketJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/CustomerRole/ShoppingJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/StockManagement/Stock.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/ProductManagerRole/ViewProductJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementAnalystRole/AdvertisementAnalystWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/AdvertisementManagerRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/ProductManagement/ProductCatalog.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/MainJFrame.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/AdvertisementAnalystRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/UserAccount/UserAccount.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/WorkQueue/CustomerSupportWorkRequest.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Enterprise/Enterprise.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Person/Person.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/AdvertisementManagerRole/AdvertisementManagerWorkAreaJPanel.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Ecosystem.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Role/CustomerSupportManagerRole.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/Business/Organization/SupportOrganization.java
-/Users/aakashbelide/Aakash/Higher Studies/Course/Sem-1/INFO5100/Project/Final Project/INFO5100_Monday_Group41_Final_Project/Final_Project/src/main/java/ui/EnterpriseAdminRole/EnterpriseAdminWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\ViewMarketRequestsJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\ViewOrderJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\CustomerWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\PaymentOrganization.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\SuperMarketStockManagerRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\UserAccount\UserAccount.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\ProductManagerRole\ProcessSupplierRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SystemAdminRole\MngEnterprisesJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\Organization.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\CustomerRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\EnterpriseAdminRole\MngUsersJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\AdvertisementAdminRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\ViewProductCatalogJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerSupportRole\CustomerSupportWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementAnalystRole\AdvertisementAnalystWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\AdvManagement\AdvertisementCatalog.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Enterprise\CustomerSupportEnterprise.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\CustomerSupportAdminRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\CreateSupplierRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\OrderManagement\Mailer.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\EnterpriseAdminRole\MngOrganizationJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\AdvertisementManagerRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\ProductManagerRole\ProductManagerWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\ViewSupplierReqJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\WorkQueue\WorkQueue.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Person\PersonDirectory.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\MainJFrame.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\SupplierStockManagerRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\ShoppingJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Enterprise\AdvertisementEnterprise.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\SupplierAdminRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SystemAdminRole\MngNetworksJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Enterprise\SuperMarketEnterprise.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\WorkQueue\AdvertisementWorkRequest.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SystemAdminRole\SystemAdminWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Geolocation\GetLocation.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\UserAccount\UserAccountDirectory.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\WorkQueue\WorkRequest.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\ProductManagerRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\StockOrganization.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\PaymentAdminRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\OrderManagement\MasterOrderCatalog.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\AdvManagement\AdvertisementVisualizations.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SignupPageJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\SupplierStockManagerWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\ProductManagerRole\ViewProductJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\ProductOrganization.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Enterprise\SupplierEnterprise.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\OrderManagement\OrderItem.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\UpdateProductPriceJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\UpdateProductQuantityJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\CustomerOrdersJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\SuperMarketStockOrganization.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\EnterpriseAdminRole\MngPeopleJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementManagerRole\AddAdvertisementJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\ProductManagement\Product.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\PaymentFraudAnalystRole\PaymentFraudAnalystWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementManagerRole\UpdateAdvertisementJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\ViewProfileJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\Role.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\WorkQueue\CustomerSupportWorkRequest.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\ProductManagerRole\ViewSupplierRequestsJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\AdvertisementOrganization.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Ecosystem.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementManagerRole\CreateAdvAnalysisRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\ConfigureABusiness.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\ViewMarketJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\ManageStockJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\RaiseReqJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementManagerRole\ViewAdvRequestAnalysisJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\StockManagement\StockCatalog.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\SmartShoppingJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\PaymentFraudAnalystRole\PaymentFraudAnalystProcessRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\ManageStockJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\CustomerSupportManagerRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\AdvertisementAnalystRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\SystemAdminRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\StockManagement\Stock.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\ProcessMarketRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\WorkQueue\SupplierWorkRequest.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementAnalystRole\AdvertisementAnalystProcessRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\ProductManagement\ProductCatalog.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\SuperMarketStockManagerWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Network\Network.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\ViewSupplierRequestsJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementManagerRole\ViewRequestsJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\ProductManagement\BestStoreFinder.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\OrderManagement\Order.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\WorkQueue\MarketWorkRequest.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\AdvManagement\AdvertisementDisplay.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\AdvertisementManagerRole\AdvertisementManagerWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\CheckReqJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\SupportOrganization.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Person\Person.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\PaymentFraudAnalyst.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Geolocation\LatLong.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\ViewOrderTotalJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\ProductManagerRole\AddProductJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerRole\ItemFeedbaackJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\CustomerSupportRole\CustomerSupportProcessRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\ViewSupplierRequestsJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\LoginPageJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Role\SuperMarketAdminRole.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\AdvManagement\Advertisement.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Enterprise\PaymentEnterprise.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Organization\OrganizationDirectory.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Enterprise\EnterpriseDirectory.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SuperMarketStockManagerRole\CreateSupplierRequestJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\EnterpriseAdminRole\EnterpriseAdminWorkAreaJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SupplierStockManagerRole\ViewSupplierReqJPanel.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\Business\Enterprise\Enterprise.java
+C:\Users\kotag\OneDrive\Desktop\INFO5100_Monday_Group41_Final_Project\Final_Project\src\main\java\ui\SystemAdminRole\MngEnterpriseAdminsJPanel.java
