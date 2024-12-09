@@ -95,7 +95,7 @@
               <Component id="jScrollPane2" pref="106" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnRemoveOrderItem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRemoveOrderItem" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="txtNewQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnModifyQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>

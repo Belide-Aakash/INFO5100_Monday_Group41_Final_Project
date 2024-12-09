@@ -62,7 +62,7 @@
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
-                  <Component id="Title" pref="0" max="32767" attributes="0"/>
+                  <Component id="Title" pref="216" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="451" max="-2" attributes="0"/>
               </Group>
           </Group>

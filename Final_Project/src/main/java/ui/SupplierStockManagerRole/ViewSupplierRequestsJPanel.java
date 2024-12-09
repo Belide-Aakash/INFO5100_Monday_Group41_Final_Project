@@ -103,7 +103,7 @@ public class ViewSupplierRequestsJPanel extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addComponent(btnBack)
                 .addGap(320, 320, 320)
-                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addGap(394, 394, 394))
         );
         jPanel1Layout.setVerticalGroup(
