@@ -291,8 +291,8 @@ public class ViewOrderTotalJPanel extends javax.swing.JPanel {
             String emailSubject = "Order#" + newOrder.getOrderID() + " has been placed with MinFoo";
             
             // Send the email
-            sendEmail("aishwaryaadusumelli07@gmail.com", emailSubject, emailBody.toString());
-//            sendEmail(this.userAccount.getUsername(), emailSubject, emailBody.toString());
+            //sendEmail("aishwaryaadusumelli07@gmail.com", emailSubject, emailBody.toString());
+            sendEmail(this.userAccount.getUsername(), emailSubject, emailBody.toString());
         }
     }
     

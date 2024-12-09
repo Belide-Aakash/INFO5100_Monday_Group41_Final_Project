@@ -334,8 +334,9 @@ public class ShoppingJPanel extends javax.swing.JPanel {
         if (orderSize != 0) {
             ArrayList<OrderItem> tmpOrderItems = this.currentOrder.getOrderItems();
             for (OrderItem orderItem : tmpOrderItems) {
-                this.currentOrder.removeOrderItem(orderItem);
+                this.currentOrder.removeOrderItemProdQuant(orderItem);
             }
+            this.currentOrder = this.userAccount.getCustOrders().newOrder();
         }
         
         // Stop the advertisements
@@ -560,8 +561,8 @@ public class ShoppingJPanel extends javax.swing.JPanel {
         String emailSubject = "Order#" + this.currentOrder.getOrderID() + " has been placed with MinFoo";
 
         // Send the email
-        sendEmail("aishwaryaadusumelli07@gmail.com", emailSubject, emailBody.toString());
-        //sendEmail(this.userAccount.getUsername(), emailSubject, emailBody.toString());
+        //sendEmail("aishwaryaadusumelli07@gmail.com", emailSubject, emailBody.toString());
+        sendEmail(this.userAccount.getUsername(), emailSubject, emailBody.toString());
 
         // Show success message
         JOptionPane.showMessageDialog(this, "Thank you for ordering. Order has been placed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
