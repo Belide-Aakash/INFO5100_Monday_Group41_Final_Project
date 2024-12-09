@@ -111,9 +111,9 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1)
                 .addGap(311, 311, 311))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(438, 438, 438)
-                .addComponent(btnSubmitResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(410, 410, 410))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSubmitResponse)
+                .addGap(358, 358, 358))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -25,9 +25,9 @@
               <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="438" max="-2" attributes="0"/>
-              <Component id="btnSubmitResponse" pref="0" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="410" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnSubmitResponse" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

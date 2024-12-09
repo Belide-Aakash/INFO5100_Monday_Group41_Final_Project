@@ -95,9 +95,11 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 102));
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("Customer Support Work Area");
 
-        btnLogout.setText("Logout");
+        btnLogout.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/power-off.png"))); // NOI18N
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -109,8 +111,8 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(309, Short.MAX_VALUE)
-                .addComponent(Title)
+                .addGap(372, 372, 372)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                 .addGap(199, 199, 199)
                 .addComponent(btnLogout)
                 .addGap(58, 58, 58))
@@ -122,7 +124,7 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title)
                     .addComponent(btnLogout))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         lblEnterpriseNameTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -187,11 +189,12 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAsgnMe)
+                                .addGap(470, 470, 470)
+                                .addComponent(btnAsgnMe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(43, 43, 43)
-                                .addComponent(btnCheckReq))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnCheckReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))))
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,12 +205,12 @@ public class CustomerSupportWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(lblEnterpriseNameTitle)
                     .addComponent(lblEnterpriseName))
                 .addGap(69, 69, 69)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAsgnMe)
                     .addComponent(btnCheckReq))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
         );
     }// </editor-fold>//GEN-END:initComponents
 
