@@ -6,9 +6,20 @@ package ui.CustomerRole;
 
 import Business.AdvManagement.AdvertisementCatalog;
 import Business.AdvManagement.AdvertisementDisplay;
+import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerSupportWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -19,16 +30,42 @@ public class CheckReqJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
+    Enterprise enterprise;
+ 
 
     /**
      * Creates new form CheckRefundReqJPanel
      */
-    public CheckReqJPanel(JPanel userProcessContainer, UserAccount userAccount, AdvertisementCatalog custAdvList) {
+    public CheckReqJPanel(JPanel userProcessContainer, UserAccount userAccount, AdvertisementCatalog custAdvList, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.custAdvList = custAdvList;
+        this.enterprise = enterprise;
+        
+         // Get the table header
+        JTableHeader header = tblOrders.getTableHeader();
+        
+        // Customize the header background and text color
+        header.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
         
         // Initialize and start the AdvertisementDisplay thread
         adDisplay = new AdvertisementDisplay(this.custAdvList, imageAdvertisement, this.userAccount.getUsername());
@@ -148,6 +185,20 @@ public class CheckReqJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void populateOrderRefundReqTable() {
+        DefaultTableModel model = (DefaultTableModel) tblOrders.getModel();
+        model.setRowCount(0);
+
+        for (WorkRequest workReq : this.userAccount.getWorkQueue().getWorkQueue()) {
+            CustomerSupportWorkRequest custWorkReq = (CustomerSupportWorkRequest) workReq;
+            Object row[] = new Object[6];
+            row[0] = custWorkReq.getReqOrderItem();
+            row[1] = custWorkReq.getReqOrderItem().getItemQuant();
+            row[2] = custWorkReq.getWorkStatus();
+            row[3] = custWorkReq.getRequestedDate();
+            row[4] = custWorkReq;
+            row[5] = custWorkReq.getResult();
+            model.addRow(row);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

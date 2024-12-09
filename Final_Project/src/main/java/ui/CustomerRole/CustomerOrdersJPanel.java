@@ -33,6 +33,7 @@ import javax.swing.table.JTableHeader;
  */
 public class CustomerOrdersJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
+    Enterprise enterprise;
     ArrayList<Order> userOrders;
     UserAccount userAccount;
     AdvertisementCatalog custAdvList;
@@ -269,7 +270,7 @@ public class CustomerOrdersJPanel extends javax.swing.JPanel {
         // Stop the advertisements
         stopAdv();
         
-        CheckReqJPanel checkReqJPanel = new CheckReqJPanel(this.userProcessContainer, this.userAccount, this.custAdvList);
+        CheckReqJPanel checkReqJPanel = new CheckReqJPanel(this.userProcessContainer, this.userAccount, this.custAdvList, this.enterprise);
         this.userProcessContainer.add("CheckReqJPanel",checkReqJPanel);
         CardLayout layout=(CardLayout)this.userProcessContainer.getLayout();
         layout.next(this.userProcessContainer);
