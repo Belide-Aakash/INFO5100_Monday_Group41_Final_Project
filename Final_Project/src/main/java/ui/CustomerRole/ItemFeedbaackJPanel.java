@@ -27,7 +27,7 @@ public class ItemFeedbaackJPanel extends javax.swing.JPanel {
 
     
      private void resetFields() {
-        txtRefundReason.setText(""); // Clear the text area
+        txtRefundReason.setText("");
 
         // Clear the radio button selection
         ButtonGroup ratingGroup = new ButtonGroup();

@@ -13,10 +13,17 @@ import Business.ProductManagement.Product;
 import Business.ProductManagement.ProductCatalog;
 import Business.StockManagement.Stock;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -39,6 +46,29 @@ public class ManageStockJPanel extends javax.swing.JPanel {
         this.productCatalog = productCatalog;
         
         this.currentProdList = new ArrayList<Stock>();
+        
+        JTableHeader header = tblProductCatalog.getTableHeader();
+        JTableHeader header1 = tblCart.getTableHeader();
+        
+        // Customize the header background and text color
+        header.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
         
         populateSupplierCombobox();
         populateSupplierProductTable();
