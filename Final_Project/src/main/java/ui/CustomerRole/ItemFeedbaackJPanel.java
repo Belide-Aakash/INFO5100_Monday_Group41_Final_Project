@@ -10,6 +10,7 @@ import Business.OrderManagement.OrderItem;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,6 +25,19 @@ public class ItemFeedbaackJPanel extends javax.swing.JPanel {
     AdvertisementCatalog custAdvList;
     AdvertisementDisplay adDisplay;
 
+    
+     private void resetFields() {
+        txtRefundReason.setText("");
+
+        // Clear the radio button selection
+        ButtonGroup ratingGroup = new ButtonGroup();
+        ratingGroup.add(radioBtnRate1);
+        ratingGroup.add(radioBtnRate2);
+        ratingGroup.add(radioBtnRate3);
+        ratingGroup.add(radioBtnRate4);
+        ratingGroup.add(radioBtnRate5);
+        ratingGroup.clearSelection();
+    }
     /**
      * Creates new form ItemFeedbaackJPanel
      */
@@ -37,6 +51,20 @@ public class ItemFeedbaackJPanel extends javax.swing.JPanel {
         
         // Start the advertisements
         startAdv();
+    // Group radio buttons for the rating system
+        groupRadioButtons();
+    }
+
+    /**
+     * Groups the radio buttons for ratings.
+     */
+    private void groupRadioButtons() {
+        ButtonGroup ratingGroup = new ButtonGroup();
+        ratingGroup.add(radioBtnRate1);
+        ratingGroup.add(radioBtnRate2);
+        ratingGroup.add(radioBtnRate3);
+        ratingGroup.add(radioBtnRate4);
+        ratingGroup.add(radioBtnRate5);
     }
 
     /**
@@ -227,6 +255,23 @@ public class ItemFeedbaackJPanel extends javax.swing.JPanel {
     private void btnPostFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostFeedbackActionPerformed
         // TODO add your handling code here:
         //TO-DO: Update feedback and rating for the selected orderitem, if already present, then show it.
+       if (txtRefundReason.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Feedback should not be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Check if any rating is selected
+    if (!(radioBtnRate1.isSelected() || radioBtnRate2.isSelected() || 
+          radioBtnRate3.isSelected() || radioBtnRate4.isSelected() || radioBtnRate5.isSelected())) {
+        JOptionPane.showMessageDialog(this, "Please select a rating!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // If validation passes, display success message
+    JOptionPane.showMessageDialog(this, "Feedback submitted successfully!");
+
+    // Reset the feedback fields
+    resetFields(); // Clear the radio button selection
     }//GEN-LAST:event_btnPostFeedbackActionPerformed
 
     public void startAdv() {

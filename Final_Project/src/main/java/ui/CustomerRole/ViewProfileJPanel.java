@@ -99,7 +99,7 @@ public class ViewProfileJPanel extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(201, 201, 201))
         );
         jPanel1Layout.setVerticalGroup(
@@ -194,16 +194,16 @@ public class ViewProfileJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(244, 244, 244)
+                .addGap(230, 230, 230)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLat, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblLong, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblPass, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblRePass, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(lblLat, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblRePass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtLong)
                     .addComponent(txtLat)
                     .addComponent(txtEmail)
@@ -211,10 +211,10 @@ public class ViewProfileJPanel extends javax.swing.JPanel {
                     .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pass1)
-                    .addComponent(pass2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(pass2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnUpdatePass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSavePass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(288, 288, 288)
                 .addComponent(imageAdvertisement, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -358,6 +358,11 @@ public class ViewProfileJPanel extends javax.swing.JPanel {
         
         if (!password1.equals(password2)) {
             JOptionPane.showMessageDialog(this, "Passwords don't match. Please check.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (password1.isBlank() || password2.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Passwordcannot be empty.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
