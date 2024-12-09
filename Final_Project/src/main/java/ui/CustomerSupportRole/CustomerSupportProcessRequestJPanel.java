@@ -54,6 +54,7 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(0, 153, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/arrow.png"))); // NOI18N
+        btnBack.setBorder(null);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -68,7 +69,7 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addComponent(btnBack)
                 .addGap(185, 185, 185)
-                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(296, 296, 296))
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,11 +108,11 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
                 .addGap(252, 252, 252)
                 .addComponent(lblResponse)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addGap(311, 311, 311))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSubmitResponse)
+                .addGap(438, 438, 438)
+                .addComponent(btnSubmitResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(410, 410, 410))
         );
         layout.setVerticalGroup(
@@ -126,7 +127,7 @@ public class CustomerSupportProcessRequestJPanel extends javax.swing.JPanel {
                         .addComponent(lblResponse)))
                 .addGap(18, 18, 18)
                 .addComponent(btnSubmitResponse)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

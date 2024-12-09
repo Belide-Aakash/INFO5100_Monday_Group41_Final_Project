@@ -11,8 +11,15 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerSupportWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -36,6 +43,29 @@ public class CheckReqJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.custAdvList = custAdvList;
         this.enterprise = enterprise;
+        
+         // Get the table header
+        JTableHeader header = tblOrders.getTableHeader();
+        
+        // Customize the header background and text color
+        header.setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                    table, value, isSelected, hasFocus, row, column);
+                
+                // Set background color
+                label.setBackground(new Color(0,153,255)  );
+                // Set text color
+                label.setForeground(Color.WHITE);
+                // Set font style and size
+                label.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+                
+                return label;
+            }
+        });
         
         // Initialize and start the AdvertisementDisplay thread
         adDisplay = new AdvertisementDisplay(this.custAdvList, imageAdvertisement, this.userAccount.getUsername());
